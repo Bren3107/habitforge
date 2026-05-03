@@ -1,11 +1,12 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
   serverExternalPackages: ["@xenova/transformers"],
   turbopack: {
     resolveAlias: {
-      sharp: { default: "sharp" },
-      "onnxruntime-node": { default: "onnxruntime-node" },
+      sharp: path.resolve("./lib/empty-module.js"),
+      "onnxruntime-node": path.resolve("./lib/empty-module.js"),
     },
   },
   webpack: (config) => {

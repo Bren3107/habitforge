@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Syne, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { Providers } from "./providers";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -33,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${fraunces.variable} ${syne.variable} ${jetbrainsMono.variable}`}>
       <body className="min-h-screen bg-bg-base text-text-primary antialiased">
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
