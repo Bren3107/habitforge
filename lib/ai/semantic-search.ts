@@ -1,5 +1,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 
+const EXPECTED_EMBEDDING_DIM = 384;
+
 /**
  * Represents a success case retrieved from the database
  */
@@ -31,6 +33,13 @@ export async function findSimilarCases(
   category: string,
   limit: number = 3
 ): Promise<SuccessCase[]> {
+  // Validate embedding dimension
+  if (embedding.length !== EXPECTED_EMBEDDING_DIM) {
+    throw new Error(
+      `Expected ${EXPECTED_EMBEDDING_DIM}-dim embedding, got ${embedding.length}`
+    );
+  }
+
   try {
     // Use pgvector's cosine similarity operator (<->)
     // The <-> operator returns the distance (smaller is more similar)
@@ -51,8 +60,13 @@ export async function findSimilarCases(
           similarity_distance: item.distance || undefined,
         }));
       }
-    } catch {
-      // RPC not available, fall back to direct approach
+    } catch (error) {
+      // Log that RPC failed and falling back to direct approach
+      console.warn(
+        "RPC match_success_cases failed, falling back to direct approach",
+        error
+      );
+      // Fallback continues...
     }
 
     // Fallback: Use direct similarity search
@@ -80,6 +94,13 @@ export async function findSimilarCasesDirect(
   category: string,
   limit: number = 3
 ): Promise<SuccessCase[]> {
+  // Validate embedding dimension
+  if (embedding.length !== EXPECTED_EMBEDDING_DIM) {
+    throw new Error(
+      `Expected ${EXPECTED_EMBEDDING_DIM}-dim embedding, got ${embedding.length}`
+    );
+  }
+
   try {
     // Fetch all success cases for the category
     const { data, error } = await supabaseClient

@@ -8,6 +8,28 @@
  */
 
 /**
+ * Weights for confidence score calculation.
+ *
+ * - CONSTRAINT_FIT (0.4): How well the plan matches user's constraints (ease, time, energy).
+ *   A higher weight ensures plans are practical for the user's situation.
+ *
+ * - SIMILAR_CASE_SUCCESS (0.4): How similar top success cases are (1 - avg embedding distance).
+ *   Equally weighted with constraint fit because evidence from similar users is crucial.
+ *
+ * - MOTIVATION_SENTIMENT (0.2): Intrinsic motivation level inferred from conversation.
+ *   Lower weight because it's more volatile and harder to estimate than constraints or cases.
+ *
+ * The 40-40-20 split prioritizes practical constraints and evidence while accounting for
+ * motivation as a secondary factor.
+ */
+export const CONFIDENCE_WEIGHTS = {
+  CONSTRAINT_FIT: 0.4,
+  SIMILAR_CASE_SUCCESS: 0.4,
+  MOTIVATION_SENTIMENT: 0.2,
+  GENERAL_PRINCIPLE_SCORE: 0.8,
+} as const;
+
+/**
  * Weighted scoring formula:
  * confidence = (constraint_fit × 0.4) + (similar_case_success × 0.4) + (motivation_sentiment × 0.2)
  *
@@ -30,9 +52,11 @@ export function calculateConfidence(
   const similarCaseSuccess = clamp(similarity, 0.0, 1.0);
   const motivationSentiment = clamp(motivation, 0.0, 1.0);
 
-  // Apply weighted formula
+  // Apply weighted formula using exported constants
   const confidence =
-    constraintFit * 0.4 + similarCaseSuccess * 0.4 + motivationSentiment * 0.2;
+    constraintFit * CONFIDENCE_WEIGHTS.CONSTRAINT_FIT +
+    similarCaseSuccess * CONFIDENCE_WEIGHTS.SIMILAR_CASE_SUCCESS +
+    motivationSentiment * CONFIDENCE_WEIGHTS.MOTIVATION_SENTIMENT;
 
   // Ensure result is within bounds
   return clamp(confidence, 0.0, 1.0);

@@ -84,11 +84,26 @@ export async function loadKnowledgeGraph(): Promise<KnowledgeGraph> {
 }
 
 /**
+ * Reset the knowledge graph cache (mainly for testing)
+ */
+export function resetKnowledgeGraphCache(): void {
+  cachedKnowledgeGraph = null;
+}
+
+/**
  * Returns all principles for a specific category
+ *
+ * @param category - The category name (fitness, productivity, learning)
+ * @returns Promise resolving to array of principles for the category
+ * @throws Error if category is invalid or knowledge graph is not loaded
  */
 export async function getPrinciplesByCategory(
   category: string
 ): Promise<Principle[]> {
+  if (!category || typeof category !== "string") {
+    throw new Error("Category must be a non-empty string");
+  }
+
   const kg = await loadKnowledgeGraph();
 
   const categoryKey = category.toLowerCase() as keyof KnowledgeGraph;
@@ -100,8 +115,17 @@ export async function getPrinciplesByCategory(
 }
 
 /**
- * Filters principles by applicable_when constraints
- * Returns principles that match ALL specified constraints
+ * Filter principles by user constraints.
+ *
+ * Principles with "general" tag: Always included UNLESS user constraints
+ * are in the principle's not_applicable_when list.
+ *
+ * Principles with specific constraints: Included only if ALL user constraints
+ * are in the principle's applicable_when list.
+ *
+ * @param principles - Principles to filter
+ * @param constraints - User's situation tags (e.g., ["low_energy", "low_time"])
+ * @returns Filtered principles that match user situation
  */
 export async function filterPrinciplesByConstraints(
   principles: Principle[],
@@ -135,7 +159,7 @@ export async function getPrincipleById(id: string): Promise<Principle | null> {
   const kg = await loadKnowledgeGraph();
 
   for (const category of Object.values(kg)) {
-    const principle = category.principles.find((p) => p.id === id);
+    const principle = category.principles.find((p: Principle) => p.id === id);
     if (principle) {
       return principle;
     }

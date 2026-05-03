@@ -47,6 +47,11 @@ export async function initEmbeddings(): Promise<void> {
  * @returns Promise resolving to 384-dimensional vector
  */
 export async function embed(text: string): Promise<number[]> {
+  // Input validation
+  if (!text || typeof text !== "string") {
+    throw new Error("Text must be a non-empty string");
+  }
+
   // Lazy-initialize on first call
   if (!modelPipeline) {
     await initEmbeddings();
@@ -67,7 +72,7 @@ export async function embed(text: string): Promise<number[]> {
     // Verify dimension
     if (embedding.length !== EMBEDDING_DIMENSION) {
       throw new Error(
-        `Unexpected embedding dimension: ${embedding.length} (expected ${EMBEDDING_DIMENSION})`
+        `Embedding has unexpected dimension ${embedding.length}, expected ${EMBEDDING_DIMENSION}`
       );
     }
 

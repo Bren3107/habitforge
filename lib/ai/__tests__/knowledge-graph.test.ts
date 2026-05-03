@@ -5,10 +5,16 @@ import {
   getPrincipleById,
   getAllPrinciples,
   getCategoryMetadata,
+  resetKnowledgeGraphCache,
   type Principle,
 } from "../knowledge-graph";
 
 describe("Knowledge Graph Module", () => {
+  afterAll(() => {
+    // Reset cache for next test suite to avoid state pollution
+    resetKnowledgeGraphCache();
+  });
+
   describe("loadKnowledgeGraph", () => {
     it("should load all three knowledge graph files", async () => {
       const kg = await loadKnowledgeGraph();
