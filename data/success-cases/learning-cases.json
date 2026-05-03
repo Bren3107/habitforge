@@ -1,0 +1,452 @@
+[
+  {
+    "id": "l1",
+    "category": "learning",
+    "habit_description": "Studied Spanish for 20 minutes every day for 12 months using Anki and conversation practice",
+    "user_profile": {
+      "time_available": "20min",
+      "energy_level": "medium",
+      "motivation": "speak Spanish before a planned trip to South America",
+      "schedule_type": "office worker, commutes by train",
+      "constraints": ["busy commute", "no language learning background", "forgets vocabulary fast"],
+      "previous_attempts": 3
+    },
+    "success_strategy": "Spaced repetition via Anki on the train commute — reviewed existing cards first (retrieval practice), then added 5 new words per day. Weekly iTalki conversation session applied interleaving by mixing grammar, vocabulary and listening in a single session.",
+    "key_principles": ["spaced_repetition", "retrieval_practice", "interleaving"],
+    "difficulty": "medium",
+    "outcome": "Achieved B1 level, held an entire dinner conversation in Spanish during trip, continued studying",
+    "duration_weeks": 48
+  },
+  {
+    "id": "l2",
+    "category": "learning",
+    "habit_description": "Learned Python programming from scratch over 8 months",
+    "user_profile": {
+      "time_available": "60min",
+      "energy_level": "medium",
+      "motivation": "career change into data science",
+      "schedule_type": "marketing analyst, full-time job",
+      "constraints": ["no programming background", "full-time job", "imposter syndrome"],
+      "previous_attempts": 2
+    },
+    "success_strategy": "Chunked learning into weekly themes (week 1: variables, week 2: loops, etc.) to avoid overwhelm. Used implementation intention: 'Every weekday at 7pm I will study Python for 60 minutes.' Retrieval practice by closing the tutorial and writing code from memory. Built small projects to apply knowledge under elaborative interrogation.",
+    "key_principles": ["chunking", "implementation_intention", "retrieval_practice"],
+    "difficulty": "hard",
+    "outcome": "Landed a junior data analyst role, salary increased 30%, now mentors others in the Python course",
+    "duration_weeks": 32
+  },
+  {
+    "id": "l3",
+    "category": "learning",
+    "habit_description": "Practised piano 30 minutes every day for 14 months",
+    "user_profile": {
+      "time_available": "30min",
+      "energy_level": "medium",
+      "motivation": "play one complete piece for parents' anniversary",
+      "schedule_type": "secondary school student",
+      "constraints": ["competing academic demands", "exam periods", "shared house piano access"],
+      "previous_attempts": 1
+    },
+    "success_strategy": "Deliberate practice: focused each session on the hardest 4 bars rather than playing through the whole piece. Spaced repetition for music theory flashcards. Implementation intention: 'Every day after dinner I will practise piano for 30 minutes.' Chunked the target piece into 8 sections, mastered one per two weeks.",
+    "key_principles": ["deliberate_practice", "spaced_repetition", "chunking"],
+    "difficulty": "medium",
+    "outcome": "Performed Moonlight Sonata movement 1 at parents' anniversary, continued with a teacher",
+    "duration_weeks": 56
+  },
+  {
+    "id": "l4",
+    "category": "learning",
+    "habit_description": "Studied for and passed a professional accounting qualification over 18 months",
+    "user_profile": {
+      "time_available": "90min",
+      "energy_level": "medium",
+      "motivation": "career progression + salary increase",
+      "schedule_type": "junior accountant, full-time job",
+      "constraints": ["works full time", "expensive exam fees", "high failure rate qualification"],
+      "previous_attempts": 0
+    },
+    "success_strategy": "Spaced repetition for technical rules and standards via Anki. Retrieval practice: closed notes and did mock exam questions from day one rather than re-reading notes. Interleaved different topic areas in each study session to avoid illusion of knowing. Elaborative interrogation: asked 'why does this rule exist?' for every standard studied.",
+    "key_principles": ["spaced_repetition", "retrieval_practice", "interleaving", "elaborative_interrogation"],
+    "difficulty": "hard",
+    "outcome": "Passed all 6 modules first attempt (pass rate is typically 50%), promoted to senior accountant",
+    "duration_weeks": 72
+  },
+  {
+    "id": "l5",
+    "category": "learning",
+    "habit_description": "Learned Japanese hiragana, katakana and 500 kanji over 6 months",
+    "user_profile": {
+      "time_available": "25min",
+      "energy_level": "low",
+      "motivation": "connect with Japanese spouse's family",
+      "schedule_type": "parent, part-time worker",
+      "constraints": ["only 20-30 minutes available", "toddler at home", "no prior language learning experience"],
+      "previous_attempts": 1
+    },
+    "success_strategy": "Spaced repetition exclusively via WaniKani app — reviews done during toddler's first nap. Retrieval practice: hand-wrote kanji from memory before checking. Chunked progress into character groups of 20, never adding new until current batch was 90%+ retention. Small daily win celebrated with a sticker chart.",
+    "key_principles": ["spaced_repetition", "retrieval_practice", "chunking"],
+    "difficulty": "medium",
+    "outcome": "Can now read Japanese children's books with in-laws, meaningful family connection established",
+    "duration_weeks": 24
+  },
+  {
+    "id": "l6",
+    "category": "learning",
+    "habit_description": "Completed a machine learning course and built 3 projects over 9 months",
+    "user_profile": {
+      "time_available": "60min",
+      "energy_level": "high",
+      "motivation": "add ML to software engineering skills",
+      "schedule_type": "software engineer, experienced developer",
+      "constraints": ["advanced maths anxiety", "imposter syndrome in ML space", "distracted by new technologies"],
+      "previous_attempts": 4
+    },
+    "success_strategy": "Deliberate practice: spent 80% of time on exercises and projects rather than passive video watching. Interleaved theory and practical coding in every session. Implementation intention: 'Every Sunday 10am–12pm I will work on my ML project.' Elaborative interrogation applied to every new algorithm: 'why does this work mathematically?'",
+    "key_principles": ["deliberate_practice", "interleaving", "implementation_intention", "elaborative_interrogation"],
+    "difficulty": "hard",
+    "outcome": "Built a recommendation system deployed in production, received a pay rise, speaks at ML meetups",
+    "duration_weeks": 36
+  },
+  {
+    "id": "l7",
+    "category": "learning",
+    "habit_description": "Studied medical school anatomy for 30 minutes daily throughout first year",
+    "user_profile": {
+      "time_available": "30min",
+      "energy_level": "medium",
+      "motivation": "pass anatomy exams + understand clinical medicine",
+      "schedule_type": "first-year medical student",
+      "constraints": ["huge volume of content", "multiple exams per term", "social demands"],
+      "previous_attempts": 0
+    },
+    "success_strategy": "Anki spaced repetition for all anatomical structures — processed lecture slides into Anki cards same day (encoding + retrieval). Retrieval practice: drew anatomical diagrams from memory weekly without reference. Chunked body into 10 regional systems, 2 weeks per region. Interleaved vascular, nerve and bone content within each region.",
+    "key_principles": ["spaced_repetition", "retrieval_practice", "chunking", "interleaving"],
+    "difficulty": "hard",
+    "outcome": "Top 10% in anatomy assessments, retained knowledge through clinical years, now attends anatomy demonstration sessions",
+    "duration_weeks": 36
+  },
+  {
+    "id": "l8",
+    "category": "learning",
+    "habit_description": "Practised guitar fingerpicking for 20 minutes daily for 10 months",
+    "user_profile": {
+      "time_available": "20min",
+      "energy_level": "low",
+      "motivation": "play fingerstyle covers of favourite songs",
+      "schedule_type": "retiree, plenty of time but low energy",
+      "constraints": ["arthritis in fingers", "never learned music theory", "age 68"],
+      "previous_attempts": 0
+    },
+    "success_strategy": "Deliberate practice: isolated the one hardest fingerpicking pattern each session and drilled it slowly before returning to the full piece. Chunked learning into individual patterns (thumb independence, bass-melody coordination) before combining. Spaced repetition for music theory basics using index cards.",
+    "key_principles": ["deliberate_practice", "chunking", "spaced_repetition"],
+    "difficulty": "medium",
+    "outcome": "Can play 12 complete fingerstyle arrangements, arthritis pain managed well, performs at grandchildren's events",
+    "duration_weeks": 40
+  },
+  {
+    "id": "l9",
+    "category": "learning",
+    "habit_description": "Learned web development (HTML/CSS/JS) from zero to employable over 12 months",
+    "user_profile": {
+      "time_available": "60min",
+      "energy_level": "medium",
+      "motivation": "escape retail job, work remotely",
+      "schedule_type": "retail worker, evenings and weekends free",
+      "constraints": ["no computer science background", "self-taught with no mentor", "financial pressure to succeed quickly"],
+      "previous_attempts": 1
+    },
+    "success_strategy": "Chunked curriculum: HTML only for 4 weeks, CSS only for 4 weeks, then JS. Retrieval practice: built each project from scratch without reference, then checked against tutorial. Deliberate practice: focused each session on a specific weak area rather than easy tasks. Elaborative interrogation: wrote 'explain-it-simply' blog posts for each topic learned.",
+    "key_principles": ["chunking", "retrieval_practice", "deliberate_practice", "elaborative_interrogation"],
+    "difficulty": "hard",
+    "outcome": "Landed a junior web developer role after 11 months, escaped retail, now earning 2x previous salary",
+    "duration_weeks": 48
+  },
+  {
+    "id": "l10",
+    "category": "learning",
+    "habit_description": "Studied French for 15 minutes daily via Duolingo + spaced repetition for 8 months",
+    "user_profile": {
+      "time_available": "15min",
+      "energy_level": "low",
+      "motivation": "travel to France independently",
+      "schedule_type": "busy parent, works part-time",
+      "constraints": ["maximum 15 minutes available", "toddler and baby", "exhausted evenings"],
+      "previous_attempts": 0
+    },
+    "success_strategy": "Implementation intention: 'When I sit down with my morning coffee, I will open Duolingo before anything else and complete one lesson.' Minimum viable progress built in: even 5-minute sessions counted. Spaced repetition from both Duolingo and a small Anki deck of core 200 words.",
+    "key_principles": ["implementation_intention", "spaced_repetition"],
+    "difficulty": "easy",
+    "outcome": "Navigated entire France holiday independently, ordered food and asked for directions entirely in French",
+    "duration_weeks": 32
+  },
+  {
+    "id": "l11",
+    "category": "learning",
+    "habit_description": "Read one non-fiction book per month and wrote a summary for 18 months",
+    "user_profile": {
+      "time_available": "30min",
+      "energy_level": "medium",
+      "motivation": "improve leadership skills + mental models",
+      "schedule_type": "middle manager, commutes by train",
+      "constraints": ["reading feels slow", "forgets what was read", "competitive with time"],
+      "previous_attempts": 2
+    },
+    "success_strategy": "Retrieval practice: after every chapter, closed the book and wrote 3 key ideas from memory. Elaborative interrogation: for each concept, asked 'how does this apply to my specific team situation?' Spaced repetition: reviewed previous summaries weekly for 5 minutes. Wrote a one-page summary after each book.",
+    "key_principles": ["retrieval_practice", "elaborative_interrogation", "spaced_repetition"],
+    "difficulty": "medium",
+    "outcome": "Knowledge retention transformed, applied 3 frameworks from books that directly improved team performance",
+    "duration_weeks": 72
+  },
+  {
+    "id": "l12",
+    "category": "learning",
+    "habit_description": "Completed an online statistics course for data science over 5 months",
+    "user_profile": {
+      "time_available": "45min",
+      "energy_level": "medium",
+      "motivation": "improve data credibility in presentations",
+      "schedule_type": "product analyst, full-time job",
+      "constraints": ["hated maths at school", "maths anxiety", "limited time"],
+      "previous_attempts": 3
+    },
+    "success_strategy": "Chunked course into 5 core statistical concepts, one per month. Interleaved concept theory with real dataset practice in each session. Retrieval practice: answered problem sets with notes closed. Elaborative interrogation: mapped each statistical test to a real business question from current role.",
+    "key_principles": ["chunking", "interleaving", "retrieval_practice", "elaborative_interrogation"],
+    "difficulty": "medium",
+    "outcome": "Now presents with statistical confidence, promoted to senior analyst, maths anxiety mostly eliminated",
+    "duration_weeks": 20
+  },
+  {
+    "id": "l13",
+    "category": "learning",
+    "habit_description": "Practised Mandarin tones and speaking for 25 minutes daily for 10 months",
+    "user_profile": {
+      "time_available": "25min",
+      "energy_level": "medium",
+      "motivation": "communicate with factory partners in China",
+      "schedule_type": "import-export business owner, frequent travel",
+      "constraints": ["traveling frequently", "no immersion environment", "tone-deaf background"],
+      "previous_attempts": 0
+    },
+    "success_strategy": "Spaced repetition via Pleco app for vocabulary — daily reviews during hotel mornings. Deliberate practice: targeted tonal accuracy specifically, using recording app to compare against native speakers. Interleaved tones, vocabulary and listening comprehension within each 25-minute session.",
+    "key_principles": ["spaced_repetition", "deliberate_practice", "interleaving"],
+    "difficulty": "hard",
+    "outcome": "Can conduct basic business negotiations in Mandarin, factory relationships improved significantly",
+    "duration_weeks": 40
+  },
+  {
+    "id": "l14",
+    "category": "learning",
+    "habit_description": "Studied for a professional UX design certification over 6 months",
+    "user_profile": {
+      "time_available": "60min",
+      "energy_level": "medium",
+      "motivation": "formal credential to support career transition",
+      "schedule_type": "graphic designer wanting to move into UX",
+      "constraints": ["no formal UX training", "needs portfolio work alongside theory", "imposter syndrome"],
+      "previous_attempts": 0
+    },
+    "success_strategy": "Implementation intention: 'Every weekday at 6:30pm I will study UX for 60 minutes.' Interleaved theory study with practical portfolio projects in each week. Retrieval practice: explained each UX principle to a study partner from memory. Chunked the 6-month programme into 4 phases (research, design, prototype, test).",
+    "key_principles": ["implementation_intention", "interleaving", "retrieval_practice", "chunking"],
+    "difficulty": "medium",
+    "outcome": "Passed certification, landed first UX role, salary increased 40%",
+    "duration_weeks": 24
+  },
+  {
+    "id": "l15",
+    "category": "learning",
+    "habit_description": "Self-studied A-level Mathematics independently as an adult for 14 months",
+    "user_profile": {
+      "time_available": "60min",
+      "energy_level": "medium",
+      "motivation": "qualify for university engineering degree as mature student",
+      "schedule_type": "adult learner, working part-time",
+      "constraints": ["no teacher", "failed maths at school", "mathematical anxiety", "self-funding"],
+      "previous_attempts": 1
+    },
+    "success_strategy": "Spaced repetition for formulae and rules via physical flashcards. Retrieval practice: solved exam questions under timed conditions with notes closed from week 1. Interleaved different topic areas weekly (calculus Monday, statistics Wednesday, mechanics Friday) to avoid topic-specific ruts. Deliberate practice: exclusively worked on incorrect questions, not easy ones.",
+    "key_principles": ["spaced_repetition", "retrieval_practice", "interleaving", "deliberate_practice"],
+    "difficulty": "hard",
+    "outcome": "Achieved an A grade, gained university entry, first in family to attend university",
+    "duration_weeks": 56
+  },
+  {
+    "id": "l16",
+    "category": "learning",
+    "habit_description": "Learned to read music notation and sight-read over 8 months",
+    "user_profile": {
+      "time_available": "20min",
+      "energy_level": "medium",
+      "motivation": "join community choir",
+      "schedule_type": "retired teacher",
+      "constraints": ["no music background", "age 62", "limited available teachers"],
+      "previous_attempts": 0
+    },
+    "success_strategy": "Chunked music theory into discrete units: note names, rhythms, key signatures, intervals — one per fortnight. Spaced repetition via self-made flashcards for note positions on the staff. Retrieval practice: identified notes on new sheet music from memory before checking. Implementation intention: 'Every morning after breakfast I will study music notation for 20 minutes.'",
+    "key_principles": ["chunking", "spaced_repetition", "retrieval_practice", "implementation_intention"],
+    "difficulty": "easy",
+    "outcome": "Joined community choir after 8 months, sightreads most hymns, progressed to 4-part harmony",
+    "duration_weeks": 32
+  },
+  {
+    "id": "l17",
+    "category": "learning",
+    "habit_description": "Completed AWS Solutions Architect certification over 4 months",
+    "user_profile": {
+      "time_available": "60min",
+      "energy_level": "high",
+      "motivation": "promotion to cloud architect role",
+      "schedule_type": "systems administrator, full-time IT role",
+      "constraints": ["broad exam scope", "costly exam re-sit", "already strong IT background"],
+      "previous_attempts": 0
+    },
+    "success_strategy": "Spaced repetition via Anki for AWS service features and limits. Retrieval practice: practice exams with all notes closed from week 1, not the final week. Interleaved service domains (compute, storage, network, security) across each study week. Elaborative interrogation: for each service, asked 'when would a solutions architect choose this over the alternatives?'",
+    "key_principles": ["spaced_repetition", "retrieval_practice", "interleaving", "elaborative_interrogation"],
+    "difficulty": "medium",
+    "outcome": "Passed with 94% score, promoted to cloud architect, 25% salary increase",
+    "duration_weeks": 16
+  },
+  {
+    "id": "l18",
+    "category": "learning",
+    "habit_description": "Learned to draw portraits using daily 30-minute sketchbook practice over 9 months",
+    "user_profile": {
+      "time_available": "30min",
+      "energy_level": "medium",
+      "motivation": "creative outlet + potential freelance income",
+      "schedule_type": "nurse, shift worker",
+      "constraints": ["irregular shifts", "perfectionism leading to procrastination", "self-comparison anxiety"],
+      "previous_attempts": 4
+    },
+    "success_strategy": "Deliberate practice: each session focused on one specific weak skill (eyes, noses, proportions) rather than complete portraits. Implementation intention: 'When I arrive home after day shifts, before sitting down, I will sketch for 30 minutes.' Chunked portraiture into component skills — mastered each before combining.",
+    "key_principles": ["deliberate_practice", "implementation_intention", "chunking"],
+    "difficulty": "medium",
+    "outcome": "Now earns £400/month from portrait commissions, runs local sketching workshops",
+    "duration_weeks": 36
+  },
+  {
+    "id": "l19",
+    "category": "learning",
+    "habit_description": "Studied Italian using spaced repetition and lived content for 15 months",
+    "user_profile": {
+      "time_available": "30min",
+      "energy_level": "medium",
+      "motivation": "live in Italy for a year",
+      "schedule_type": "freelance photographer, flexible schedule",
+      "constraints": ["no structure to day", "easily distracted", "no Italian contacts to practise with"],
+      "previous_attempts": 2
+    },
+    "success_strategy": "Spaced repetition: Anki core 2000 Italian words reviewed daily. Interleaved: each study session mixed Anki review, grammar reading and authentic Italian podcast listening. Retrieval practice: wrote a short Italian diary entry each evening without checking vocabulary until afterwards. Elaborative interrogation: questioned why grammatical gender rules existed.",
+    "key_principles": ["spaced_repetition", "interleaving", "retrieval_practice", "elaborative_interrogation"],
+    "difficulty": "hard",
+    "outcome": "Reached B2 level, moved to Italy, conducts all daily life entirely in Italian",
+    "duration_weeks": 60
+  },
+  {
+    "id": "l20",
+    "category": "learning",
+    "habit_description": "Learned financial modelling in Excel over 5 months",
+    "user_profile": {
+      "time_available": "45min",
+      "energy_level": "medium",
+      "motivation": "move into investment banking from commerce",
+      "schedule_type": "graduate, full-time job",
+      "constraints": ["no finance background", "expensive courses", "analytical imposter syndrome"],
+      "previous_attempts": 1
+    },
+    "success_strategy": "Chunked learning: accounting fundamentals first, then DCF, then LBO — 6 weeks per module. Retrieval practice: rebuilt models from scratch without reference files. Deliberate practice: exclusively focused on areas flagged as wrong in practice sets rather than reviewing correct answers. Implementation intention: 'Every weekday at 7am I will practise financial modelling for 45 minutes.'",
+    "key_principles": ["chunking", "retrieval_practice", "deliberate_practice", "implementation_intention"],
+    "difficulty": "hard",
+    "outcome": "Passed investment banking technical interview, accepted analyst offer at a boutique firm",
+    "duration_weeks": 20
+  },
+  {
+    "id": "l21",
+    "category": "learning",
+    "habit_description": "Studied for a driving theory test after failing twice, passed on third attempt",
+    "user_profile": {
+      "time_available": "20min",
+      "energy_level": "low",
+      "motivation": "independence + job requirement",
+      "schedule_type": "young adult with anxiety",
+      "constraints": ["test anxiety", "two previous failures", "low confidence"],
+      "previous_attempts": 2
+    },
+    "success_strategy": "Spaced repetition: specific hazard perception clips and Highway Code rules via DVSA app daily, prioritising items previously answered incorrectly. Retrieval practice: mock tests under exam conditions with no notes from day one. Elaborative interrogation: for each rule, asked 'what accident is this rule designed to prevent?'",
+    "key_principles": ["spaced_repetition", "retrieval_practice", "elaborative_interrogation"],
+    "difficulty": "easy",
+    "outcome": "Passed with highest score of the three attempts, test anxiety reduced",
+    "duration_weeks": 8
+  },
+  {
+    "id": "l22",
+    "category": "learning",
+    "habit_description": "Learned basic woodworking and completed 3 furniture pieces over 11 months",
+    "user_profile": {
+      "time_available": "120min",
+      "energy_level": "high",
+      "motivation": "furnish new home on a budget + creative satisfaction",
+      "schedule_type": "IT professional, weekends available",
+      "constraints": ["no tool background", "small garage workshop", "noise restrictions on Sunday"],
+      "previous_attempts": 0
+    },
+    "success_strategy": "Chunked skills by project: project 1 covered joints only, project 2 added finishing, project 3 incorporated design. Deliberate practice: repeated the hardest joint 30 times on scrap wood before applying to the actual piece. Interleaved wood theory (grain, species, moisture) with hands-on sessions.",
+    "key_principles": ["chunking", "deliberate_practice", "interleaving"],
+    "difficulty": "medium",
+    "outcome": "Built a bookcase, dining table and bed frame, saved £2,000, considering a part-time furniture business",
+    "duration_weeks": 44
+  },
+  {
+    "id": "l23",
+    "category": "learning",
+    "habit_description": "Practised public speaking and improved measurably over 8 months via Toastmasters",
+    "user_profile": {
+      "time_available": "90min",
+      "energy_level": "medium",
+      "motivation": "overcome fear of public speaking for career",
+      "schedule_type": "mid-career professional, severe public speaking anxiety",
+      "constraints": ["extreme anxiety", "avoidance history", "voice shaking when nervous"],
+      "previous_attempts": 0
+    },
+    "success_strategy": "Deliberate practice: gave one prepared speech and one impromptu speech per month, focusing on specific technical weakness each time (eye contact, pausing, gestures). Retrieval practice: memorised all speech structure and content before presenting. Interleaved different speech types across months.",
+    "key_principles": ["deliberate_practice", "retrieval_practice", "interleaving"],
+    "difficulty": "hard",
+    "outcome": "Now presents confidently to 200-person audiences, won two Toastmasters speech competitions",
+    "duration_weeks": 32
+  },
+  {
+    "id": "l24",
+    "category": "learning",
+    "habit_description": "Self-studied A-level Biology over 16 months as a career changer",
+    "user_profile": {
+      "time_available": "60min",
+      "energy_level": "medium",
+      "motivation": "qualify for nursing degree as a mature student",
+      "schedule_type": "retail manager, career changer",
+      "constraints": ["no science background", "working full-time", "family commitments", "self-studying without teacher"],
+      "previous_attempts": 0
+    },
+    "success_strategy": "Spaced repetition for all definitions and processes via Anki — 200+ cards maintained. Retrieval practice: past exam papers under timed conditions every fortnight from month 2. Interleaved different topic areas per week. Elaborative interrogation: for every biological process, asked 'how would a failure of this process cause disease?'",
+    "key_principles": ["spaced_repetition", "retrieval_practice", "interleaving", "elaborative_interrogation"],
+    "difficulty": "hard",
+    "outcome": "Achieved a B grade, accepted into adult nursing programme, changed career successfully",
+    "duration_weeks": 64
+  },
+  {
+    "id": "l25",
+    "category": "learning",
+    "habit_description": "Learned 100 magic tricks and performed at family events over 10 months",
+    "user_profile": {
+      "time_available": "20min",
+      "energy_level": "low",
+      "motivation": "develop a fun hobby + entertain children",
+      "schedule_type": "parent, works from home",
+      "constraints": ["limited spare time", "no performance background", "self-taught"],
+      "previous_attempts": 0
+    },
+    "success_strategy": "Chunked learning by technique category: sleight of hand first, then mentalism, then illusions — mastering each before moving on. Deliberate practice: drilled a single sleight move 50 times in 20 minutes rather than learning many moves poorly. Retrieval practice: performed each trick from memory to a family member weekly before adding new ones.",
+    "key_principles": ["chunking", "deliberate_practice", "retrieval_practice"],
+    "difficulty": "easy",
+    "outcome": "Performs a 20-minute show at children's parties and family gatherings, children request repeat performances",
+    "duration_weeks": 40
+  }
+]

@@ -1,0 +1,452 @@
+[
+  {
+    "id": "p1",
+    "category": "productivity",
+    "habit_description": "Wrote 500 words of a novel every morning for 8 months",
+    "user_profile": {
+      "time_available": "45min",
+      "energy_level": "high",
+      "motivation": "finish first novel",
+      "schedule_type": "office worker, evenings and mornings free",
+      "constraints": ["full-time job", "family commitments", "creative block fears"],
+      "previous_attempts": 5
+    },
+    "success_strategy": "Time blocked 6:00–6:45am as sacred writing time before the household woke up. Environment design: laptop pre-opened to document, coffee pre-set on timer, phone in another room. Minimum viable progress rule: 'even 100 bad words counts as a win'.",
+    "key_principles": ["time_blocking", "environment_design", "minimum_viable_progress"],
+    "difficulty": "hard",
+    "outcome": "Completed 85,000-word first draft, signed with a literary agent",
+    "duration_weeks": 32
+  },
+  {
+    "id": "p2",
+    "category": "productivity",
+    "habit_description": "Processed email inbox to zero every weekday morning for 6 months",
+    "user_profile": {
+      "time_available": "30min",
+      "energy_level": "medium",
+      "motivation": "reduce stress + improve responsiveness",
+      "schedule_type": "manager, meeting-heavy schedule",
+      "constraints": ["100+ emails daily", "constant interruptions", "open-plan office"],
+      "previous_attempts": 3
+    },
+    "success_strategy": "Implemented if-then planning: 'If I sit at my desk at 8:30am, I will process all inbox emails before opening Slack or attending any meeting.' Cognitive offloading via a simple triage system (do/defer/delegate/delete labels) so decisions required no mental energy.",
+    "key_principles": ["if_then_planning", "cognitive_offloading"],
+    "difficulty": "medium",
+    "outcome": "Inbox consistently at zero, reduced email anxiety, team satisfaction scores improved",
+    "duration_weeks": 24
+  },
+  {
+    "id": "p3",
+    "category": "productivity",
+    "habit_description": "Blocked 2-hour deep work sessions daily for 7 months",
+    "user_profile": {
+      "time_available": "120min",
+      "energy_level": "high",
+      "motivation": "advance research career + publish papers",
+      "schedule_type": "academic researcher, autonomous schedule",
+      "constraints": ["frequent interruptions", "collaborative culture pressure", "home office distractions"],
+      "previous_attempts": 2
+    },
+    "success_strategy": "Time blocked 9–11am as deep work in calendar, marked as 'busy' for all colleagues. Implementation intention: 'At 9am I will close email, silence phone, put on noise-cancelling headphones and work on single most important task.' Environment design: separate browser profile with social sites blocked.",
+    "key_principles": ["time_blocking", "implementation_intention", "environment_design"],
+    "difficulty": "hard",
+    "outcome": "Published 3 papers in one year vs 1 in previous year, promoted to senior researcher",
+    "duration_weeks": 28
+  },
+  {
+    "id": "p4",
+    "category": "productivity",
+    "habit_description": "Completed a weekly planning session every Sunday evening for 10 months",
+    "user_profile": {
+      "time_available": "60min",
+      "energy_level": "medium",
+      "motivation": "reduce Monday morning overwhelm",
+      "schedule_type": "freelance consultant, variable workload",
+      "constraints": ["unpredictable client demands", "no fixed routine", "context switching"],
+      "previous_attempts": 4
+    },
+    "success_strategy": "Habit stacked Sunday planning onto an existing ritual (after Sunday dinner, before watching TV). Cognitive offloading: used a standardised weekly review template capturing next week's priorities, appointments and top 3 MITs. Reward substitution: favourite podcast played while completing the template.",
+    "key_principles": ["cognitive_offloading", "reward_substitution"],
+    "difficulty": "medium",
+    "outcome": "Eliminated Monday overwhelm, client delivery quality improved, earned 40% more through better project selection",
+    "duration_weeks": 40
+  },
+  {
+    "id": "p5",
+    "category": "productivity",
+    "habit_description": "Read non-fiction for 30 minutes every day for 12 months",
+    "user_profile": {
+      "time_available": "30min",
+      "energy_level": "low",
+      "motivation": "professional development + learning",
+      "schedule_type": "busy parent, works full time",
+      "constraints": ["commute time only", "two young kids", "low energy evenings"],
+      "previous_attempts": 6
+    },
+    "success_strategy": "Time blocked the 30-minute train commute exclusively for reading — phones and social media off during this window. E-reader pre-loaded and placed in work bag each night. Minimum viable progress: 'even 5 pages counts'. Logged books finished in a simple note for reward substitution (satisfaction from list).",
+    "key_principles": ["time_blocking", "minimum_viable_progress", "reward_substitution"],
+    "difficulty": "easy",
+    "outcome": "Read 24 books in a year, applied insights to get promoted, recommends books to team",
+    "duration_weeks": 48
+  },
+  {
+    "id": "p6",
+    "category": "productivity",
+    "habit_description": "Completed a morning planning ritual every weekday for 5 months",
+    "user_profile": {
+      "time_available": "20min",
+      "energy_level": "medium",
+      "motivation": "feel less reactive, more intentional",
+      "schedule_type": "primary school teacher",
+      "constraints": ["early start times", "emotionally demanding job", "little control over interruptions"],
+      "previous_attempts": 2
+    },
+    "success_strategy": "If-then planning: 'When I arrive at school at 7:45am, before touching any emails or talking to colleagues, I will spend 20 minutes reviewing my lesson plan and writing 3 priorities for the day in my notebook.' Cognitive offloading: standardised three-question journal (top priority, potential obstacle, energy management).",
+    "key_principles": ["if_then_planning", "cognitive_offloading"],
+    "difficulty": "easy",
+    "outcome": "Felt significantly more in control, student outcomes improved, reduced Sunday evening dread",
+    "duration_weeks": 20
+  },
+  {
+    "id": "p7",
+    "category": "productivity",
+    "habit_description": "Practiced the Pomodoro technique for all focused work for 6 months",
+    "user_profile": {
+      "time_available": "varies",
+      "energy_level": "low",
+      "motivation": "manage ADHD without medication",
+      "schedule_type": "graphic designer, freelance",
+      "constraints": ["ADHD diagnosis", "extreme task switching", "client interruptions"],
+      "previous_attempts": 8
+    },
+    "success_strategy": "Environment design: installed a physical tomato timer on desk (more powerful cue than phone). If-then planning: 'When I open my design software, I will immediately start a Pomodoro.' Minimum viable progress: 'one Pomodoro is enough — anything more is a bonus.' Reward substitution: 5-minute break became guilt-free social media time.",
+    "key_principles": ["environment_design", "if_then_planning", "minimum_viable_progress"],
+    "difficulty": "medium",
+    "outcome": "Doubled billable output, ADHD symptoms significantly more manageable, reduced medication dose with GP",
+    "duration_weeks": 24
+  },
+  {
+    "id": "p8",
+    "category": "productivity",
+    "habit_description": "Wrote a daily journal entry every evening for 9 months",
+    "user_profile": {
+      "time_available": "15min",
+      "energy_level": "low",
+      "motivation": "mental clarity + process stress",
+      "schedule_type": "nurse, shift worker",
+      "constraints": ["emotionally draining work", "irregular shifts", "exhausted evenings"],
+      "previous_attempts": 7
+    },
+    "success_strategy": "Minimum viable progress: 'even three sentences counts'. Journal placed on the pillow each morning as an environmental cue and reminder. If-then: 'When I take off my work uniform, I will sit and write for 15 minutes before anything else.' Reward substitution: journaling associated with herbal tea — the drink became a conditioned pleasure cue.",
+    "key_principles": ["minimum_viable_progress", "environment_design", "reward_substitution"],
+    "difficulty": "medium",
+    "outcome": "Maintained journal for over 2 years, became primary tool for processing compassion fatigue",
+    "duration_weeks": 36
+  },
+  {
+    "id": "p9",
+    "category": "productivity",
+    "habit_description": "Cleared physical and digital workspace every Friday afternoon for 8 months",
+    "user_profile": {
+      "time_available": "30min",
+      "energy_level": "medium",
+      "motivation": "start each week fresh + reduce mental clutter",
+      "schedule_type": "product manager, fast-paced tech startup",
+      "constraints": ["chaotic environment", "continuous context switching", "culture of 'always on'"],
+      "previous_attempts": 2
+    },
+    "success_strategy": "Time blocked 4:30–5:00pm every Friday as 'weekly reset'. Implementation intention: 'When 4:30pm Friday arrives, I will stop all new tasks and spend 30 minutes closing open loops.' Cognitive offloading: a checklist of 8 weekly reset actions (clear desk, archive documents, update task board, set Monday priorities).",
+    "key_principles": ["time_blocking", "implementation_intention", "cognitive_offloading"],
+    "difficulty": "easy",
+    "outcome": "Monday mornings became the most productive time of week, team adopted the practice",
+    "duration_weeks": 32
+  },
+  {
+    "id": "p10",
+    "category": "productivity",
+    "habit_description": "Wrote and published a weekly newsletter for 11 months",
+    "user_profile": {
+      "time_available": "90min",
+      "energy_level": "medium",
+      "motivation": "build audience + develop writing practice",
+      "schedule_type": "marketing professional, side project",
+      "constraints": ["full-time job", "perfectionism", "fear of public failure"],
+      "previous_attempts": 3
+    },
+    "success_strategy": "Implementation intention: 'Every Saturday at 10am, I will write my newsletter draft for 90 minutes, regardless of quality.' Minimum viable progress: a newsletter with one idea and 300 words counts. Reward substitution: linked newsletter send with a small celebration ritual (favourite coffee shop). Public commitment to subscribers created accountability.",
+    "key_principles": ["implementation_intention", "minimum_viable_progress", "reward_substitution"],
+    "difficulty": "hard",
+    "outcome": "Grew to 2,400 subscribers, newsletter became primary business development channel",
+    "duration_weeks": 44
+  },
+  {
+    "id": "p11",
+    "category": "productivity",
+    "habit_description": "Batched all meetings to Tuesday and Thursday for 6 months",
+    "user_profile": {
+      "time_available": "varies",
+      "energy_level": "high",
+      "motivation": "recover deep work capacity",
+      "schedule_type": "engineering lead, meeting-heavy role",
+      "constraints": ["12+ meetings per week", "open calendar culture", "global team timezones"],
+      "previous_attempts": 1
+    },
+    "success_strategy": "Time blocked Monday, Wednesday, Friday as no-meeting days in shared calendar. Environment design: automatic decline set for meetings on those days. If-then: 'If someone books a meeting on a protected day, I will immediately propose to move it to Tue or Thu.' Negotiated the change explicitly with direct reports.",
+    "key_principles": ["time_blocking", "environment_design", "if_then_planning"],
+    "difficulty": "hard",
+    "outcome": "Shipped two major features in 3 months vs one in previous 6, team adopted meeting batching",
+    "duration_weeks": 24
+  },
+  {
+    "id": "p12",
+    "category": "productivity",
+    "habit_description": "Completed a daily shutdown ritual every workday for 7 months",
+    "user_profile": {
+      "time_available": "20min",
+      "energy_level": "medium",
+      "motivation": "disconnect from work + improve sleep",
+      "schedule_type": "remote worker, blurred work-life boundary",
+      "constraints": ["home office = bedroom", "always-on culture", "difficulty switching off"],
+      "previous_attempts": 4
+    },
+    "success_strategy": "If-then planning: 'When the clock hits 6pm, I will say out loud 'shutdown complete' and close all work applications.' Cognitive offloading: captured all open loops in a 'parking lot' note before shutdown so the brain could release them. Environment design: laptop physically moved to a cupboard after shutdown.",
+    "key_principles": ["if_then_planning", "cognitive_offloading", "environment_design"],
+    "difficulty": "medium",
+    "outcome": "Improved sleep quality dramatically, evenings became genuinely restorative, work quality improved through better rest",
+    "duration_weeks": 28
+  },
+  {
+    "id": "p13",
+    "category": "productivity",
+    "habit_description": "Processed and organised receipts and finances weekly for 6 months",
+    "user_profile": {
+      "time_available": "30min",
+      "energy_level": "low",
+      "motivation": "avoid tax stress + take control of finances",
+      "schedule_type": "small business owner, sole trader",
+      "constraints": ["hates admin", "ADHD", "financial anxiety"],
+      "previous_attempts": 6
+    },
+    "success_strategy": "Minimum viable progress: 'scan one receipt per week is enough — don't let perfect be the enemy of done.' Reward substitution: finance admin paired with a specific TV show watched only during that task. Time blocked Sunday 4pm for 'money date'. Cognitive offloading: pre-built spreadsheet template so zero decisions required.",
+    "key_principles": ["minimum_viable_progress", "reward_substitution", "cognitive_offloading"],
+    "difficulty": "medium",
+    "outcome": "First tax return submitted on time without panic, found £1,200 in unclaimed expenses",
+    "duration_weeks": 24
+  },
+  {
+    "id": "p14",
+    "category": "productivity",
+    "habit_description": "Practised GTD weekly review every Sunday for 9 months",
+    "user_profile": {
+      "time_available": "90min",
+      "energy_level": "medium",
+      "motivation": "stress-free productivity system",
+      "schedule_type": "knowledge worker, high cognitive load job",
+      "constraints": ["hundreds of open tasks", "decision fatigue", "perfectionism"],
+      "previous_attempts": 2
+    },
+    "success_strategy": "Time blocked Sunday 7–8:30pm as non-negotiable review time. Cognitive offloading: followed a strict review checklist in Notion (inbox processing, calendar review, project review, next actions). Implementation intention: 'When 7pm Sunday arrives, I will open my GTD system and begin the review checklist, no exceptions.'",
+    "key_principles": ["time_blocking", "cognitive_offloading", "implementation_intention"],
+    "difficulty": "hard",
+    "outcome": "Eliminated open-loop anxiety, described as 'life-changing', productivity increased 35%",
+    "duration_weeks": 36
+  },
+  {
+    "id": "p15",
+    "category": "productivity",
+    "habit_description": "Sent a weekly team status update every Friday for 5 months",
+    "user_profile": {
+      "time_available": "20min",
+      "energy_level": "medium",
+      "motivation": "improve team communication + career visibility",
+      "schedule_type": "project manager, corporate role",
+      "constraints": ["forgets to communicate upwards", "meeting fatigue", "imposter syndrome"],
+      "previous_attempts": 1
+    },
+    "success_strategy": "If-then planning: 'When 4pm Friday arrives, I will draft and send the team status update before leaving.' Cognitive offloading: pre-built Notion template with consistent sections (wins, risks, blockers, next week). Minimum viable progress: 3 bullet points per section is fine. Made public commitment to VP that this would happen weekly.",
+    "key_principles": ["if_then_planning", "cognitive_offloading", "minimum_viable_progress"],
+    "difficulty": "easy",
+    "outcome": "Recognised by senior leadership, facilitated a promotion discussion, team alignment improved",
+    "duration_weeks": 20
+  },
+  {
+    "id": "p16",
+    "category": "productivity",
+    "habit_description": "Meditated using a focus app for 10 minutes every morning for 5 months",
+    "user_profile": {
+      "time_available": "15min",
+      "energy_level": "medium",
+      "motivation": "manage anxiety + improve focus",
+      "schedule_type": "sales professional, high-pressure role",
+      "constraints": ["stressful quota culture", "early morning calls", "performance anxiety"],
+      "previous_attempts": 4
+    },
+    "success_strategy": "Implementation intention: 'When I wake up at 6am, before checking my phone, I will open the meditation app and complete one session.' Phone left in a charging dock across the room to prevent impulse checking. Reward substitution: post-meditation coffee was the real treat, creating a positive anchor.",
+    "key_principles": ["implementation_intention", "environment_design", "reward_substitution"],
+    "difficulty": "easy",
+    "outcome": "Anxiety measurably reduced, exceeded sales targets for first time, promoted to senior account manager",
+    "duration_weeks": 20
+  },
+  {
+    "id": "p17",
+    "category": "productivity",
+    "habit_description": "Did a daily brain dump and task prioritisation every morning for 4 months",
+    "user_profile": {
+      "time_available": "15min",
+      "energy_level": "low",
+      "motivation": "manage ADHD overwhelm",
+      "schedule_type": "student with ADHD, part-time worker",
+      "constraints": ["ADHD", "working memory deficits", "easily overwhelmed"],
+      "previous_attempts": 9
+    },
+    "success_strategy": "Minimum viable progress: 'write down 3 things I need to do today — nothing more.' Used cognitive offloading: moved everything from head onto paper/app to free working memory. If-then: 'When I sit at my desk after breakfast, I will immediately write my 3 priorities before opening any app.' Paired with reward (favourite music during the 15 minutes).",
+    "key_principles": ["minimum_viable_progress", "cognitive_offloading", "if_then_planning"],
+    "difficulty": "medium",
+    "outcome": "First academic year without missed deadlines, GPA improved from 2.1 to 3.4",
+    "duration_weeks": 16
+  },
+  {
+    "id": "p18",
+    "category": "productivity",
+    "habit_description": "Batched all social media content creation to one 2-hour session per week for 6 months",
+    "user_profile": {
+      "time_available": "120min",
+      "energy_level": "high",
+      "motivation": "grow online presence without daily distraction",
+      "schedule_type": "creative entrepreneur, solo business",
+      "constraints": ["constant distraction from notifications", "perfectionism", "inconsistency"],
+      "previous_attempts": 3
+    },
+    "success_strategy": "Time blocked Wednesday 2–4pm as 'content creation sprint'. Environment design: all social apps removed from phone, accessible only on dedicated laptop profile. Cognitive offloading: prepared content templates and idea bank throughout the week, emptied in Wednesday sprint. Reward substitution: post-sprint reward of an hour of gaming or TV.",
+    "key_principles": ["time_blocking", "environment_design", "cognitive_offloading"],
+    "difficulty": "medium",
+    "outcome": "Grew Instagram from 800 to 12,000 followers, 3x more consistent than previous approach",
+    "duration_weeks": 24
+  },
+  {
+    "id": "p19",
+    "category": "productivity",
+    "habit_description": "Reviewed and refined a single business metric every Monday morning for 8 months",
+    "user_profile": {
+      "time_available": "30min",
+      "energy_level": "medium",
+      "motivation": "data-driven decision making",
+      "schedule_type": "startup founder",
+      "constraints": ["data overwhelm", "context switching between roles", "decision fatigue"],
+      "previous_attempts": 1
+    },
+    "success_strategy": "Implementation intention: 'Every Monday at 9am, before any meetings, I review one north star metric for 30 minutes and decide on one action.' Cognitive offloading: pre-built dashboard that required no setup, just reading. Minimum viable progress: one decision from the session is success.",
+    "key_principles": ["implementation_intention", "cognitive_offloading", "minimum_viable_progress"],
+    "difficulty": "easy",
+    "outcome": "Identified a critical conversion bottleneck that was costing £8k/month, business became profitable",
+    "duration_weeks": 32
+  },
+  {
+    "id": "p20",
+    "category": "productivity",
+    "habit_description": "Completed a structured end-of-project retrospective after every client project for 10 months",
+    "user_profile": {
+      "time_available": "60min",
+      "energy_level": "medium",
+      "motivation": "continuous improvement + avoid repeating mistakes",
+      "schedule_type": "UX consultant, project-based work",
+      "constraints": ["constantly starting next project", "reflection feels unproductive", "busy client demands"],
+      "previous_attempts": 0
+    },
+    "success_strategy": "If-then planning: 'When I deliver the final client deliverable, I will schedule a 1-hour retrospective within 48 hours before onboarding the next client.' Cognitive offloading: structured retrospective template (what went well, what to improve, one action for next project). Reward substitution: retrospective followed by a celebratory lunch.",
+    "key_principles": ["if_then_planning", "cognitive_offloading", "reward_substitution"],
+    "difficulty": "easy",
+    "outcome": "Client NPS improved from 7.2 to 9.1 over 10 months, raised rates by 35%",
+    "duration_weeks": 40
+  },
+  {
+    "id": "p21",
+    "category": "productivity",
+    "habit_description": "Wrote 3 genuine LinkedIn posts per week for 7 months",
+    "user_profile": {
+      "time_available": "30min",
+      "energy_level": "medium",
+      "motivation": "build professional reputation + job opportunities",
+      "schedule_type": "mid-career professional seeking new role",
+      "constraints": ["fear of being judged by colleagues", "imposter syndrome", "hates self-promotion"],
+      "previous_attempts": 2
+    },
+    "success_strategy": "Minimum viable progress: 'a 3-sentence observation counts as a post.' Time blocked 8:00–8:30am Monday, Wednesday, Friday as writing time. If-then: 'When I sit at my desk on a writing day, I will open LinkedIn drafts first thing.' Reward substitution: each published post = a small treat that day.",
+    "key_principles": ["minimum_viable_progress", "time_blocking", "reward_substitution"],
+    "difficulty": "medium",
+    "outcome": "Three inbound job offers in 7 months, landed role with 42% salary increase",
+    "duration_weeks": 28
+  },
+  {
+    "id": "p22",
+    "category": "productivity",
+    "habit_description": "Completed a structured annual review and goal-setting session every December for 3 years",
+    "user_profile": {
+      "time_available": "180min",
+      "energy_level": "high",
+      "motivation": "intentional life design",
+      "schedule_type": "professional in their 30s",
+      "constraints": ["busy December", "Christmas family demands", "previous resolutions always failed"],
+      "previous_attempts": 8
+    },
+    "success_strategy": "Time blocked December 28 as a personal retreat day. Environment design: booked a café away from home, laptop only, no phone. Cognitive offloading: used a structured 7-section review template covering career, health, relationships, learning, finances, fun, and annual word. Reward substitution: followed by a favourite dinner out.",
+    "key_principles": ["time_blocking", "environment_design", "cognitive_offloading"],
+    "difficulty": "medium",
+    "outcome": "Year 3 review showed 80% of goals achieved vs 20% in years before starting the practice",
+    "duration_weeks": 156
+  },
+  {
+    "id": "p23",
+    "category": "productivity",
+    "habit_description": "Did a 15-minute end-of-day task review every workday for 4 months",
+    "user_profile": {
+      "time_available": "15min",
+      "energy_level": "low",
+      "motivation": "stop carrying work anxiety into evenings",
+      "schedule_type": "civil servant, structured hours",
+      "constraints": ["anxiety about unfinished work", "difficulty leaving office mentally", "pending email guilt"],
+      "previous_attempts": 2
+    },
+    "success_strategy": "If-then: 'When 4:45pm arrives, I will open my task list, tick off completions, note deferrals, and write tomorrow's top 3 before shutting down.' Cognitive offloading: everything unfinished captured in a trusted system so the brain can let go. Environment design: phone wallpaper changed to 'review done = leave with peace' as reminder.",
+    "key_principles": ["if_then_planning", "cognitive_offloading", "environment_design"],
+    "difficulty": "easy",
+    "outcome": "Evening anxiety about work reduced dramatically, sleep quality improved, sustainable routine for 2+ years",
+    "duration_weeks": 16
+  },
+  {
+    "id": "p24",
+    "category": "productivity",
+    "habit_description": "Maintained a consistent client invoicing habit on the 1st of every month for 12 months",
+    "user_profile": {
+      "time_available": "60min",
+      "energy_level": "medium",
+      "motivation": "eliminate late invoicing and cash flow stress",
+      "schedule_type": "freelance developer",
+      "constraints": ["hates admin", "forgets billing", "irregular workload"],
+      "previous_attempts": 5
+    },
+    "success_strategy": "Implementation intention: 'On the 1st of every month, at 9am, I will process all pending invoices before any development work.' Cognitive offloading: standardised invoice template in accounting software, time tracked automatically. Reward substitution: invoicing morning followed by a café work session as treat.",
+    "key_principles": ["implementation_intention", "cognitive_offloading", "reward_substitution"],
+    "difficulty": "medium",
+    "outcome": "Eliminated late payment issues, cash flow predictable for first time, stress around money significantly reduced",
+    "duration_weeks": 48
+  },
+  {
+    "id": "p25",
+    "category": "productivity",
+    "habit_description": "Ran daily standup meetings efficiently to 15 minutes for 6 months",
+    "user_profile": {
+      "time_available": "15min",
+      "energy_level": "medium",
+      "motivation": "improve team alignment without meeting bloat",
+      "schedule_type": "engineering manager",
+      "constraints": ["verbose team members", "scope creep in meetings", "remote team across timezones"],
+      "previous_attempts": 0
+    },
+    "success_strategy": "Implementation intention: 'When standup hits the 14-minute mark, I will say 'parking lot' and move longer discussions offline.' Environment design: visible countdown timer shared on screen during meeting. Cognitive offloading: pre-shared async update template so in-meeting time focused only on blockers.",
+    "key_principles": ["implementation_intention", "environment_design", "cognitive_offloading"],
+    "difficulty": "hard",
+    "outcome": "Reclaimed 45 minutes per day for team, sprint velocity increased 20%, team satisfaction improved",
+    "duration_weeks": 24
+  }
+]

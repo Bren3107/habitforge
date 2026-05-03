@@ -1,0 +1,452 @@
+[
+  {
+    "id": "f1",
+    "category": "fitness",
+    "habit_description": "Walked 20 minutes every morning for 4 months",
+    "user_profile": {
+      "time_available": "20min",
+      "energy_level": "low",
+      "motivation": "general health + stress relief",
+      "schedule_type": "retiree, flexible schedule",
+      "constraints": ["knee pain", "no gym", "cold winters"],
+      "previous_attempts": 0
+    },
+    "success_strategy": "Habit stacked the walk immediately after morning coffee — the coffee ritual became the automatic cue. Laid out walking shoes by the door the night before to remove friction. Paper calendar X method for tracking streaks.",
+    "key_principles": ["habit_stacking", "implementation_intention"],
+    "difficulty": "easy",
+    "outcome": "Lost 5kg, improved sleep quality, reduced blood pressure",
+    "duration_weeks": 16
+  },
+  {
+    "id": "f2",
+    "category": "fitness",
+    "habit_description": "Did 10-minute yoga every evening for 3 months",
+    "user_profile": {
+      "time_available": "15min",
+      "energy_level": "low",
+      "motivation": "flexibility + sleep improvement",
+      "schedule_type": "nurse, shift worker",
+      "constraints": ["irregular shifts", "exhausted after work", "small apartment"],
+      "previous_attempts": 3
+    },
+    "success_strategy": "Used the two-minute rule — committed only to unrolling the yoga mat. Once the mat was out, always continued for the full 10 minutes. Placed the mat permanently in the bedroom corner as an environment design trigger.",
+    "key_principles": ["two_minute_rule"],
+    "difficulty": "easy",
+    "outcome": "Significantly better sleep, reduced lower back pain, consistent 90-day streak",
+    "duration_weeks": 12
+  },
+  {
+    "id": "f3",
+    "category": "fitness",
+    "habit_description": "Completed 3x weekly home HIIT workouts for 5 months",
+    "user_profile": {
+      "time_available": "30min",
+      "energy_level": "medium",
+      "motivation": "weight loss + energy boost",
+      "schedule_type": "remote worker, flexible hours",
+      "constraints": ["no gym", "neighbors below", "no equipment"],
+      "previous_attempts": 2
+    },
+    "success_strategy": "Temptation bundling: saved a favourite TV show exclusively for workout time, watching one episode per session. Scheduled workouts as calendar blocks Mon/Wed/Fri at 12pm to create implementation intention.",
+    "key_principles": ["temptation_bundling", "implementation_intention"],
+    "difficulty": "medium",
+    "outcome": "Lost 7kg, now has dedicated home workout corner with resistance bands",
+    "duration_weeks": 20
+  },
+  {
+    "id": "f4",
+    "category": "fitness",
+    "habit_description": "Cycled to work 4 days per week for 6 months",
+    "user_profile": {
+      "time_available": "45min",
+      "energy_level": "medium",
+      "motivation": "fitness + save on transport costs",
+      "schedule_type": "office worker, 9-5",
+      "constraints": ["8km commute", "need to arrive presentable", "rainy climate"],
+      "previous_attempts": 1
+    },
+    "success_strategy": "Reframed identity from 'person trying to cycle' to 'cyclist who commutes'. Pre-packed the pannier bag every Sunday night for the whole week. Joined a commuter cycling Slack group for social accountability.",
+    "key_principles": ["identity_based_habits", "social_commitment"],
+    "difficulty": "medium",
+    "outcome": "Lost 6kg, saves $200/month on transport, completed first sportive event",
+    "duration_weeks": 24
+  },
+  {
+    "id": "f5",
+    "category": "fitness",
+    "habit_description": "Ran 5km three times per week for 8 months",
+    "user_profile": {
+      "time_available": "30min",
+      "energy_level": "medium",
+      "motivation": "weight loss + general health",
+      "schedule_type": "office worker, 9-5",
+      "constraints": ["no gym", "early mornings difficult"],
+      "previous_attempts": 2
+    },
+    "success_strategy": "Used temptation bundling (audiobooks only during runs) plus habit stacking (run immediately after dropping kids at school). Tracked with a paper calendar X method.",
+    "key_principles": ["temptation_bundling", "habit_stacking"],
+    "difficulty": "medium",
+    "outcome": "Lost 8kg, now runs half-marathons",
+    "duration_weeks": 32
+  },
+  {
+    "id": "f6",
+    "category": "fitness",
+    "habit_description": "Did 15-minute bodyweight strength training every weekday morning",
+    "user_profile": {
+      "time_available": "15min",
+      "energy_level": "medium",
+      "motivation": "build strength without gym membership",
+      "schedule_type": "student, variable schedule",
+      "constraints": ["no equipment", "shared dormitory", "tight budget"],
+      "previous_attempts": 4
+    },
+    "success_strategy": "Set a specific implementation intention: 'When my alarm goes off at 7am, I will immediately do 15 minutes of bodyweight exercises before checking my phone.' Phone was placed across the room to prevent snooze. Workout posted daily to a private Discord server for social pressure.",
+    "key_principles": ["implementation_intention", "social_commitment"],
+    "difficulty": "easy",
+    "outcome": "Gained noticeable muscle definition, improved energy for study sessions",
+    "duration_weeks": 20
+  },
+  {
+    "id": "f7",
+    "category": "fitness",
+    "habit_description": "Practiced beginner Pilates 3x per week for 4 months",
+    "user_profile": {
+      "time_available": "40min",
+      "energy_level": "low",
+      "motivation": "back pain recovery + core strength",
+      "schedule_type": "work-from-home parent",
+      "constraints": ["two young children", "interrupted schedule", "recovering from disc injury"],
+      "previous_attempts": 1
+    },
+    "success_strategy": "Stacked Pilates sessions during children's nap time — an existing reliable slot. Used two-minute rule: if feeling overwhelmed, committed only to one cat-cow stretch. This almost always led to completing the full session.",
+    "key_principles": ["habit_stacking", "two_minute_rule"],
+    "difficulty": "easy",
+    "outcome": "Eliminated chronic back pain, now teaches a beginner Pilates class",
+    "duration_weeks": 16
+  },
+  {
+    "id": "f8",
+    "category": "fitness",
+    "habit_description": "Swam 2km twice per week for 6 months",
+    "user_profile": {
+      "time_available": "60min",
+      "energy_level": "high",
+      "motivation": "triathlon training",
+      "schedule_type": "teacher, structured school hours",
+      "constraints": ["pool 15 min drive away", "limited lane availability early morning"],
+      "previous_attempts": 0
+    },
+    "success_strategy": "Pre-booked pool lanes for the entire term at once (implementation intention + commitment device). Packed swim bag on Sunday for the whole week. Joined a masters swimming group for social accountability and variable reward from group sets.",
+    "key_principles": ["implementation_intention", "social_commitment", "variable_reward"],
+    "difficulty": "medium",
+    "outcome": "Completed first sprint triathlon, swimming became the favourite discipline",
+    "duration_weeks": 24
+  },
+  {
+    "id": "f9",
+    "category": "fitness",
+    "habit_description": "Did daily 5-minute stretching routine for 6 months",
+    "user_profile": {
+      "time_available": "10min",
+      "energy_level": "low",
+      "motivation": "reduce stiffness from desk work",
+      "schedule_type": "software developer, desk job",
+      "constraints": ["sedentary job", "forgets to move", "open plan office"],
+      "previous_attempts": 5
+    },
+    "success_strategy": "Set a recurring calendar reminder at 3pm titled 'Stretch — 5 min'. Used two-minute rule: committed to just neck rolls and shoulder circles. Placed a printed stretching guide at the desk as an environmental cue. Used identity framing: 'I am someone who moves every day'.",
+    "key_principles": ["two_minute_rule", "identity_based_habits"],
+    "difficulty": "easy",
+    "outcome": "Eliminated afternoon neck headaches, now does 15-minute full body stretching routine",
+    "duration_weeks": 24
+  },
+  {
+    "id": "f10",
+    "category": "fitness",
+    "habit_description": "Trained Brazilian Jiu-Jitsu twice per week for 12 months",
+    "user_profile": {
+      "time_available": "90min",
+      "energy_level": "high",
+      "motivation": "self-defence + social activity",
+      "schedule_type": "accountant, 9-5",
+      "constraints": ["evening classes only", "expensive sport", "competitive personality"],
+      "previous_attempts": 0
+    },
+    "success_strategy": "Used variable reward: the unpredictable nature of sparring (who you roll with, what positions arise) kept intrinsic motivation extremely high. Made public social commitment to gym peers about attending twice weekly — missing felt socially costly.",
+    "key_principles": ["variable_reward", "social_commitment"],
+    "difficulty": "hard",
+    "outcome": "Achieved blue belt, competes at local tournaments, improved all-round fitness dramatically",
+    "duration_weeks": 48
+  },
+  {
+    "id": "f11",
+    "category": "fitness",
+    "habit_description": "Completed 100 push-ups daily (built up from 10) over 5 months",
+    "user_profile": {
+      "time_available": "15min",
+      "energy_level": "medium",
+      "motivation": "upper body strength + discipline",
+      "schedule_type": "delivery driver, physical job",
+      "constraints": ["no gym", "physically tired from work", "inconsistent hours"],
+      "previous_attempts": 3
+    },
+    "success_strategy": "Started with only 10 push-ups using two-minute rule. Stacked them immediately after brushing teeth in the morning. Tracked on a simple phone note. Incremented by 5 per week. Identity reframe: 'I am someone who does push-ups every day, no exceptions'.",
+    "key_principles": ["two_minute_rule", "habit_stacking", "identity_based_habits"],
+    "difficulty": "hard",
+    "outcome": "Now does 150 consecutive push-ups, noticeable upper body transformation",
+    "duration_weeks": 20
+  },
+  {
+    "id": "f12",
+    "category": "fitness",
+    "habit_description": "Attended gym 3x per week consistently for 9 months",
+    "user_profile": {
+      "time_available": "60min",
+      "energy_level": "medium",
+      "motivation": "muscle gain + mental health",
+      "schedule_type": "university student",
+      "constraints": ["student gym access only", "exam periods", "social life conflicts"],
+      "previous_attempts": 4
+    },
+    "success_strategy": "Signed up for a gym partner program — missing meant letting down a friend (social commitment). Used temptation bundling: created a specific gym playlist only accessible during workouts. Scheduled sessions as non-negotiable calendar blocks Mon/Wed/Fri.",
+    "key_principles": ["social_commitment", "temptation_bundling", "implementation_intention"],
+    "difficulty": "medium",
+    "outcome": "Gained 8kg lean muscle, gym became primary mental health tool during exams",
+    "duration_weeks": 36
+  },
+  {
+    "id": "f13",
+    "category": "fitness",
+    "habit_description": "Walked 10,000 steps daily for 8 months",
+    "user_profile": {
+      "time_available": "60min",
+      "energy_level": "low",
+      "motivation": "doctor recommended, heart health",
+      "schedule_type": "retiree, 65+ years old",
+      "constraints": ["arthritis in hips", "lives alone", "limited local amenities"],
+      "previous_attempts": 1
+    },
+    "success_strategy": "Broken into three smaller walks: post-breakfast, post-lunch, post-dinner — habit stacked to existing meal routines. Joined a local walking group on Saturdays for social commitment. Smartwatch provided variable reward through badges for milestones.",
+    "key_principles": ["habit_stacking", "social_commitment", "variable_reward"],
+    "difficulty": "easy",
+    "outcome": "Reduced cholesterol by 18%, joined a Nordic walking club, lost 4kg",
+    "duration_weeks": 32
+  },
+  {
+    "id": "f14",
+    "category": "fitness",
+    "habit_description": "Completed 30-minute weight training sessions 4x per week for 7 months",
+    "user_profile": {
+      "time_available": "30min",
+      "energy_level": "high",
+      "motivation": "body composition + bone density",
+      "schedule_type": "teacher, school hours",
+      "constraints": ["must be home before 8pm for kids", "expensive gym too far away"],
+      "previous_attempts": 1
+    },
+    "success_strategy": "Bought a basic dumbbell set and resistance bands, turning the garage into a home gym (environment design). Set implementation intention: 'Every weekday at 6:30am I will train for 30 minutes in the garage before breakfast'. Pre-programmed 4-week progressive routines to remove decision fatigue.",
+    "key_principles": ["implementation_intention"],
+    "difficulty": "medium",
+    "outcome": "Gained significant strength, achieved first unassisted pull-up, improved bone density scan",
+    "duration_weeks": 28
+  },
+  {
+    "id": "f15",
+    "category": "fitness",
+    "habit_description": "Practiced hot yoga twice per week for 5 months",
+    "user_profile": {
+      "time_available": "75min",
+      "energy_level": "medium",
+      "motivation": "flexibility + mindfulness",
+      "schedule_type": "marketing manager, stressful job",
+      "constraints": ["expensive classes", "city commute", "high-stress lifestyle"],
+      "previous_attempts": 2
+    },
+    "success_strategy": "Prepaid a 3-month class pack (commitment device + financial sunk cost). Made a social commitment with a colleague to attend together Tuesday and Thursday evenings. Used temptation bundling: post-yoga green smoothie was reserved exclusively for yoga days.",
+    "key_principles": ["social_commitment", "temptation_bundling"],
+    "difficulty": "medium",
+    "outcome": "Significant flexibility gains, reduced work anxiety, continued for over 2 years",
+    "duration_weeks": 20
+  },
+  {
+    "id": "f16",
+    "category": "fitness",
+    "habit_description": "Completed a Couch-to-5K program in 9 weeks, then continued running 3x/week",
+    "user_profile": {
+      "time_available": "35min",
+      "energy_level": "low",
+      "motivation": "mental health + weight management",
+      "schedule_type": "single parent, part-time worker",
+      "constraints": ["low self-efficacy", "very unfit starting point", "tight schedule around school runs"],
+      "previous_attempts": 0
+    },
+    "success_strategy": "Used two-minute rule to start: put on running shoes and walk to the end of the street. Most days, continued for the full C25K session. Adopted identity framing from week 3: 'I am becoming a runner, one session at a time'. Each completed session was a vote for the new identity.",
+    "key_principles": ["two_minute_rule", "identity_based_habits"],
+    "difficulty": "medium",
+    "outcome": "Completed first 5K race, significantly improved mental health, lost 5kg",
+    "duration_weeks": 36
+  },
+  {
+    "id": "f17",
+    "category": "fitness",
+    "habit_description": "Practised outdoor calisthenics 5 mornings per week for 10 months",
+    "user_profile": {
+      "time_available": "45min",
+      "energy_level": "high",
+      "motivation": "functional strength + outdoor lifestyle",
+      "schedule_type": "graphic designer, freelance",
+      "constraints": ["no gym membership", "variable income", "needs structure"],
+      "previous_attempts": 0
+    },
+    "success_strategy": "Set implementation intention: 'Every weekday at 7am I will go to the park and train for 45 minutes before starting client work.' Used social commitment: posted weekly progress to a calisthenics subreddit community. Variable reward from unlocking new skills (muscle-up, handstand progressions) kept motivation high.",
+    "key_principles": ["implementation_intention", "social_commitment", "variable_reward"],
+    "difficulty": "hard",
+    "outcome": "Achieved full muscle-up and 30-second handstand, built online following, improved work focus",
+    "duration_weeks": 40
+  },
+  {
+    "id": "f18",
+    "category": "fitness",
+    "habit_description": "Walked on treadmill for 30 minutes during lunch break every weekday",
+    "user_profile": {
+      "time_available": "30min",
+      "energy_level": "medium",
+      "motivation": "break sedentary work pattern",
+      "schedule_type": "office worker, corporate environment",
+      "constraints": ["only lunchtime available", "office building gym", "competitive peers"],
+      "previous_attempts": 2
+    },
+    "success_strategy": "Stacked treadmill walk with podcasts and audiobooks reserved only for that time slot (temptation bundling). Placed gym bag by desk the night before. Framed it as 'I am the person in this office who prioritises their health', reinforcing identity with every session.",
+    "key_principles": ["temptation_bundling", "identity_based_habits"],
+    "difficulty": "easy",
+    "outcome": "Lost 4kg over 6 months, promoted to wellness champion in office",
+    "duration_weeks": 24
+  },
+  {
+    "id": "f19",
+    "category": "fitness",
+    "habit_description": "Completed wheelchair-accessible water aerobics 3x per week for 6 months",
+    "user_profile": {
+      "time_available": "60min",
+      "energy_level": "low",
+      "motivation": "joint health + social connection",
+      "schedule_type": "retiree, mobility limitations",
+      "constraints": ["wheelchair user", "requires pool hoist access", "transport dependency"],
+      "previous_attempts": 0
+    },
+    "success_strategy": "Scheduled sessions at fixed times with transport booked in advance (implementation intention + commitment device). Joined a regular class where instructor and peers expected attendance (social commitment). Rewarded self with a café visit post-session (temptation bundling).",
+    "key_principles": ["implementation_intention", "social_commitment"],
+    "difficulty": "easy",
+    "outcome": "Improved joint mobility, formed lasting friendships, reported best wellbeing in years",
+    "duration_weeks": 24
+  },
+  {
+    "id": "f20",
+    "category": "fitness",
+    "habit_description": "Trained for and completed an Olympic distance triathlon over 14 months",
+    "user_profile": {
+      "time_available": "60min",
+      "energy_level": "high",
+      "motivation": "bucket list goal + prove to myself",
+      "schedule_type": "middle manager, 9-5 with travel",
+      "constraints": ["frequent work travel", "three disciplines to train", "family commitments"],
+      "previous_attempts": 1
+    },
+    "success_strategy": "Joined a triathlon club for group training and social accountability. Created a 14-month periodised plan with if-then contingencies for travel weeks (hotel gym = turbo session). Each completed training week received a personal reward (variable rewards scaled to session difficulty).",
+    "key_principles": ["social_commitment", "variable_reward", "implementation_intention"],
+    "difficulty": "hard",
+    "outcome": "Completed Olympic triathlon in 2:48, inspired 4 colleagues to enter the following year",
+    "duration_weeks": 56
+  },
+  {
+    "id": "f21",
+    "category": "fitness",
+    "habit_description": "Did 20-minute morning jog 5 days per week for 4 months",
+    "user_profile": {
+      "time_available": "25min",
+      "energy_level": "medium",
+      "motivation": "anxiety management",
+      "schedule_type": "graduate student, high academic pressure",
+      "constraints": ["thesis deadline stress", "very early classes some days", "cold campus location"],
+      "previous_attempts": 1
+    },
+    "success_strategy": "Stacked run immediately after waking alarm — trained the brain to link alarm sound to lacing up shoes. Specific implementation intention: 'When alarm rings at 6:30am, I put on pre-laid kit and leave within 5 minutes.' No deliberation allowed.",
+    "key_principles": ["habit_stacking", "implementation_intention"],
+    "difficulty": "easy",
+    "outcome": "Anxiety levels measurably reduced (PHQ-9 score improved), thesis submitted on time",
+    "duration_weeks": 16
+  },
+  {
+    "id": "f22",
+    "category": "fitness",
+    "habit_description": "Completed CrossFit 4x per week for 12 months",
+    "user_profile": {
+      "time_available": "60min",
+      "energy_level": "high",
+      "motivation": "competitive fitness + community",
+      "schedule_type": "firefighter, shift work",
+      "constraints": ["irregular 3-day shift patterns", "physically demanding job", "recovery needs"],
+      "previous_attempts": 0
+    },
+    "success_strategy": "Box community provided inherent social commitment — coaches and members noticed absences. Variable reward built into WOD structure: every session is different, scores are posted on the whiteboard, competition creates engagement. Adopted 'I am an athlete' identity frame strongly.",
+    "key_principles": ["social_commitment", "variable_reward", "identity_based_habits"],
+    "difficulty": "hard",
+    "outcome": "Competed in first CrossFit Open, placed in top 30% regionally, significantly improved job performance tests",
+    "duration_weeks": 48
+  },
+  {
+    "id": "f23",
+    "category": "fitness",
+    "habit_description": "Completed daily 7-minute workout app routine for 5 months",
+    "user_profile": {
+      "time_available": "10min",
+      "energy_level": "low",
+      "motivation": "maintain basic fitness during busy period",
+      "schedule_type": "new parent, sleep deprived",
+      "constraints": ["newborn baby", "extreme sleep deprivation", "unpredictable schedule"],
+      "previous_attempts": 3
+    },
+    "success_strategy": "Applied two-minute rule aggressively: only committed to opening the app and doing the first exercise. Most days completed all 7 minutes. Stacked it to baby's first morning nap — an existing reliable event. Celebrated streaks with a small personal treat.",
+    "key_principles": ["two_minute_rule", "habit_stacking"],
+    "difficulty": "hard",
+    "outcome": "Maintained baseline fitness through challenging period, built self-efficacy for future habits",
+    "duration_weeks": 20
+  },
+  {
+    "id": "f24",
+    "category": "fitness",
+    "habit_description": "Learned to rock climb and trained 2x per week for 8 months",
+    "user_profile": {
+      "time_available": "90min",
+      "energy_level": "medium",
+      "motivation": "fun activity + overcome fear of heights",
+      "schedule_type": "software engineer, remote",
+      "constraints": ["sedentary all week", "height phobia", "needs social activity"],
+      "previous_attempts": 0
+    },
+    "success_strategy": "Used variable reward inherent in climbing: each route is a puzzle with unpredictable challenge, making every session intrinsically motivating. Made social commitment to a climbing partner — sessions became social events, not just exercise. Identity evolved to 'I am a climber'.",
+    "key_principles": ["variable_reward", "social_commitment", "identity_based_habits"],
+    "difficulty": "medium",
+    "outcome": "Reached Grade 6b outdoors, conquered fear of heights, most consistent exercise habit in 10 years",
+    "duration_weeks": 32
+  },
+  {
+    "id": "f25",
+    "category": "fitness",
+    "habit_description": "Followed a structured 5x5 barbell strength programme for 9 months",
+    "user_profile": {
+      "time_available": "60min",
+      "energy_level": "high",
+      "motivation": "strength + body composition",
+      "schedule_type": "junior doctor, irregular hospital shifts",
+      "constraints": ["irregular rotas", "physically and mentally exhausted", "hospital gym access only"],
+      "previous_attempts": 2
+    },
+    "success_strategy": "Specific if-then plan: 'If I have a post-nights day off, I will go to the gym at 10am after sleeping.' Trained with a fellow junior doctor for social commitment and accountability. Reframed identity: 'I am a doctor who lifts — strength is part of my self-care protocol.' Tracked all lifts in a dedicated app for variable reward from hitting PRs.",
+    "key_principles": ["implementation_intention", "social_commitment", "identity_based_habits"],
+    "difficulty": "hard",
+    "outcome": "Increased squat from 60kg to 140kg, now uses gym as primary stress recovery tool",
+    "duration_weeks": 36
+  }
+]
