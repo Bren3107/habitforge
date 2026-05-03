@@ -1,0 +1,90 @@
+{
+  "category": "learning",
+  "principles": [
+    {
+      "id": "spaced_repetition",
+      "name": "Spaced Repetition",
+      "description": "Reviewing material at systematically increasing intervals so that each review occurs just as memory strength begins to decline.",
+      "mechanism": "The spacing effect shows that distributing practice over time produces stronger and more durable long-term memory traces than massed practice, because each retrieval attempt at the point of near-forgetting forces effortful reconstruction that deepens encoding.",
+      "source": "Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T., & Rohrer, D. (2006). Distributed practice in verbal recall tasks: A review and quantitative synthesis. Psychological Bulletin, 132(3), 354–380. (Original phenomenon: Ebbinghaus, H. (1913). Memory: A Contribution to Experimental Psychology. Teachers College, Columbia University. Original work published 1885.)",
+      "applicable_when": ["low_time", "low_consistency", "general", "high_motivation"],
+      "not_applicable_when": ["no_equipment"],
+      "example": "Use a flashcard app (e.g., Anki) that automatically schedules each vocabulary card for the optimal review day — new cards daily, older cards at expanding intervals.",
+      "xp_bonus": 5
+    },
+    {
+      "id": "interleaving",
+      "name": "Interleaving",
+      "description": "Mixing different topics or problem types within a single study session rather than completing all problems of one type before moving to the next.",
+      "mechanism": "Switching between categories forces the learner to discriminate between problem types and retrieve the appropriate strategy each time, building flexible, transferable knowledge rather than surface pattern recognition.",
+      "source": "Kornell, N., & Bjork, R. A. (2008). Learning concepts and categories: Is spacing the 'enemy of induction'? Psychological Science, 19(6), 585–592.",
+      "applicable_when": ["high_motivation", "high_energy", "high_consistency"],
+      "not_applicable_when": ["low_self_efficacy", "low_energy"],
+      "example": "When practising mathematics, alternate between algebra, geometry, and statistics problems in one session rather than completing a full chapter of each subject separately.",
+      "xp_bonus": 7
+    },
+    {
+      "id": "retrieval_practice",
+      "name": "Retrieval Practice",
+      "description": "Actively recalling information from memory — through quizzes, free recall, or practice tests — rather than passively re-reading source material.",
+      "mechanism": "The act of retrieving a memory strengthens that memory more than restudying does (the testing effect), because effortful retrieval modifies the memory trace itself and improves future accessibility.",
+      "source": "Roediger, H. L., & Karpicke, J. D. (2006). Test-enhanced learning: Taking memory tests improves long-term retention. Psychological Science, 17(3), 249–255.",
+      "applicable_when": ["high_motivation", "low_time", "general"],
+      "not_applicable_when": [],
+      "example": "After reading a textbook chapter, close the book and write down everything you can recall; then check your notes against the text to identify gaps.",
+      "xp_bonus": 5
+    },
+    {
+      "id": "elaborative_interrogation",
+      "name": "Elaborative Interrogation",
+      "description": "Generating explanations for facts by asking and answering 'why is this true?' and 'how does this connect to what I already know?'",
+      "mechanism": "Elaborative interrogation forces the learner to integrate new information with prior knowledge, creating a richer network of associations that provides multiple retrieval routes and deepens semantic understanding.",
+      "source": "Pressley, M., Symons, S., McDaniel, M. A., Snyder, B. L., & Turnure, J. E. (1988). Elaborative interrogation facilitates acquisition of confusing facts. Journal of Educational Psychology, 80(3), 268–278. (See also Pressley, M., et al. (1992). Encouraging mindful use of prior knowledge: Attempting to construct explanatory answers facilitates learning. Applied Cognitive Psychology, 6(1), 1–18.)",
+      "applicable_when": ["high_energy", "high_motivation", "high_self_efficacy"],
+      "not_applicable_when": ["low_energy", "low_time"],
+      "example": "While studying the circulatory system, pause at each fact and ask 'Why does blood need to be pumped under pressure?' and generate your own explanation before reading further.",
+      "xp_bonus": 3
+    },
+    {
+      "id": "implementation_intention",
+      "name": "Implementation Intention",
+      "description": "Forming a specific when–where–how plan for a desired behaviour using the format 'When situation X occurs, I will perform response Y'.",
+      "mechanism": "Pre-deciding the exact context bridges the intention–action gap by creating a mental link between a situational cue and the intended response, reducing deliberation at the moment of action.",
+      "source": "Gollwitzer, P. M. (1999). Implementation intentions: Strong effects of simple plans. American Psychologist, 54(7), 493–503.",
+      "applicable_when": ["low_consistency", "needs_cue", "low_motivation", "low_self_efficacy"],
+      "not_applicable_when": [],
+      "example": "When the train doors close on my morning commute, I will open my language-learning app and complete exactly one lesson before checking any messages.",
+      "xp_bonus": 5
+    },
+    {
+      "id": "deliberate_practice",
+      "name": "Deliberate Practice",
+      "description": "Engaging in highly structured, effortful practice that targets specific weaknesses just beyond current ability, with immediate feedback on errors.",
+      "mechanism": "Expert performance results from sustained, focused practice at the edge of competence — this challenge level maximises neural plasticity and skill encoding, which passive or comfortable practice does not produce.",
+      "source": "Ericsson, K. A., Krampe, R. T., & Tesch-Römer, C. (1993). The role of deliberate practice in the acquisition of expert performance. Psychological Review, 100(3), 363–406.",
+      "applicable_when": ["high_energy", "high_motivation", "high_self_efficacy"],
+      "not_applicable_when": ["low_energy", "low_self_efficacy"],
+      "example": "A guitarist who consistently struggles with chord transitions practises only those transitions slowly with a metronome for 20 focused minutes, not by playing easy full songs.",
+      "xp_bonus": 7
+    },
+    {
+      "id": "chunking",
+      "name": "Chunking",
+      "description": "Grouping individual pieces of information into larger meaningful units so that each chunk can be processed as a single cognitive entity.",
+      "mechanism": "Because working memory can hold only a limited number of items simultaneously, organising information into familiar higher-order chunks compresses the effective load and frees capacity for higher-level reasoning and pattern recognition.",
+      "source": "Miller, G. A. (1956). The magical number seven, plus or minus two: Some limits on our capacity for processing information. Psychological Review, 63(2), 81–97. (Application: Oakley, B. (2014). A Mind for Numbers: How to Excel at Math and Science. TarcherPerigee.)",
+      "applicable_when": ["low_self_efficacy", "low_energy", "general"],
+      "not_applicable_when": [],
+      "example": "When learning programming syntax, group related functions into conceptual clusters (e.g., 'string manipulation methods') and learn the cluster as a unit rather than individual commands in isolation.",
+      "xp_bonus": 3
+    }
+  ],
+  "difficulty_profiles": {
+    "rookie":   {"habit_count": 1, "min_daily_minutes": 5,  "max_daily_minutes": 15},
+    "explorer": {"habit_count": 2, "min_daily_minutes": 15, "max_daily_minutes": 30},
+    "master":   {"habit_count": 3, "min_daily_minutes": 30, "max_daily_minutes": 60}
+  },
+  "common_obstacles": ["low_motivation", "forgetting", "shallow_understanding", "no_feedback", "overwhelm", "low_time", "inconsistent_schedule"],
+  "cue_patterns": ["morning_session", "commute_time", "lunch_break", "evening_wind_down", "after_exercise", "pomodoro_blocks"],
+  "constraint_tags": ["time_sensitive", "resource_available", "feedback_dependent", "progressive_difficulty"]
+}

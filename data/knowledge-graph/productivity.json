@@ -1,0 +1,90 @@
+{
+  "category": "productivity",
+  "principles": [
+    {
+      "id": "time_blocking",
+      "name": "Time Blocking",
+      "description": "Assigning every task or category of work to a dedicated, fixed block of time on the calendar, leaving no unscheduled gaps.",
+      "mechanism": "Treating time as a scarce, pre-committed resource reduces decision fatigue, prevents task-switching, and protects high-value cognitive work from reactive interruptions.",
+      "source": "Newport, C. (2016). Deep Work: Rules for Focused Success in a Distracted World. Grand Central Publishing.",
+      "applicable_when": ["high_time", "low_focus", "general", "needs_cue"],
+      "not_applicable_when": ["low_time"],
+      "example": "Block 9:00–11:00 AM each weekday in your calendar as 'Deep Work — no meetings', and use that window exclusively for the most cognitively demanding task of the day.",
+      "xp_bonus": 5
+    },
+    {
+      "id": "implementation_intention",
+      "name": "Implementation Intention",
+      "description": "Forming a specific when–where–how plan for a desired behaviour using the format 'When situation X occurs, I will perform response Y'.",
+      "mechanism": "Pre-deciding the exact context bridges the intention–action gap by creating a mental link between a situational cue and the intended response, reducing deliberation at the moment of action.",
+      "source": "Gollwitzer, P. M. (1999). Implementation intentions: Strong effects of simple plans. American Psychologist, 54(7), 493–503.",
+      "applicable_when": ["low_consistency", "needs_cue", "low_motivation", "low_self_efficacy"],
+      "not_applicable_when": [],
+      "example": "When I sit down at my desk each morning and open my laptop, I will write the three most important tasks for the day before opening email or Slack.",
+      "xp_bonus": 5
+    },
+    {
+      "id": "if_then_planning",
+      "name": "If–Then Planning",
+      "description": "Creating specific contingency plans that link anticipated obstacles or triggers to pre-chosen productive responses.",
+      "mechanism": "Specifying an obstacle–response pair in advance reduces cognitive load when the obstacle occurs, because the required action has already been decided and encoded as a strong situational association.",
+      "source": "Gollwitzer, P. M., & Sheeran, P. (2006). Implementation intentions and goal achievement: A meta-analysis of effects and processes. Advances in Experimental Social Psychology, 38, 69–119.",
+      "applicable_when": ["high_resistance", "low_consistency", "low_motivation", "needs_cue"],
+      "not_applicable_when": [],
+      "example": "If I feel the urge to check social media during a focus block, then I will immediately write the next sentence of the document I am working on.",
+      "xp_bonus": 3
+    },
+    {
+      "id": "minimum_viable_progress",
+      "name": "Minimum Viable Progress",
+      "description": "Defining the smallest meaningful unit of forward movement on a task so that even a constrained day yields a sense of accomplishment.",
+      "mechanism": "Small wins activate positive affect and reinforce intrinsic motivation through the Progress Principle: perceptions of daily progress are the strongest predictor of inner work-life quality, sustaining engagement over time.",
+      "source": "Amabile, T., & Kramer, S. (2011). The Progress Principle: Using Small Wins to Ignite Joy, Engagement, and Creativity at Work. Harvard Business Review Press.",
+      "applicable_when": ["low_time", "low_motivation", "low_self_efficacy", "high_resistance"],
+      "not_applicable_when": ["high_energy"],
+      "example": "Commit to writing just one paragraph of a report when time is scarce — completing that unit creates momentum and satisfaction rather than zero progress.",
+      "xp_bonus": 3
+    },
+    {
+      "id": "cognitive_offloading",
+      "name": "Cognitive Offloading",
+      "description": "Externalising information — tasks, ideas, deadlines — into a trusted external system so that working memory is freed for active processing.",
+      "mechanism": "Working memory is severely capacity-limited; offloading cognitive content to an external medium reduces mental load, lowers anxiety caused by open loops, and enables deeper focus on the current task.",
+      "source": "Risko, E. F., & Gilbert, S. J. (2016). Cognitive offloading. Trends in Cognitive Sciences, 20(9), 676–688.",
+      "applicable_when": ["low_focus", "high_energy", "general", "high_motivation"],
+      "not_applicable_when": [],
+      "example": "Capture every incoming task, idea, and commitment into a single trusted inbox (e.g., a dedicated app) the moment it arises, then process that inbox once daily.",
+      "xp_bonus": 3
+    },
+    {
+      "id": "reward_substitution",
+      "name": "Reward Substitution",
+      "description": "Replacing reliance on external rewards (money, praise) with the cultivation of intrinsic satisfaction derived from competence, autonomy, and purpose.",
+      "mechanism": "Self-determination theory shows that autonomous motivation — driven by genuine interest and personal values — produces greater persistence, creativity, and wellbeing than controlled motivation driven by external contingencies.",
+      "source": "Deci, E. L., & Ryan, R. M. (1985). Intrinsic Motivation and Self-Determination in Human Behavior. Plenum Press.",
+      "applicable_when": ["low_motivation", "high_resistance", "high_self_efficacy"],
+      "not_applicable_when": ["low_self_efficacy"],
+      "example": "Reframe a tedious weekly reporting task as an opportunity to improve your data analysis skill rather than focusing on the obligation to a manager.",
+      "xp_bonus": 7
+    },
+    {
+      "id": "environment_design",
+      "name": "Environment Design",
+      "description": "Restructuring the physical or digital workspace to make productive behaviours the path of least resistance and unproductive behaviours harder to access.",
+      "mechanism": "Environmental cues automatically trigger associated behaviours; reducing friction for desired actions and increasing friction for competing actions shifts default behaviour without requiring willpower.",
+      "source": "Thaler, R. H., & Sunstein, C. R. (2008). Nudge: Improving Decisions about Health, Wealth, and Happiness. Yale University Press. (See also Fogg, B. J. (2020). Tiny Habits. Houghton Mifflin Harcourt.)",
+      "applicable_when": ["low_motivation", "low_resistance", "needs_cue", "general"],
+      "not_applicable_when": [],
+      "example": "Close all browser tabs except the document you are writing; place your phone in another room during focus blocks to remove the distraction cue entirely.",
+      "xp_bonus": 7
+    }
+  ],
+  "difficulty_profiles": {
+    "rookie":   {"habit_count": 1, "min_daily_minutes": 5,  "max_daily_minutes": 15},
+    "explorer": {"habit_count": 2, "min_daily_minutes": 15, "max_daily_minutes": 30},
+    "master":   {"habit_count": 3, "min_daily_minutes": 30, "max_daily_minutes": 60}
+  },
+  "common_obstacles": ["distraction", "procrastination", "meeting_overload", "low_focus", "unclear_priorities", "perfectionism", "decision_fatigue"],
+  "cue_patterns": ["morning_routine", "after_standup", "after_lunch", "time_based", "task_completion_trigger", "phone_away"],
+  "constraint_tags": ["focus_dependent", "schedule_flexible", "tool_optional", "remote_friendly"]
+}

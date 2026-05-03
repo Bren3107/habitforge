@@ -1,0 +1,90 @@
+{
+  "category": "fitness",
+  "principles": [
+    {
+      "id": "habit_stacking",
+      "name": "Habit Stacking",
+      "description": "Linking a new habit to an already-established habit so the existing behaviour serves as a reliable cue for the new one.",
+      "mechanism": "Existing habits are deeply encoded neural pathways; anchoring a new behaviour to one exploits that automaticity and reduces the need for conscious intention.",
+      "source": "Clear, J. (2018). Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones. Avery/Penguin Random House.",
+      "applicable_when": ["needs_cue", "low_motivation", "low_consistency", "general"],
+      "not_applicable_when": ["high_resistance"],
+      "example": "After I pour my morning coffee (existing habit), I will put on my running shoes and do a 10-minute walk around the block (new habit).",
+      "xp_bonus": 5
+    },
+    {
+      "id": "implementation_intention",
+      "name": "Implementation Intention",
+      "description": "Forming a specific when–where–how plan for a desired behaviour using the format 'When situation X occurs, I will perform response Y'.",
+      "mechanism": "Pre-deciding the exact context bridges the intention–action gap by creating a mental link between a situational cue and the intended response, reducing deliberation at the moment of action.",
+      "source": "Gollwitzer, P. M. (1999). Implementation intentions: Strong effects of simple plans. American Psychologist, 54(7), 493–503.",
+      "applicable_when": ["low_consistency", "needs_cue", "low_motivation", "low_self_efficacy"],
+      "not_applicable_when": [],
+      "example": "I will go for a 20-minute jog on Monday, Wednesday, and Friday at 7:00 AM from my front door, wearing my pre-laid-out gear.",
+      "xp_bonus": 5
+    },
+    {
+      "id": "temptation_bundling",
+      "name": "Temptation Bundling",
+      "description": "Pairing an activity you need to do (the habit) with an activity you genuinely enjoy (a temptation) so that the pleasurable activity is only available during the habit.",
+      "mechanism": "Linking an obligation to an immediate reward raises the hedonic value of the behaviour, counteracting present-bias and increasing the likelihood of initiation.",
+      "source": "Milkman, K. L., Minson, J. A., & Volpp, K. G. M. (2014). Holding the hunger games hostage at the gym: An evaluation of temptation bundling. Management Science, 60(2), 283–299.",
+      "applicable_when": ["low_motivation", "high_resistance", "needs_reward"],
+      "not_applicable_when": ["low_energy"],
+      "example": "Only listen to your favourite podcast or audiobook while on the treadmill or during a strength-training session.",
+      "xp_bonus": 3
+    },
+    {
+      "id": "two_minute_rule",
+      "name": "Two-Minute Rule",
+      "description": "Scaling a habit down to a version that takes two minutes or less so that starting feels almost effortless.",
+      "mechanism": "Lowering the initiation threshold overcomes the activation energy barrier; once begun, momentum frequently carries the behaviour beyond the two-minute version.",
+      "source": "Clear, J. (2018). Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones. Avery/Penguin Random House.",
+      "applicable_when": ["low_motivation", "high_resistance", "low_energy", "low_self_efficacy", "low_time"],
+      "not_applicable_when": ["high_consistency"],
+      "example": "Commit only to putting on workout clothes and doing one press-up; the reduced barrier typically leads to completing a full workout.",
+      "xp_bonus": 5
+    },
+    {
+      "id": "identity_based_habits",
+      "name": "Identity-Based Habits",
+      "description": "Framing a habit not as an action to perform but as an expression of who you are, casting every repetition as a vote for your desired identity.",
+      "mechanism": "Behaviour that aligns with self-concept is intrinsically motivating and self-sustaining because people are driven to act consistently with how they see themselves.",
+      "source": "Clear, J. (2018). Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones. Avery/Penguin Random House.",
+      "applicable_when": ["low_motivation", "low_self_efficacy", "high_resistance", "general"],
+      "not_applicable_when": [],
+      "example": "Instead of saying 'I am trying to run', say 'I am a runner' — then each completed run reinforces that identity and makes the next run more likely.",
+      "xp_bonus": 7
+    },
+    {
+      "id": "variable_reward",
+      "name": "Variable Reward",
+      "description": "Introducing an element of unpredictable positive reinforcement into a habit loop to sustain engagement over time.",
+      "mechanism": "Variable reinforcement schedules produce the highest and most persistent response rates because unpredictability triggers dopaminergic anticipation, making the behaviour intrinsically compelling.",
+      "source": "Fogg, B. J. (2020). Tiny Habits: The Small Changes That Change Everything. Houghton Mifflin Harcourt. (Based on Skinner, B. F. operant conditioning research, 1938–1969.)",
+      "applicable_when": ["low_motivation", "needs_reward", "high_consistency"],
+      "not_applicable_when": ["low_self_efficacy"],
+      "example": "Use a fitness app that randomly awards bonus XP or unlocks a new challenge badge upon workout completion to keep engagement high over weeks.",
+      "xp_bonus": 3
+    },
+    {
+      "id": "social_commitment",
+      "name": "Social Commitment",
+      "description": "Making a public or interpersonal commitment to a fitness goal so that social accountability becomes an additional motivator for follow-through.",
+      "mechanism": "Self-presentation concerns and social norms create external accountability; observers serve as social reinforcers and the prospect of public failure acts as a powerful aversive stimulus that motivates action.",
+      "source": "Bandura, A. (1977). Social Learning Theory. Prentice Hall.",
+      "applicable_when": ["low_motivation", "low_consistency", "social_support_available"],
+      "not_applicable_when": ["high_resistance"],
+      "example": "Arrange to meet a friend at the gym three mornings per week — the social obligation makes skipping sessions significantly harder.",
+      "xp_bonus": 3
+    }
+  ],
+  "difficulty_profiles": {
+    "rookie":   {"habit_count": 1, "min_daily_minutes": 5,  "max_daily_minutes": 15},
+    "explorer": {"habit_count": 2, "min_daily_minutes": 15, "max_daily_minutes": 30},
+    "master":   {"habit_count": 3, "min_daily_minutes": 30, "max_daily_minutes": 60}
+  },
+  "common_obstacles": ["low_energy", "lack_time", "no_equipment", "low_motivation", "inconsistency", "soreness", "weather"],
+  "cue_patterns": ["after_alarm", "after_meal", "after_commute", "after_work", "before_sleep", "weekend_morning"],
+  "constraint_tags": ["time_sensitive", "equipment_optional", "energy_dependent", "location_flexible"]
+}
