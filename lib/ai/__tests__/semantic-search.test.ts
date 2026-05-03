@@ -1,5 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { findSimilarCasesDirect } from "../semantic-search";
+import { createMockEmbedding, createMockSuccessCase } from "./test-utils";
 
 /**
  * Tests for the semantic search module
@@ -108,7 +109,7 @@ describe("Semantic Search Module", () => {
 
       const results = await findSimilarCasesDirect(
         mockClient,
-        [0.1, 0.2, 0.3],
+        createMockEmbedding(384),
         "fitness",
         3
       );
@@ -117,6 +118,10 @@ describe("Semantic Search Module", () => {
     });
 
     it("should sort by similarity distance", async () => {
+      const baseEmbedding = createMockEmbedding(384, 0);
+      const closeEmbedding = createMockEmbedding(384, 0.1);
+      const farEmbedding = createMockEmbedding(384, 2.0);
+
       const testCases = [
         {
           id: "case1",
@@ -124,7 +129,7 @@ describe("Semantic Search Module", () => {
           category: "fitness",
           principle_ids: ["p1"],
           description: "Test case 1",
-          embedding: [0.95, 0.05, 0.0], // Very close to query
+          embedding: closeEmbedding, // Very close to query
           success_rate: 0.8,
           created_at: "2025-01-01",
           updated_at: "2025-01-01",
@@ -135,7 +140,7 @@ describe("Semantic Search Module", () => {
           category: "fitness",
           principle_ids: ["p2"],
           description: "Test case 2",
-          embedding: [0.2, 0.2, 0.6], // Far from query
+          embedding: farEmbedding, // Far from query
           success_rate: 0.6,
           created_at: "2025-01-02",
           updated_at: "2025-01-02",
@@ -146,7 +151,7 @@ describe("Semantic Search Module", () => {
           category: "fitness",
           principle_ids: ["p3"],
           description: "Test case 3",
-          embedding: [0.9, 0.1, 0.0], // Close to query
+          embedding: closeEmbedding, // Close to query
           success_rate: 0.7,
           created_at: "2025-01-03",
           updated_at: "2025-01-03",
@@ -167,7 +172,7 @@ describe("Semantic Search Module", () => {
         }),
       } as unknown as SupabaseClient;
 
-      const queryEmbedding = [1.0, 0.0, 0.0]; // Query vector
+      const queryEmbedding = baseEmbedding;
       const results = await findSimilarCasesDirect(
         mockClient,
         queryEmbedding,
@@ -188,17 +193,14 @@ describe("Semantic Search Module", () => {
     });
 
     it("should respect limit parameter", async () => {
-      const testCases = Array.from({ length: 10 }, (_, i) => ({
-        id: `case${i}`,
-        user_id: `user${i}`,
-        category: "fitness",
-        principle_ids: [`p${i}`],
-        description: `Test case ${i}`,
-        embedding: Array(384).fill(0.5), // 384-dim embedding
-        success_rate: 0.7,
-        created_at: "2025-01-01",
-        updated_at: "2025-01-01",
-      }));
+      const testCases = Array.from({ length: 10 }, (_, i) =>
+        createMockSuccessCase({
+          id: `case${i}`,
+          user_id: `user${i}`,
+          principle_ids: [`p${i}`],
+          description: `Test case ${i}`,
+        })
+      );
 
       const mockClient = {
         from: () => ({
@@ -214,7 +216,7 @@ describe("Semantic Search Module", () => {
         }),
       } as unknown as SupabaseClient;
 
-      const queryEmbedding = Array(384).fill(0.5);
+      const queryEmbedding = createMockEmbedding(384);
       const results = await findSimilarCasesDirect(
         mockClient,
         queryEmbedding,
@@ -241,25 +243,24 @@ describe("Semantic Search Module", () => {
       } as unknown as SupabaseClient;
 
       await expect(
-        findSimilarCasesDirect(mockClient, [0.1, 0.2], "fitness", 3)
+        findSimilarCasesDirect(
+          mockClient,
+          createMockEmbedding(384),
+          "fitness",
+          3
+        )
       ).rejects.toThrow("Supabase query failed");
     });
   });
 
   describe("Success case structure", () => {
     it("should have correct SuccessCase interface fields", () => {
-      const mockCase = {
-        id: "case1",
-        user_id: "user1",
-        category: "fitness",
+      const mockCase = createMockSuccessCase({
         principle_ids: ["p1", "p2"],
         description: "Successfully built a running habit",
-        embedding: Array(384).fill(0.5),
         similarity_distance: 0.15,
         success_rate: 0.85,
-        created_at: "2025-01-01T00:00:00Z",
-        updated_at: "2025-01-01T00:00:00Z",
-      };
+      });
 
       // Verify all required fields exist
       expect(mockCase.id).toBeDefined();
@@ -268,6 +269,7 @@ describe("Semantic Search Module", () => {
       expect(mockCase.principle_ids).toBeDefined();
       expect(mockCase.description).toBeDefined();
       expect(mockCase.embedding).toBeDefined();
+      expect(mockCase.embedding.length).toBe(384);
       expect(mockCase.success_rate).toBeDefined();
       expect(mockCase.created_at).toBeDefined();
       expect(mockCase.updated_at).toBeDefined();
@@ -276,7 +278,7 @@ describe("Semantic Search Module", () => {
 
   describe("Embedding dimension handling", () => {
     it("should work with 384-dimensional embeddings", async () => {
-      const embedding384 = Array(384).fill(0.5);
+      const embedding384 = createMockEmbedding(384);
 
       const mockClient = {
         from: () => ({
@@ -300,6 +302,28 @@ describe("Semantic Search Module", () => {
       );
 
       expect(Array.isArray(results)).toBe(true);
+    });
+
+    it("should reject embeddings with incorrect dimensions", async () => {
+      const smallEmbedding = createMockEmbedding(3);
+
+      const mockClient = {
+        from: () => ({
+          select: () => ({
+            eq: () => ({
+              limit: () =>
+                Promise.resolve({
+                  data: [],
+                  error: null,
+                }),
+            }),
+          }),
+        }),
+      } as unknown as SupabaseClient;
+
+      await expect(
+        findSimilarCasesDirect(mockClient, smallEmbedding, "fitness", 3)
+      ).rejects.toThrow("Expected 384-dim embedding");
     });
   });
 });
