@@ -5,11 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { planAPI } from "@/lib/api";
 import type { HabitPlan } from "@/lib/ai/llm";
 
-interface ResultsPageProps {
-  params: Promise<{ planId: string }>;
-}
-
-export default function ResultsPage({ params }: ResultsPageProps) {
+export default function ResultsPage() {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session");
   const [plan, setPlan] = useState<HabitPlan | null>(null);
