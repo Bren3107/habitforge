@@ -169,7 +169,7 @@ Generate the next question (or signal completion).`;
   try {
     const anthropic = await getAnthropicClient();
     const response = await anthropic.messages.create({
-      model: "claude-3-5-haiku-20241022",
+      model: "claude-haiku-4-5-20251001",
       max_tokens: 200,
       system: systemPrompt,
       messages: [
@@ -312,7 +312,7 @@ Create a 4-week progression plan that uses the principles and is grounded in the
   try {
     const anthropic = await getAnthropicClient();
     const response = await anthropic.messages.create({
-      model: "claude-3-5-sonnet-20241022",
+      model: "claude-sonnet-4-6",
       max_tokens: 2000,
       system: systemPrompt,
       messages: [
