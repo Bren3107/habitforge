@@ -15,8 +15,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { generatePlan } from "@/lib/ai/llm";
 import { getPrinciplesByCategory } from "@/lib/ai/knowledge-graph";
-import { computeEmbedding } from "@/lib/ai/embeddings";
-import { getSession, updateSessionContext } from "../conversation/session";
+import { embed, initEmbeddings } from "@/lib/ai/embeddings";
+import { type SuccessCase } from "@/lib/ai/semantic-search";
+import { getSession, updateSessionContext } from "@/app/api/conversation/session";
 
 export async function POST(req: NextRequest) {
   try {
@@ -79,9 +80,10 @@ export async function POST(req: NextRequest) {
     }
 
     // Compute embedding and find similar cases
-    let similar_cases = [];
+    let similar_cases: SuccessCase[] = [];
     try {
-      const conversationEmbedding = await computeEmbedding(
+      await initEmbeddings();
+      const conversationEmbedding = await embed(
         user_context.lifestyle_summary.substring(0, 512)
       );
       console.log(
