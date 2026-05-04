@@ -257,7 +257,7 @@ export async function generatePlan(
     "user_context.conversation_history"
   );
   validateNonEmptyArray(applicable_principles, "applicable_principles");
-  validateNonEmptyArray(similar_cases, "similar_cases");
+  // similar_cases can be empty (semantic search deferred to Phase 3)
   validateNonEmptyString(category, "category");
 
   // Build conversation summary
@@ -271,13 +271,16 @@ export async function generatePlan(
     .map((p) => `- ${p.name} (${p.id}): ${p.description}. Example: ${p.example}`)
     .join("\n");
 
-  // Format similar cases
-  const casesText = similar_cases
-    .map(
-      (c) =>
-        `- ${c.category}: ${c.description}. Success principles: ${Array.isArray(c.principle_ids) ? c.principle_ids.join(", ") : "N/A"}`
-    )
-    .join("\n");
+  // Format similar cases (empty array is okay - semantic search in Phase 3)
+  const casesText =
+    similar_cases.length > 0
+      ? similar_cases
+          .map(
+            (c) =>
+              `- ${c.category}: ${c.description}. Success principles: ${Array.isArray(c.principle_ids) ? c.principle_ids.join(", ") : "N/A"}`
+          )
+          .join("\n")
+      : "";
 
   const systemPrompt = `You are an expert habit coach grounded in behavioral psychology.
 Generate a personalized habit plan as JSON matching this exact schema:
