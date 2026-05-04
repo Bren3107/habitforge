@@ -98,6 +98,14 @@ function validateNonEmptyString(value: unknown, fieldName: string): string {
 }
 
 /**
+ * Extract JSON from markdown code blocks if present
+ */
+function extractJSON(text: string): string {
+  const jsonMatch = text.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
+  return jsonMatch ? jsonMatch[1].trim() : text.trim();
+}
+
+/**
  * Validates that an array is non-empty
  */
 function validateNonEmptyArray(
@@ -187,7 +195,8 @@ Generate the next question (or signal completion).`;
     // Parse JSON response
     let result: QuestionResponse;
     try {
-      result = JSON.parse(responseText);
+      const cleanedText = extractJSON(responseText);
+      result = JSON.parse(cleanedText);
     } catch {
       throw new Error(
         `Failed to parse Claude response as JSON: ${responseText}`
@@ -330,7 +339,8 @@ Create a 4-week progression plan that uses the principles and is grounded in the
     // Parse JSON response
     let result: HabitPlan;
     try {
-      result = JSON.parse(responseText);
+      const cleanedText = extractJSON(responseText);
+      result = JSON.parse(cleanedText);
     } catch {
       throw new Error(
         `Failed to parse Claude response as JSON: ${responseText.substring(0, 200)}...`
