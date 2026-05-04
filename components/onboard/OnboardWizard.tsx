@@ -31,6 +31,7 @@ export function OnboardWizard({
     "fitness"
   );
   const [sessionId, setSessionId] = useState<string | null>(null);
+  const [initialQuestion, setInitialQuestion] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -59,6 +60,7 @@ export function OnboardWizard({
 
         const response = await conversationAPI.start(request);
         setSessionId(response.sessionId);
+        setInitialQuestion(response.question);
         setCurrentStep("chat");
       } catch (err) {
         const errorMsg =
@@ -177,6 +179,7 @@ export function OnboardWizard({
         {currentStep === "chat" && sessionId && (
           <ChatInterface
             sessionId={sessionId}
+            initialQuestion={initialQuestion}
             onComplete={handleChatComplete}
             onError={handleChatError}
           />

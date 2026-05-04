@@ -10,12 +10,14 @@ import { useConversation } from "@/hooks/useConversation";
 
 interface ChatInterfaceProps {
   sessionId: string | null;
+  initialQuestion: string | null;
   onComplete: () => void;
   onError: (error: string) => void;
 }
 
 export function ChatInterface({
   sessionId,
+  initialQuestion,
   onComplete,
   onError,
 }: ChatInterfaceProps) {
@@ -26,14 +28,16 @@ export function ChatInterface({
   >([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Initialize with session
+  // Initialize with session and initial question
   useEffect(() => {
-    if (sessionId && state.status === "idle") {
-      setChatHistory([]);
+    if (sessionId && initialQuestion) {
+      setChatHistory([
+        { role: "assistant", content: initialQuestion },
+      ]);
     }
-  }, [sessionId, state.status]);
+  }, [sessionId, initialQuestion]);
 
-  // Add initial question to chat
+  // Add new questions to chat as they arrive
   useEffect(() => {
     if (
       state.currentQuestion &&
