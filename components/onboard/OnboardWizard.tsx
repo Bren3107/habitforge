@@ -21,9 +21,9 @@ export function OnboardWizard({
   const [currentStep, setCurrentStep] = useState<Step>("goal");
   const [goal, setGoal] = useState("");
   const [motivation, setMotivation] = useState("");
-  const [constraints, setConstraints] = useState({
+  const [constraints, setConstraints] = useState<Record<string, unknown>>({
     daily_time_minutes: 30,
-    energy_level: "moderate" as const,
+    energy_level: "moderate",
     equipment_available: "",
     schedule_pattern: "",
   });

@@ -1,18 +1,12 @@
 "use client";
 
-interface Constraints {
-  daily_time_minutes?: number;
-  energy_level?: "low" | "moderate" | "high";
-  equipment_available?: string;
-  schedule_pattern?: string;
-}
-
 interface StepConstraintsProps {
-  value: Constraints;
-  onChange: (value: Constraints) => void;
+  value: Record<string, unknown>;
+  onChange: (value: Record<string, unknown>) => void;
 }
 
 export function StepConstraints({ value, onChange }: StepConstraintsProps) {
+  const v = value as any;
   return (
     <div className="space-y-6">
       {/* Daily Time */}
@@ -26,7 +20,7 @@ export function StepConstraints({ value, onChange }: StepConstraintsProps) {
             min="5"
             max="120"
             step="5"
-            value={value.daily_time_minutes || 30}
+            value={v.daily_time_minutes || 30}
             onChange={(e) =>
               onChange({
                 ...value,
@@ -36,7 +30,7 @@ export function StepConstraints({ value, onChange }: StepConstraintsProps) {
             className="flex-1 h-2 bg-[var(--bg-raised)] rounded-lg appearance-none cursor-pointer accent-[var(--accent-ember)]"
           />
           <span className="text-[var(--text-primary)] font-semibold w-12 text-right">
-            {value.daily_time_minutes || 30} min
+            {v.daily_time_minutes || 30} min
           </span>
         </div>
       </div>
@@ -52,7 +46,7 @@ export function StepConstraints({ value, onChange }: StepConstraintsProps) {
               key={level}
               onClick={() => onChange({ ...value, energy_level: level })}
               className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
-                value.energy_level === level
+                v.energy_level === level
                   ? "bg-[var(--accent-ember)] text-[var(--bg-base)]"
                   : "bg-[var(--bg-raised)] text-[var(--text-primary)] border border-[var(--border)] hover:border-[var(--accent-ember)]"
               }`}
@@ -70,7 +64,7 @@ export function StepConstraints({ value, onChange }: StepConstraintsProps) {
         </label>
         <input
           type="text"
-          value={value.equipment_available || ""}
+          value={v.equipment_available || ""}
           onChange={(e) =>
             onChange({ ...value, equipment_available: e.target.value })
           }
@@ -86,7 +80,7 @@ export function StepConstraints({ value, onChange }: StepConstraintsProps) {
         </label>
         <input
           type="text"
-          value={value.schedule_pattern || ""}
+          value={v.schedule_pattern || ""}
           onChange={(e) =>
             onChange({ ...value, schedule_pattern: e.target.value })
           }
