@@ -36,8 +36,8 @@ export function ProgressChart({ history }: ProgressChartProps) {
       <ResponsiveContainer width="100%" height={80}>
         <BarChart data={data} barSize={8} barCategoryGap="20%">
           <Tooltip
-            formatter={(value: number) => [`${value} XP`, "XP"]}
-            labelFormatter={(label: string) => label}
+            formatter={(value) => [`${value ?? 0} XP`, "XP"] as [string, string]}
+            labelFormatter={(label) => String(label ?? "")}
             contentStyle={{
               background: "var(--bg-raised)",
               border: "1px solid var(--border)",
