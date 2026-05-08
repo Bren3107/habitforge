@@ -37,6 +37,11 @@ export default function ResultsPage() {
             category: "fitness",
           });
           setPlan(response.plan);
+          // Persist session for dashboard (anonymous user identification)
+          localStorage.setItem(
+            "habitforge_session",
+            JSON.stringify({ planId: response.planId, userId: response.userId })
+          );
           // Replace URL so refreshing fetches the saved plan instead of regenerating
           router.replace(`/results?plan=${response.planId}`);
         }
