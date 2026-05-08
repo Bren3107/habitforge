@@ -78,27 +78,31 @@ export default function DashboardPage() {
 
   const handleCheckin = async (notes?: string) => {
     if (!session) return;
-    const res = await trackingAPI.checkin({
-      userId: session.userId,
-      planId: session.planId,
-      date: todayISO(),
-      completed: true,
-      notes,
-    });
-    setTodayCheckedIn(true);
-    setGamification((prev) =>
-      prev
-        ? {
-            ...prev,
-            total_xp: res.total_xp,
-            current_streak: res.current_streak,
-            longest_streak: res.longest_streak,
-            badges: [...prev.badges, ...res.new_badges],
-            level: res.level,
-            level_progress: getLevelProgress(res.total_xp),
-          }
-        : prev
-    );
+    try {
+      const res = await trackingAPI.checkin({
+        userId: session.userId,
+        planId: session.planId,
+        date: todayISO(),
+        completed: true,
+        notes,
+      });
+      setTodayCheckedIn(true);
+      setGamification((prev) =>
+        prev
+          ? {
+              ...prev,
+              total_xp: res.total_xp,
+              current_streak: res.current_streak,
+              longest_streak: res.longest_streak,
+              badges: [...prev.badges, ...res.new_badges],
+              level: res.level,
+              level_progress: getLevelProgress(res.total_xp),
+            }
+          : prev
+      );
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Check-in failed. Please try again.");
+    }
   };
 
   if (loading) {
