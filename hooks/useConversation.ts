@@ -12,6 +12,7 @@ export interface ConversationState {
   sessionId: string | null;
   currentQuestion: string | null;
   context_complete: boolean;
+  suggestions: string[];
   error: string | null;
 }
 
@@ -21,6 +22,7 @@ export function useConversation() {
     sessionId: null,
     currentQuestion: null,
     context_complete: false,
+    suggestions: [],
     error: null,
   });
 
@@ -69,6 +71,7 @@ export function useConversation() {
           status: response.context_complete ? "complete" : "answering",
           currentQuestion: response.question,
           context_complete: response.context_complete,
+          suggestions: response.suggestions ?? [],
         }));
 
         return response;
@@ -92,6 +95,7 @@ export function useConversation() {
       sessionId: null,
       currentQuestion: null,
       context_complete: false,
+      suggestions: [],
       error: null,
     });
   }, []);

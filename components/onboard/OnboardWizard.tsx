@@ -32,6 +32,7 @@ export function OnboardWizard({
   );
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [initialQuestion, setInitialQuestion] = useState<string | null>(null);
+  const [initialSuggestions, setInitialSuggestions] = useState<string[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -61,6 +62,7 @@ export function OnboardWizard({
         const response = await conversationAPI.start(request);
         setSessionId(response.sessionId);
         setInitialQuestion(response.question);
+        setInitialSuggestions(response.suggestions ?? []);
         setCurrentStep("chat");
       } catch (err) {
         const errorMsg =
@@ -180,6 +182,7 @@ export function OnboardWizard({
           <ChatInterface
             sessionId={sessionId}
             initialQuestion={initialQuestion}
+            initialSuggestions={initialSuggestions}
             onComplete={handleChatComplete}
             onError={handleChatError}
           />

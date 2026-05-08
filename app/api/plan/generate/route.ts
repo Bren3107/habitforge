@@ -21,8 +21,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { generatePlan } from "@/lib/ai/llm";
 import { getPrinciplesByCategory } from "@/lib/ai/knowledge-graph";
-import { embed, initEmbeddings } from "@/lib/ai/embeddings";
-import { findSimilarCases, type SuccessCase } from "@/lib/ai/semantic-search";
+import type { SuccessCase } from "@/lib/ai/semantic-search";
 import { getSession, deleteSession } from "@/app/api/conversation/session";
 import { supabaseServer } from "@/lib/supabase/server";
 
@@ -79,28 +78,8 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Step 2: Compute embedding of conversation summary
-    let similar_cases: SuccessCase[] = [];
-    try {
-      await initEmbeddings();
-      const conversationEmbedding = await embed(
-        user_context.lifestyle_summary.substring(0, 512)
-      );
-
-      // Step 3: Find similar success cases (requires Supabase)
-      // For now, return empty array (Supabase integration in Phase 3)
-      // findSimilarCases would require initialized Supabase client
-      console.log(
-        "[plan/generate] Embedding computed (Supabase search deferred to Phase 3)"
-      );
-      similar_cases = [];
-    } catch (error) {
-      console.warn(
-        "[plan/generate] Embedding computation failed, continuing without semantic search:",
-        error
-      );
-      similar_cases = [];
-    }
+    // Semantic search deferred to Phase 3 — skip embedding entirely
+    const similar_cases: SuccessCase[] = [];
 
     // Step 4: Generate plan with Claude Sonnet
     const habit_plan = await generatePlan(

@@ -23,6 +23,7 @@ export interface ConversationTurn {
 export interface QuestionResponse {
   question: string | null;
   context_complete: boolean;
+  suggestions: string[];
 }
 
 /**
@@ -156,17 +157,20 @@ export async function generateQuestion(
     .map((turn) => `${turn.role.toUpperCase()}: ${turn.content}`)
     .join("\n");
 
-  const systemPrompt = `You are a habit coach conducting a friendly intake interview.
-Ask ONE short follow-up question to better understand the user's context.
-Focus on what will help personalize their habit plan.
-Topics to explore (choose most relevant): schedule patterns, past failure reasons,
-energy levels, existing routines, intrinsic motivation depth.
-Stop asking when you have enough to generate a personalized plan (max 7 questions total).
+  const systemPrompt = `You are a friendly habit coach conducting a brief intake. Ask exactly 4 compound questions — each one naturally weaves two related topics into a single flowing sentence. Keep each question under 20 words. Sound warm and encouraging, not clinical. Never set context_complete to true — the system handles completion for you.
 
-Respond with ONLY valid JSON (no markdown, no extra text):
-{"question": "...", "context_complete": false}
-Or when done:
-{"question": null, "context_complete": true}`;
+Topic pairs to draw from (pick the most relevant to the user's goal):
+- Schedule + time availability (e.g. "When do you have the most energy during the day, and how much time could you realistically set aside?")
+- Existing routines + lifestyle context (e.g. "What does a typical weekday look like for you, and are there habits you already have we could build on?")
+- Past attempts + what got in the way (e.g. "Have you tried building this habit before, and if so what usually gets in the way?")
+- Commitment depth + accountability preference (e.g. "How important is this goal to you right now, and do you prefer tracking solo or with some accountability?")
+
+Also return 2-3 very short example answers as suggestions to help the user know what to write.
+
+Respond ONLY with valid JSON (no markdown):
+{"question": "...", "context_complete": false, "suggestions": ["...", "...", "..."]}`;
+
+  const questionsAsked = conversation_history.filter(m => m.role === "user").length;
 
   const userPrompt = `Current user context:
 Goal: ${goal}
@@ -174,16 +178,16 @@ Motivation: ${motivation}
 ${user_context.lifestyle_summary ? `Lifestyle: ${user_context.lifestyle_summary}` : ""}
 ${user_context.constraints ? `Constraints: ${JSON.stringify(user_context.constraints)}` : ""}
 
-Conversation so far (${conversation_history.length} turns):
+Conversation so far (question ${questionsAsked + 1} of 4):
 ${conversationText}
 
-Generate the next question (or signal completion).`;
+Generate question ${questionsAsked + 1}.`;
 
   try {
     const anthropic = await getAnthropicClient();
     const response = await anthropic.messages.create({
       model: "claude-haiku-4-5-20251001",
-      max_tokens: 200,
+      max_tokens: 350,
       system: systemPrompt,
       messages: [
         {
@@ -218,6 +222,10 @@ Generate the next question (or signal completion).`;
       throw new Error(
         `Invalid context_complete field: expected boolean, got ${typeof result.context_complete}`
       );
+    }
+    // Normalize suggestions — default to empty array if missing or malformed
+    if (!Array.isArray(result.suggestions)) {
+      result.suggestions = [];
     }
 
     return result;

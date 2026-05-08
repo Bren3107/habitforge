@@ -18,6 +18,8 @@ export interface StartConversationResponse {
   sessionId: string;
   question: string | null;
   context_complete: boolean;
+  suggestions: string[];
+  greeting: string;
 }
 
 export interface RespondToQuestionRequest {
@@ -28,6 +30,7 @@ export interface RespondToQuestionRequest {
 export interface RespondToQuestionResponse {
   question: string | null;
   context_complete: boolean;
+  suggestions: string[];
 }
 
 export interface GeneratePlanRequest {

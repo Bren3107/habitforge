@@ -54,6 +54,26 @@ export async function POST(req: NextRequest) {
       content: user_answer.trim(),
     });
 
+    // Hard counter: if user has answered 4 questions, skip Claude and complete
+    const userMessageCount = session.user_context.conversation_history.filter(
+      m => m.role === "user"
+    ).length;
+
+    if (userMessageCount >= 4) {
+      // Build lifestyle summary from conversation
+      const conversationText = session.user_context.conversation_history
+        .map((turn) => `${turn.role}: ${turn.content}`)
+        .join("\n");
+      session.user_context.lifestyle_summary = conversationText;
+      await updateSessionContext(sessionId, session.user_context);
+
+      return NextResponse.json({
+        question: null,
+        context_complete: true,
+        suggestions: [],
+      });
+    }
+
     // Generate next question
     const questionResponse = await generateQuestion(
       session.user_context.conversation_history,
@@ -67,13 +87,6 @@ export async function POST(req: NextRequest) {
         content: questionResponse.question,
       });
     } else if (questionResponse.context_complete) {
-      // Add completion message if context is complete
-      session.user_context.conversation_history.push({
-        role: "assistant",
-        content:
-          "Perfect! I have enough information to create your personalized habit plan. Let me generate it now.",
-      });
-
       // Build lifestyle summary from conversation
       const conversationText = session.user_context.conversation_history
         .map((turn) => `${turn.role}: ${turn.content}`)
@@ -87,6 +100,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       question: questionResponse.question,
       context_complete: questionResponse.context_complete,
+      suggestions: questionResponse.suggestions,
     });
   } catch (error) {
     console.error("[POST /api/conversation/respond] Error:", error);

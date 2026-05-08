@@ -94,6 +94,8 @@ export async function POST(req: NextRequest) {
       sessionId,
       question: questionResponse.question,
       context_complete: questionResponse.context_complete,
+      suggestions: questionResponse.suggestions,
+      greeting: "Let's build something that actually sticks.",
     });
   } catch (error) {
     console.error("[POST /api/conversation/start] Error:", error);
