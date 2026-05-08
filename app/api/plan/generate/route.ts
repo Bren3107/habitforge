@@ -123,10 +123,21 @@ export async function POST(req: NextRequest) {
       throw new Error(`Failed to save plan: ${planError.message}`);
     }
 
+    // Seed user_gamification with first_step badge
+    await supabaseServer.from("user_gamification").upsert({
+      user_id: userData.id,
+      total_xp: 0,
+      current_streak: 0,
+      longest_streak: 0,
+      badges: ["first_step"],
+      level: "rookie",
+    }, { onConflict: "user_id" });
+
     // Step 7: Return plan with persisted ID
     return NextResponse.json({
       plan: habit_plan,
       planId: planData.id,
+      userId: userData.id,
       category,
       principles_used: habit_plan.psychology_principles_used,
       message: "Plan generated and saved successfully",
