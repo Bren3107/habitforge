@@ -41,6 +41,7 @@ export interface GeneratePlanRequest {
 export interface GeneratePlanResponse {
   plan: HabitPlan;
   planId: string;
+  userId: string;
   category: string;
   principles_used: string[];
   message: string;
@@ -48,6 +49,7 @@ export interface GeneratePlanResponse {
 
 export interface GetPlanResponse {
   plan: HabitPlan;
+  planCreatedAt: string;
   category: string;
   principles_used: string[];
 }
@@ -68,6 +70,7 @@ export interface RefinePlanResponse {
 export interface CheckInRequest {
   userId: string;
   planId: string;
+  date: string;
   completed: boolean;
   notes?: string;
 }
@@ -75,8 +78,23 @@ export interface CheckInRequest {
 export interface CheckInResponse {
   xp_earned: number;
   total_xp: number;
-  streak: number;
-  badges_unlocked: string[];
+  current_streak: number;
+  longest_streak: number;
+  new_badges: string[];
+  level: string;
+}
+
+export interface LevelProgressData {
+  level: string;
+  nextLevel: string;
+  current: number;
+  threshold: number;
+}
+
+export interface HistoryEntry {
+  date: string;
+  completed: boolean;
+  xp_earned: number;
 }
 
 export interface GamificationResponse {
@@ -84,7 +102,9 @@ export interface GamificationResponse {
   current_streak: number;
   longest_streak: number;
   badges: string[];
-  level: "rookie" | "explorer" | "achiever" | "master" | "legend";
+  level: string;
+  level_progress: LevelProgressData;
+  history: HistoryEntry[];
 }
 
 // Utility function for API calls with error handling
