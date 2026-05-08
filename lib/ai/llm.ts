@@ -98,11 +98,16 @@ function validateNonEmptyString(value: unknown, fieldName: string): string {
 }
 
 /**
- * Extract JSON from markdown code blocks if present
+ * Extract JSON from markdown code blocks if present, with fallback to brace extraction
  */
 function extractJSON(text: string): string {
-  const jsonMatch = text.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
-  return jsonMatch ? jsonMatch[1].trim() : text.trim();
+  const fenceMatch = text.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
+  if (fenceMatch) return fenceMatch[1].trim();
+  // Fallback: find the outermost { ... } block
+  const start = text.indexOf("{");
+  const end = text.lastIndexOf("}");
+  if (start !== -1 && end !== -1 && end > start) return text.slice(start, end + 1).trim();
+  return text.trim();
 }
 
 /**
@@ -325,7 +330,7 @@ Create a 4-week progression plan that uses the principles and is grounded in the
     const anthropic = await getAnthropicClient();
     const response = await anthropic.messages.create({
       model: "claude-sonnet-4-6",
-      max_tokens: 2000,
+      max_tokens: 8000,
       system: systemPrompt,
       messages: [
         {

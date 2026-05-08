@@ -24,6 +24,7 @@ import { getPrinciplesByCategory } from "@/lib/ai/knowledge-graph";
 import { embed, initEmbeddings } from "@/lib/ai/embeddings";
 import { findSimilarCases, type SuccessCase } from "@/lib/ai/semantic-search";
 import { getSession, deleteSession } from "@/app/api/conversation/session";
+import { supabaseServer } from "@/lib/supabase/server";
 
 export async function POST(req: NextRequest) {
   try {
@@ -48,7 +49,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Get session
-    const session = getSession(sessionId);
+    const session = await getSession(sessionId);
     if (!session) {
       return NextResponse.json(
         { error: "Session not found or expired" },
@@ -110,15 +111,46 @@ export async function POST(req: NextRequest) {
     );
 
     // Step 5: Clean up session (plan is generated)
-    deleteSession(sessionId);
+    await deleteSession(sessionId);
 
-    // Step 6: Return plan (Supabase save deferred to Phase 3)
+    // Step 6: Create anonymous user and save plan to Supabase
+    const { data: userData, error: userError } = await supabaseServer
+      .from("users")
+      .insert({ session_token: sessionId })
+      .select("id")
+      .single();
+
+    if (userError) {
+      throw new Error(`Failed to create user: ${userError.message}`);
+    }
+
+    const { data: planData, error: planError } = await supabaseServer
+      .from("habit_plans")
+      .insert({
+        user_id: userData.id,
+        category,
+        habit_goal: user_context.goal,
+        motivation: user_context.motivation,
+        constraints: user_context.constraints || {},
+        lifestyle_context: user_context.lifestyle_summary,
+        conversation_history: user_context.conversation_history,
+        generated_plan: habit_plan,
+        psychology_principles: habit_plan.psychology_principles_used,
+      })
+      .select("id")
+      .single();
+
+    if (planError) {
+      throw new Error(`Failed to save plan: ${planError.message}`);
+    }
+
+    // Step 7: Return plan with persisted ID
     return NextResponse.json({
       plan: habit_plan,
+      planId: planData.id,
       category,
       principles_used: habit_plan.psychology_principles_used,
-      message:
-        "Plan generated successfully. Save to database and create user_id in Phase 3",
+      message: "Plan generated and saved successfully",
     });
   } catch (error) {
     console.error("[POST /api/plan/generate] Error:", error);

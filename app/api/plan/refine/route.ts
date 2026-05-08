@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Get session
-    const session = getSession(sessionId);
+    const session = await getSession(sessionId);
     if (!session) {
       return NextResponse.json(
         { error: "Session not found or expired" },
@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
         ...user_context.constraints,
         ...updated_constraints,
       };
-      updateSessionContext(sessionId, user_context);
+      await updateSessionContext(sessionId, user_context);
     }
 
     // Validate conversation is complete

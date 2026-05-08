@@ -37,9 +37,16 @@ export interface GeneratePlanRequest {
 
 export interface GeneratePlanResponse {
   plan: HabitPlan;
+  planId: string;
   category: string;
   principles_used: string[];
   message: string;
+}
+
+export interface GetPlanResponse {
+  plan: HabitPlan;
+  category: string;
+  principles_used: string[];
 }
 
 export interface RefinePlanRequest {
@@ -119,6 +126,9 @@ export const conversationAPI = {
 export const planAPI = {
   generate: (req: GeneratePlanRequest): Promise<GeneratePlanResponse> =>
     apiCall("/api/plan/generate", "POST", req),
+
+  get: (planId: string): Promise<GetPlanResponse> =>
+    apiCall(`/api/plan/${planId}`, "GET"),
 
   refine: (req: RefinePlanRequest): Promise<RefinePlanResponse> =>
     apiCall("/api/plan/refine", "POST", req),

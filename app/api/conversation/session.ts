@@ -1,12 +1,5 @@
-/**
- * In-memory session management for conversation state
- *
- * Stores active conversation sessions with user context and history.
- * Sessions are lost on serverless cold start (acceptable for MVP).
- * Post-MVP: migrate to Redis or Supabase.
- */
-
-import type { ConversationTurn, UserContext } from "@/lib/ai/llm";
+import type { UserContext } from "@/lib/ai/llm";
+import { supabaseServer } from "@/lib/supabase/server";
 
 export interface ConversationSession {
   sessionId: string;
@@ -15,61 +8,93 @@ export interface ConversationSession {
   last_accessed: number;
 }
 
-// In-memory session store (Map<sessionId, ConversationSession>)
-const sessions = new Map<string, ConversationSession>();
-
-// Cleanup old sessions after 1 hour of inactivity
 const SESSION_TIMEOUT_MS = 60 * 60 * 1000;
 
-function cleanupSessions(): void {
-  const now = Date.now();
-  for (const [sessionId, session] of sessions.entries()) {
-    if (now - session.last_accessed > SESSION_TIMEOUT_MS) {
-      sessions.delete(sessionId);
-    }
-  }
-}
-
-export function createSession(user_context: UserContext): string {
+export async function createSession(user_context: UserContext): Promise<string> {
   const sessionId = crypto.randomUUID();
-  sessions.set(sessionId, {
-    sessionId,
-    user_context,
-    created_at: Date.now(),
-    last_accessed: Date.now(),
-  });
+  const now = new Date();
 
-  // Periodically clean up stale sessions
-  if (sessions.size % 10 === 0) {
-    cleanupSessions();
+  const { error } = await supabaseServer
+    .from("conversation_sessions")
+    .insert({
+      id: sessionId,
+      user_context,
+      created_at: now,
+      last_accessed: now,
+    });
+
+  if (error) {
+    throw new Error(`Failed to create session: ${error.message}`);
   }
 
   return sessionId;
 }
 
-export function getSession(sessionId: string): ConversationSession | null {
-  const session = sessions.get(sessionId);
-  if (session) {
-    session.last_accessed = Date.now();
+export async function getSession(
+  sessionId: string
+): Promise<ConversationSession | null> {
+  const { data, error } = await supabaseServer
+    .from("conversation_sessions")
+    .select("*")
+    .eq("id", sessionId)
+    .single();
+
+  if (error) {
+    if (error.code === "PGRST116") {
+      return null;
+    }
+    throw new Error(`Failed to fetch session: ${error.message}`);
   }
-  return session || null;
+
+  if (!data) {
+    return null;
+  }
+
+  const now = Date.now();
+  const lastAccessed = new Date(data.last_accessed).getTime();
+
+  if (now - lastAccessed > SESSION_TIMEOUT_MS) {
+    await deleteSession(sessionId);
+    return null;
+  }
+
+  await supabaseServer
+    .from("conversation_sessions")
+    .update({ last_accessed: new Date() })
+    .eq("id", sessionId);
+
+  return {
+    sessionId: data.id,
+    user_context: data.user_context,
+    created_at: new Date(data.created_at).getTime(),
+    last_accessed: now,
+  };
 }
 
-export function updateSessionContext(
+export async function updateSessionContext(
   sessionId: string,
   user_context: UserContext
-): void {
-  const session = sessions.get(sessionId);
-  if (session) {
-    session.user_context = user_context;
-    session.last_accessed = Date.now();
+): Promise<void> {
+  const { error } = await supabaseServer
+    .from("conversation_sessions")
+    .update({
+      user_context,
+      last_accessed: new Date(),
+    })
+    .eq("id", sessionId);
+
+  if (error) {
+    throw new Error(`Failed to update session: ${error.message}`);
   }
 }
 
-export function deleteSession(sessionId: string): void {
-  sessions.delete(sessionId);
-}
+export async function deleteSession(sessionId: string): Promise<void> {
+  const { error } = await supabaseServer
+    .from("conversation_sessions")
+    .delete()
+    .eq("id", sessionId);
 
-export function getSessionCount(): number {
-  return sessions.size;
+  if (error) {
+    throw new Error(`Failed to delete session: ${error.message}`);
+  }
 }

@@ -1,20 +1,22 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { planAPI } from "@/lib/api";
 import type { HabitPlan } from "@/lib/ai/llm";
 
 export default function ResultsPage() {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const sessionId = searchParams.get("session");
+  const planId = searchParams.get("plan");
   const [plan, setPlan] = useState<HabitPlan | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function generatePlan() {
-      if (!sessionId) {
+    async function loadPlan() {
+      if (!sessionId && !planId) {
         setError("No session found");
         setLoading(false);
         return;
@@ -24,12 +26,20 @@ export default function ResultsPage() {
         setLoading(true);
         setError(null);
 
-        const response = await planAPI.generate({
-          sessionId,
-          category: "fitness",
-        });
-
-        setPlan(response.plan);
+        if (planId) {
+          // Plan already generated and saved — just fetch it
+          const response = await planAPI.get(planId);
+          setPlan(response.plan);
+        } else {
+          // First load: generate the plan, save it, then update the URL
+          const response = await planAPI.generate({
+            sessionId: sessionId!,
+            category: "fitness",
+          });
+          setPlan(response.plan);
+          // Replace URL so refreshing fetches the saved plan instead of regenerating
+          router.replace(`/results?plan=${response.planId}`);
+        }
       } catch (err) {
         const errorMsg =
           err instanceof Error ? err.message : "Failed to generate plan";
@@ -39,8 +49,8 @@ export default function ResultsPage() {
       }
     }
 
-    generatePlan();
-  }, [sessionId]);
+    loadPlan();
+  }, [sessionId, planId, router]);
 
   if (loading) {
     return (

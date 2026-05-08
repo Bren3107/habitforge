@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Get session
-    const session = getSession(sessionId);
+    const session = await getSession(sessionId);
     if (!session) {
       return NextResponse.json(
         { error: "Session not found or expired" },
@@ -82,7 +82,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Update session
-    updateSessionContext(sessionId, session.user_context);
+    await updateSessionContext(sessionId, session.user_context);
 
     return NextResponse.json({
       question: questionResponse.question,
