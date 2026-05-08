@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "precompute-embeddings": "npx tsx scripts/precompute-embeddings.ts"
+    "precompute-embeddings": "npx tsx scripts/precompute-embeddings.ts",
+    "test": "jest"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.92.0",
