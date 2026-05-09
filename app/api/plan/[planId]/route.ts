@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseServer } from "@/lib/supabase/server";
+import { confidenceLevel } from "@/lib/ai/confidence";
 
 export async function GET(
   _req: NextRequest,
@@ -14,7 +15,7 @@ export async function GET(
 
     const { data, error } = await supabaseServer
       .from("habit_plans")
-      .select("generated_plan, category, psychology_principles, created_at")
+      .select("generated_plan, category, psychology_principles, confidence_score, created_at")
       .eq("id", planId)
       .single();
 
@@ -27,6 +28,8 @@ export async function GET(
       planCreatedAt: data.created_at,
       category: data.category,
       principles_used: data.psychology_principles ?? [],
+      confidenceScore: data.confidence_score ?? 0.65,
+      confidenceLevel: data.confidence_score ? confidenceLevel(data.confidence_score) : "High",
     });
   } catch (error) {
     console.error("[GET /api/plan/[planId]] Error:", error);
