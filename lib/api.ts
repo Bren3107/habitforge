@@ -45,6 +45,8 @@ export interface GeneratePlanResponse {
   category: string;
   principles_used: string[];
   message: string;
+  confidenceScore: number;
+  confidenceLevel: string;
 }
 
 export interface GetPlanResponse {
@@ -52,6 +54,8 @@ export interface GetPlanResponse {
   planCreatedAt: string;
   category: string;
   principles_used: string[];
+  confidenceScore: number;
+  confidenceLevel: string;
 }
 
 export interface RefinePlanRequest {

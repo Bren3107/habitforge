@@ -24,6 +24,13 @@ import { getPrinciplesByCategory } from "@/lib/ai/knowledge-graph";
 import type { SuccessCase } from "@/lib/ai/semantic-search";
 import { getSession, deleteSession } from "@/app/api/conversation/session";
 import { supabaseServer } from "@/lib/supabase/server";
+import {
+  calculateConfidence,
+  distanceToSuccessScore,
+  estimateMotivationSentiment,
+  calculateConstraintFit,
+  confidenceLevel,
+} from "@/lib/ai/confidence";
 
 export async function POST(req: NextRequest) {
   try {
@@ -89,6 +96,27 @@ export async function POST(req: NextRequest) {
       category
     );
 
+    // Calculate confidence score from available signals
+    const topCaseScore = similar_cases.length > 0 && similar_cases[0].similarity_distance !== undefined
+      ? distanceToSuccessScore(similar_cases[0].similarity_distance)
+      : 0.5;
+
+    const lifestyleText = (user_context.lifestyle_summary + " " + JSON.stringify(user_context.constraints)).toLowerCase();
+    const constraintTags: string[] = [];
+    if (/15\s*min|no.time|very.busy|tight.schedule/.test(lifestyleText)) constraintTags.push("low_time");
+    if (/30\s*min|limited.time|busy/.test(lifestyleText)) constraintTags.push("low_time");
+    if (/tired|exhaust|low.energy|fatigue/.test(lifestyleText)) constraintTags.push("low_energy");
+    if (/unmotivat|struggling|can.t|hard.time/.test(lifestyleText)) constraintTags.push("low_motivation");
+    if (constraintTags.length === 0) constraintTags.push("general");
+
+    const principleApplicableWhen = applicable_principles.flatMap(
+      (p: { applicable_when: string[] }) => p.applicable_when
+    );
+    const constraintFit = calculateConstraintFit(constraintTags, principleApplicableWhen);
+    const motivationSentiment = estimateMotivationSentiment(user_context.lifestyle_summary);
+    const confidenceScore = calculateConfidence(constraintFit, topCaseScore, motivationSentiment);
+    const confidenceLevelLabel = confidenceLevel(confidenceScore);
+
     // Step 5: Clean up session (plan is generated)
     await deleteSession(sessionId);
 
@@ -115,6 +143,7 @@ export async function POST(req: NextRequest) {
         conversation_history: user_context.conversation_history,
         generated_plan: habit_plan,
         psychology_principles: habit_plan.psychology_principles_used,
+        confidence_score: confidenceScore,
       })
       .select("id")
       .single();
@@ -141,6 +170,8 @@ export async function POST(req: NextRequest) {
       category,
       principles_used: habit_plan.psychology_principles_used,
       message: "Plan generated and saved successfully",
+      confidenceScore,
+      confidenceLevel: confidenceLevelLabel,
     });
   } catch (error) {
     console.error("[POST /api/plan/generate] Error:", error);
