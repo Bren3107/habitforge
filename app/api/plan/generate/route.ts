@@ -19,6 +19,8 @@
  */
 
 import { NextRequest, NextResponse } from "next/server";
+import { createServerClient } from "@supabase/ssr";
+import { cookies } from "next/headers";
 import { generatePlan } from "@/lib/ai/llm";
 import { getPrinciplesByCategory } from "@/lib/ai/knowledge-graph";
 import type { SuccessCase } from "@/lib/ai/semantic-search";
@@ -34,6 +36,18 @@ import {
 
 export async function POST(req: NextRequest) {
   try {
+    // Verify authenticated user
+    const cookieStore = await cookies();
+    const supabaseAuth = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      { cookies: { getAll: () => cookieStore.getAll() } }
+    );
+    const { data: { user } } = await supabaseAuth.auth.getUser();
+    if (!user) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const body = await req.json();
     const { sessionId, category = "fitness" } = body;
 
@@ -120,21 +134,32 @@ export async function POST(req: NextRequest) {
     // Step 5: Clean up session (plan is generated)
     await deleteSession(sessionId);
 
-    // Step 6: Create anonymous user and save plan to Supabase
-    const { data: userData, error: userError } = await supabaseServer
+    // Step 6: Upsert authenticated user and save plan to Supabase
+    const { error: userError } = await supabaseServer
       .from("users")
-      .insert({ session_token: sessionId })
-      .select("id")
-      .single();
+      .upsert(
+        {
+          id: user.id,
+          email: user.email ?? null,
+          display_name:
+            user.user_metadata?.display_name ??
+            user.user_metadata?.full_name ??
+            null,
+          session_token: null,
+        },
+        { onConflict: "id" }
+      );
 
     if (userError) {
-      throw new Error(`Failed to create user: ${userError.message}`);
+      throw new Error(`Failed to upsert user: ${userError.message}`);
     }
+
+    const userId = user.id;
 
     const { data: planData, error: planError } = await supabaseServer
       .from("habit_plans")
       .insert({
-        user_id: userData.id,
+        user_id: userId,
         category,
         habit_goal: user_context.goal,
         motivation: user_context.motivation,
@@ -154,7 +179,7 @@ export async function POST(req: NextRequest) {
 
     // Seed user_gamification with first_step badge
     await supabaseServer.from("user_gamification").upsert({
-      user_id: userData.id,
+      user_id: userId,
       total_xp: 0,
       current_streak: 0,
       longest_streak: 0,
@@ -166,7 +191,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       plan: habit_plan,
       planId: planData.id,
-      userId: userData.id,
+      userId: userId,
       category,
       principles_used: habit_plan.psychology_principles_used,
       message: "Plan generated and saved successfully",

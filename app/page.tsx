@@ -47,17 +47,17 @@ export default function Home() {
         {/* CTA */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
           <Link
-            href="/onboard"
+            href="/auth?tab=signup"
             className="px-8 py-3 bg-[var(--accent-ember)] text-[var(--bg-base)] rounded-lg font-bold hover:bg-[var(--accent-fire)] transition-colors text-lg"
           >
-            Start Forging →
+            Get Started →
           </Link>
-          <button
+          <Link
+            href="/auth?tab=login"
             className="px-8 py-3 bg-[var(--bg-raised)] text-[var(--text-primary)] rounded-lg font-bold border border-[var(--border)] hover:border-[var(--accent-ember)] transition-colors text-lg"
-            disabled
           >
-            Learn More (Coming)
-          </button>
+            Sign In
+          </Link>
         </div>
 
         {/* Social Proof */}
