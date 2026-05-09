@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { planAPI } from "@/lib/api";
 import type { HabitPlan } from "@/lib/ai/llm";
+import { ConfidenceMeter } from "@/components/results/ConfidenceMeter";
+import { PrincipleBadges } from "@/components/results/PrincipleBadges";
 
 export default function ResultsPage() {
   const searchParams = useSearchParams();
@@ -11,6 +13,10 @@ export default function ResultsPage() {
   const sessionId = searchParams.get("session");
   const planId = searchParams.get("plan");
   const [plan, setPlan] = useState<HabitPlan | null>(null);
+  const [planMeta, setPlanMeta] = useState<{
+    confidenceScore: number;
+    confidenceLevel: string;
+  } | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -30,6 +36,7 @@ export default function ResultsPage() {
           // Plan already generated and saved — just fetch it
           const response = await planAPI.get(planId);
           setPlan(response.plan);
+          setPlanMeta({ confidenceScore: response.confidenceScore, confidenceLevel: response.confidenceLevel });
         } else {
           // First load: generate the plan, save it, then update the URL
           const response = await planAPI.generate({
@@ -37,6 +44,7 @@ export default function ResultsPage() {
             category: "fitness",
           });
           setPlan(response.plan);
+          setPlanMeta({ confidenceScore: response.confidenceScore, confidenceLevel: response.confidenceLevel });
           // Persist session for dashboard (anonymous user identification)
           localStorage.setItem(
             "habitforge_session",
@@ -148,21 +156,18 @@ export default function ResultsPage() {
             </div>
           </div>
 
-          {/* Psychology Principles */}
-          {plan.psychology_principles_used.length > 0 && (
-            <div>
-              <h2 className="text-lg font-bold text-[var(--text-primary)] mb-4">
-                Behavioral Psychology Principles
-              </h2>
-              <div className="flex flex-wrap gap-2">
-                {plan.psychology_principles_used.map((principle) => (
-                  <span
-                    key={principle}
-                    className="px-3 py-1 bg-[var(--accent-ember)] bg-opacity-20 border border-[var(--accent-ember)] text-[var(--text-primary)] text-sm rounded-full"
-                  >
-                    {principle}
-                  </span>
-                ))}
+          {/* Confidence + Principles */}
+          {planMeta && (
+            <div
+              className="p-6 rounded-lg border flex flex-col sm:flex-row gap-6 items-start sm:items-center"
+              style={{ backgroundColor: "var(--bg-surface)", borderColor: "var(--border)" }}
+            >
+              <ConfidenceMeter score={planMeta.confidenceScore} label={planMeta.confidenceLevel} />
+              <div className="flex flex-col gap-3 flex-1">
+                <h2 className="text-lg font-bold text-[var(--text-primary)]">
+                  Behavioral Psychology Principles
+                </h2>
+                <PrincipleBadges principles={plan.psychology_principles_used} />
               </div>
             </div>
           )}
