@@ -12,6 +12,9 @@ import { StreakCounter } from "@/components/dashboard/StreakCounter";
 import { XPBar } from "@/components/dashboard/XPBar";
 import { BadgeGrid } from "@/components/dashboard/BadgeGrid";
 import { ProgressChart } from "@/components/dashboard/ProgressChart";
+import { PatternInsights } from "@/components/dashboard/PatternInsights";
+import { CoachingCard } from "@/components/dashboard/CoachingCard";
+import { AdaptationPrompt } from "@/components/dashboard/AdaptationPrompt";
 
 interface Session {
   planId: string;
@@ -177,6 +180,23 @@ export default function DashboardPage() {
 
         {/* Progress chart */}
         <ProgressChart history={gamification.history} />
+
+        {/* Pattern insights */}
+        <PatternInsights history={gamification.history} />
+
+        {/* Weekly AI coaching message */}
+        <CoachingCard
+          userId={session!.userId}
+          planId={session!.planId}
+          totalCheckins={gamification.history.filter((h) => h.completed).length}
+        />
+
+        {/* Adaptive plan prompt */}
+        <AdaptationPrompt
+          userId={session!.userId}
+          planId={session!.planId}
+          history={gamification.history}
+        />
 
         {/* CTA */}
         <div className="text-center pt-4">

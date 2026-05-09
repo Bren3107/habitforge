@@ -172,3 +172,35 @@ export const gamificationAPI = {
   getStats: (userId: string): Promise<GamificationResponse> =>
     apiCall(`/api/gamification/${userId}`, "GET"),
 };
+
+// Coaching API
+export interface WeeklyCoachingResponse {
+  message: string | null;
+  weekNumber: number;
+  cached?: boolean;
+  reason?: string;
+}
+
+export const coachingAPI = {
+  getWeeklyMessage: (userId: string, planId: string): Promise<WeeklyCoachingResponse> =>
+    apiCall(`/api/coaching/weekly?userId=${encodeURIComponent(userId)}&planId=${encodeURIComponent(planId)}`, "GET"),
+};
+
+// Plan adaptation
+export interface AdaptPlanRequest {
+  userId: string;
+  planId: string;
+  direction: "simplify" | "level_up";
+}
+
+export interface AdaptPlanResponse {
+  plan: import("@/lib/ai/llm").HabitPlan;
+  planId: string;
+  direction: string;
+  message: string;
+}
+
+export const adaptAPI = {
+  adapt: (req: AdaptPlanRequest): Promise<AdaptPlanResponse> =>
+    apiCall("/api/plan/adapt", "POST", req),
+};
