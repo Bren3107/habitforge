@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { planAPI, trackingAPI, gamificationAPI } from "@/lib/api";
 import type { GamificationResponse, GetPlanResponse } from "@/lib/api";
 import type { HabitPlan } from "@/lib/ai/llm";
@@ -179,12 +180,12 @@ export default function DashboardPage() {
 
         {/* CTA */}
         <div className="text-center pt-4">
-          <a
+          <Link
             href={`/results?plan=${session?.planId}`}
             className="text-[var(--text-secondary)] text-sm hover:text-[var(--accent-ember)] transition-colors"
           >
             View your full plan →
-          </a>
+          </Link>
         </div>
       </div>
     </div>
