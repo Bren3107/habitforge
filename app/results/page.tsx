@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
+import Link from "next/link";
 import { planAPI } from "@/lib/api";
 import type { HabitPlan } from "@/lib/ai/llm";
 import { ConfidenceMeter } from "@/components/results/ConfidenceMeter";
@@ -23,6 +24,17 @@ export default function ResultsPage() {
   useEffect(() => {
     async function loadPlan() {
       if (!sessionId && !planId) {
+        // Try to recover from localStorage before showing error
+        try {
+          const raw = localStorage.getItem("habitforge_session");
+          if (raw) {
+            const { planId: savedId } = JSON.parse(raw) as { planId: string; userId: string };
+            if (savedId) {
+              router.replace(`/results?plan=${savedId}`);
+              return;
+            }
+          }
+        } catch { /* ignore malformed data */ }
         setError("No session found");
         setLoading(false);
         return;
@@ -227,12 +239,12 @@ export default function ResultsPage() {
             <p className="text-[var(--text-secondary)] mb-4">
               Ready to start your journey?
             </p>
-            <a
+            <Link
               href="/dashboard"
               className="inline-block px-8 py-3 bg-[var(--accent-ember)] text-[var(--bg-base)] rounded-lg font-bold hover:bg-[var(--accent-fire)] transition-colors"
             >
               Go to Dashboard →
-            </a>
+            </Link>
           </div>
         </div>
       </div>
