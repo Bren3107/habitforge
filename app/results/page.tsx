@@ -38,6 +38,21 @@ export default function ResultsPage() {
           setPlan(response.plan);
           setPlanMeta({ confidenceScore: response.confidenceScore, confidenceLevel: response.confidenceLevel });
         } else {
+          // Guard: if localStorage already has a plan (user navigated back via browser),
+          // skip re-generation and redirect to the existing plan instead.
+          const existing = localStorage.getItem("habitforge_session");
+          if (existing) {
+            try {
+              const { planId: savedPlanId } = JSON.parse(existing) as { planId: string; userId: string };
+              if (savedPlanId) {
+                router.replace(`/results?plan=${savedPlanId}`);
+                return;
+              }
+            } catch {
+              // malformed — fall through to generate
+            }
+          }
+
           // First load: generate the plan, save it, then update the URL
           const response = await planAPI.generate({
             sessionId: sessionId!,
