@@ -63,7 +63,7 @@ export async function POST(req: NextRequest) {
     const newTotalXP = gamification.total_xp + xpEarned;
     const newLongest = Math.max(gamification.longest_streak, newStreak);
 
-    // Get total check-in count (for day_1 badge)
+    // Get total check-in count
     const { count: totalCheckins } = await supabaseServer
       .from("habit_tracking")
       .select("id", { count: "exact", head: true })

@@ -57,14 +57,14 @@ export function NavBar() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--bg-surface)]/90 backdrop-blur-sm">
+    <nav className="sticky top-0 z-50 border-b border-[var(--border)] bg-white/80 backdrop-blur-lg">
       <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
         <Link
           href="/"
-          className="text-xl font-bold text-[var(--text-primary)]"
-          style={{ fontFamily: "Fraunces" }}
+          className="text-xl font-semibold tracking-tight text-[var(--text-primary)] cursor-pointer"
+          style={{ fontFamily: "var(--font-instrument-serif)" }}
         >
-          Habit<span className="text-[var(--accent-ember)]">Forge</span>
+          Habit<span className="text-[var(--text-secondary)]">Forge</span>
         </Link>
 
         <div className="flex items-center gap-5 text-sm">
@@ -73,14 +73,14 @@ export function NavBar() {
               {localSession?.planId && (
                 <Link
                   href={`/results?plan=${localSession.planId}`}
-                  className="text-[var(--text-secondary)] hover:text-[var(--accent-ember)] transition-colors"
+                  className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors duration-200 cursor-pointer"
                 >
                   My Plan
                 </Link>
               )}
               <Link
                 href="/dashboard"
-                className="text-[var(--text-secondary)] hover:text-[var(--accent-ember)] transition-colors"
+                className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors duration-200 cursor-pointer"
               >
                 Dashboard
               </Link>
@@ -89,7 +89,7 @@ export function NavBar() {
               </span>
               <button
                 onClick={handleSignOut}
-                className="px-3 py-1.5 text-xs border border-[var(--border)] rounded-md text-[var(--text-secondary)] hover:border-[var(--accent-ember)] hover:text-[var(--text-primary)] transition-colors"
+                className="px-3 py-1.5 text-xs border border-[var(--border)] rounded-md text-[var(--text-secondary)] hover:border-[var(--text-primary)] hover:text-[var(--text-primary)] transition-all duration-200 cursor-pointer"
               >
                 Sign Out
               </button>
@@ -98,18 +98,18 @@ export function NavBar() {
             <>
               <Link
                 href="/auth?tab=login"
-                className="text-[var(--text-secondary)] hover:text-[var(--accent-ember)] transition-colors"
+                className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors duration-200 cursor-pointer"
               >
                 Sign In
               </Link>
               <Link
                 href="/auth?tab=signup"
-                className="px-3 py-1.5 bg-[var(--accent-ember)] text-[var(--bg-base)] rounded-md font-bold hover:bg-[var(--accent-fire)] transition-colors text-xs"
+                className="px-4 py-1.5 bg-[var(--text-primary)] text-white rounded-full font-medium hover:opacity-80 transition-opacity duration-200 text-xs cursor-pointer"
               >
-                Sign Up
+                Get Started
               </Link>
             </>
-          )}
+          ) }
         </div>
       </div>
     </nav>

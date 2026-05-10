@@ -139,7 +139,7 @@ export default function ResultsPage() {
         <div className="mb-12">
           <h1
             className="text-5xl font-bold text-[var(--text-primary)] mb-2"
-            style={{ fontFamily: "Fraunces" }}
+            style={{ fontFamily: "var(--font-instrument-serif)" }}
           >
             {plan.plan_title}
           </h1>

@@ -30,7 +30,7 @@ export function PatternInsights({ history }: PatternInsightsProps) {
       </h3>
       <div className="grid grid-cols-3 gap-3">
         <div className="text-center">
-          <div className="text-2xl font-bold text-[var(--accent-ember)]" style={{ fontFamily: "Fraunces" }}>
+          <div className="text-2xl font-bold text-[var(--accent-ember)]" style={{ fontFamily: "var(--font-instrument-serif)" }}>
             {Math.round(analysis.overallCompletionRate * 100)}%
           </div>
           <div className="text-xs text-[var(--text-secondary)] mt-1">Overall rate</div>

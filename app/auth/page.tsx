@@ -31,7 +31,7 @@ function AuthForm() {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: { data: { display_name: name } },
@@ -41,7 +41,13 @@ function AuthForm() {
       setLoading(false);
       return;
     }
-    router.push("/onboard");
+    if (!data.session) {
+      // Email confirmation required — user needs to verify before continuing
+      setError("Check your email and click the confirmation link, then sign in.");
+      setLoading(false);
+      return;
+    }
+    router.push("/auth/complete");
   };
 
   const handleSignIn = async (e: React.FormEvent) => {
@@ -74,23 +80,16 @@ function AuthForm() {
 
   return (
     <div className="min-h-screen bg-[var(--bg-base)] flex flex-col items-center justify-center px-4 relative overflow-hidden">
-      {/* Ember glow */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle at 50% 30%, rgba(245,158,11,0.07) 0%, transparent 65%)",
-        }}
-      />
+
 
       <div className="relative z-10 w-full max-w-md">
         {/* Logo */}
         <Link
           href="/"
           className="block text-center mb-8 text-3xl font-bold text-[var(--text-primary)]"
-          style={{ fontFamily: "Fraunces" }}
+          style={{ fontFamily: "var(--font-instrument-serif)" }}
         >
-          Habit<span className="text-[var(--accent-ember)]">Forge</span>
+          Habit<span className="text-[var(--text-secondary)]">Forge</span>
         </Link>
 
         <div className="bg-[var(--bg-surface)] border border-[var(--border)] rounded-2xl overflow-hidden">

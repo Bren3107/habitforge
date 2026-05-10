@@ -1,6 +1,7 @@
 const ALL_BADGES = [
   { id: "first_step", name: "First Step", icon: "⭐", description: "Plan generated" },
-  { id: "day_1", name: "Day 1", icon: "🏁", description: "First check-in" },
+  { id: "three_day_fire", name: "3-Day Fire", icon: "🔥", description: "3-day streak" },
+  { id: "high_five", name: "High Five", icon: "🖐️", description: "5-day streak" },
   { id: "week_warrior", name: "Week Warrior", icon: "🗡️", description: "7-day streak" },
   { id: "habit_scientist", name: "Habit Scientist", icon: "🔬", description: "Run evaluation" },
   { id: "consistency_champion", name: "Champion", icon: "🏆", description: "30-day streak" },
@@ -25,7 +26,7 @@ export function BadgeGrid({ earnedBadges }: BadgeGridProps) {
               title={badge.description}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-semibold transition-opacity ${
                 earned
-                  ? "border-[var(--accent-ember)] text-[var(--text-primary)] bg-[var(--accent-ember)] bg-opacity-10"
+                  ? "border-[var(--accent-ember)] bg-[var(--accent-ember)] text-white"
                   : "border-[var(--border)] text-[var(--text-secondary)] opacity-40"
               }`}
             >

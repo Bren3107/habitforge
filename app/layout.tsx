@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-import { Fraunces, Syne, JetBrains_Mono } from "next/font/google";
+import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import { NavBar } from "@/components/NavBar";
 
-const fraunces = Fraunces({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-inter",
   display: "swap",
 });
 
-const syne = Syne({
+const instrumentSerif = Instrument_Serif({
+  weight: "400",
   subsets: ["latin"],
-  variable: "--font-syne",
+  variable: "--font-instrument-serif",
   display: "swap",
 });
 
@@ -33,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${syne.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}>
       <body className="min-h-screen bg-bg-base text-text-primary antialiased">
         <Providers>
           <NavBar />

@@ -7,7 +7,7 @@ export function StreakCounter({ currentStreak, longestStreak }: StreakCounterPro
   return (
     <div className="p-6 bg-[var(--bg-surface)] border border-[var(--border)] rounded-xl text-center">
       <div className="text-4xl mb-2">🔥</div>
-      <div className="text-5xl font-bold text-[var(--accent-ember)]" style={{ fontFamily: "Fraunces" }}>
+      <div className="text-5xl font-bold text-[var(--accent-ember)]" style={{ fontFamily: "var(--font-instrument-serif)" }}>
         {currentStreak}
       </div>
       <div className="text-[var(--text-secondary)] text-sm mt-1">day streak</div>

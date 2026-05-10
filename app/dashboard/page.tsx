@@ -149,7 +149,7 @@ export default function DashboardPage() {
           </span>
           <h1
             className="text-4xl font-bold text-[var(--text-primary)] mt-1"
-            style={{ fontFamily: "Fraunces" }}
+            style={{ fontFamily: "var(--font-instrument-serif)" }}
           >
             {plan.plan_title}
           </h1>
