@@ -312,6 +312,7 @@ Requirements:
 4. Name each cue, routine, and reward explicitly (no generic descriptions)
 5. Ground recommendations in the success cases provided
 6. Make the plan achievable and personalized
+7. psychology_principles_used must contain ONLY short principle names (2-4 words max, e.g. "Habit Stacking", "Two-Minute Rule") — no descriptions, no colons, no explanations
 
 Respond with ONLY valid JSON (no markdown, no extra text).`;
 

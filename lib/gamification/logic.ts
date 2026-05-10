@@ -56,6 +56,9 @@ export function getLevelProgress(totalXP: number): LevelProgress {
 
 export function checkBadgeUnlocks(currentBadges: string[], stats: BadgeStats): string[] {
   const newBadges: string[] = [];
+  if (!currentBadges.includes("first_step") && stats.total_checkins >= 1) {
+    newBadges.push("first_step");
+  }
   if (!currentBadges.includes("three_day_fire") && stats.current_streak >= 3) {
     newBadges.push("three_day_fire");
   }

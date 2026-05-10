@@ -177,15 +177,23 @@ export async function POST(req: NextRequest) {
       throw new Error(`Failed to save plan: ${planError.message}`);
     }
 
-    // Seed user_gamification with first_step badge
-    await supabaseServer.from("user_gamification").upsert({
-      user_id: userId,
-      total_xp: 0,
-      current_streak: 0,
-      longest_streak: 0,
-      badges: ["first_step"],
-      level: "rookie",
-    }, { onConflict: "user_id" });
+    // Seed user_gamification only if no record exists yet — never overwrite existing progress
+    const { data: existingGam } = await supabaseServer
+      .from("user_gamification")
+      .select("user_id")
+      .eq("user_id", userId)
+      .single();
+
+    if (!existingGam) {
+      await supabaseServer.from("user_gamification").insert({
+        user_id: userId,
+        total_xp: 0,
+        current_streak: 0,
+        longest_streak: 0,
+        badges: [],
+        level: "rookie",
+      });
+    }
 
     // Step 7: Return plan with persisted ID
     return NextResponse.json({

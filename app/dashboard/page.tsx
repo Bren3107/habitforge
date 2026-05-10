@@ -32,7 +32,11 @@ function loadSession(): Session | null {
 }
 
 function todayISO(): string {
-  return new Date().toISOString().split("T")[0];
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
 }
 
 export default function DashboardPage() {
@@ -58,7 +62,7 @@ export default function DashboardPage() {
       try {
         const [planRes, gamRes]: [GetPlanResponse, GamificationResponse] = await Promise.all([
           planAPI.get(s!.planId),
-          gamificationAPI.getStats(s!.userId),
+          gamificationAPI.getStats(s!.userId, s!.planId),
         ]);
 
         setPlan(planRes.plan);
@@ -179,7 +183,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Progress chart */}
-        <ProgressChart history={gamification.history} />
+        <ProgressChart history={gamification.history} planCreatedAt={planCreatedAt} />
 
         {/* Pattern insights */}
         <PatternInsights history={gamification.history} />

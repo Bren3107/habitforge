@@ -83,6 +83,9 @@ confidence = (constraint_fit × 0.4) + (case_similarity × 0.4) + (motivation_se
 
 The final score maps to a label: Very High (≥0.8), High (≥0.6), Medium (≥0.4), Low (≥0.2), Very Low.
 
+**What the confidence score means to the user:**
+The percentage displayed on the results page (e.g. "66% — High Confidence") tells the user how closely their profile matched existing success cases in the database. A higher score means the system found strong precedent for someone with similar goals, constraints, and lifestyle — so the generated plan is well-grounded in proven patterns. A lower score means the user's situation is more unique and the plan is more exploratory. This gives users a transparent signal of how personalised and evidence-backed their plan is, rather than presenting AI output as unconditionally authoritative.
+
 ### 2.4 Large Language Models (Generative AI)
 
 **Code:** `lib/ai/llm.ts`

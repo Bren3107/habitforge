@@ -169,8 +169,8 @@ export const trackingAPI = {
 
 // Gamification API
 export const gamificationAPI = {
-  getStats: (userId: string): Promise<GamificationResponse> =>
-    apiCall(`/api/gamification/${userId}`, "GET"),
+  getStats: (userId: string, planId?: string): Promise<GamificationResponse> =>
+    apiCall(`/api/gamification/${userId}${planId ? `?planId=${encodeURIComponent(planId)}` : ""}`, "GET"),
 };
 
 // Coaching API
