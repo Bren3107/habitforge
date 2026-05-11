@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
-import { NavBar } from "@/components/NavBar";
+import { ClientLayout } from "@/components/ClientLayout";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -37,8 +38,11 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}>
       <body className="min-h-screen bg-bg-base text-text-primary antialiased">
         <Providers>
-          <NavBar />
-          {children}
+          <ThemeProvider>
+            <ClientLayout>
+              {children}
+            </ClientLayout>
+          </ThemeProvider>
         </Providers>
       </body>
     </html>

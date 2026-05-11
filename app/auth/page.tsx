@@ -11,12 +11,15 @@ function AuthForm() {
   const [tab, setTab] = useState<"signup" | "login">(
     searchParams.get("tab") === "login" ? "login" : "signup"
   );
+  const [step, setStep] = useState<"form" | "otp">("form");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [otp, setOtp] = useState("");
   const [loading, setLoading] = useState(false);
   const [checkingSession, setCheckingSession] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [info, setInfo] = useState<string | null>(null);
 
   const supabase = createSupabaseBrowserClient();
 
@@ -27,7 +30,7 @@ function AuthForm() {
     });
   }, []);
 
-  const handleSignUp = async (e: React.FormEvent) => {
+  const handleSignUp = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
@@ -42,15 +45,43 @@ function AuthForm() {
       return;
     }
     if (!data.session) {
-      // Email confirmation required — user needs to verify before continuing
-      setError("Check your email and click the confirmation link, then sign in.");
+      // Email confirmation required — move to OTP step
+      setInfo(`We sent a 6-digit verification code to ${email}. Enter it below.`);
+      setStep("otp");
       setLoading(false);
       return;
     }
     router.push("/auth/complete");
   };
 
-  const handleSignIn = async (e: React.FormEvent) => {
+  const handleVerifyOtp = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+    const { error } = await supabase.auth.verifyOtp({
+      email,
+      token: otp.trim(),
+      type: "email",
+    });
+    if (error) {
+      setError("Invalid or expired code. Check your email and try again.");
+      setLoading(false);
+      return;
+    }
+    router.push("/auth/complete");
+  };
+
+  const handleResendOtp = async () => {
+    setError(null);
+    const { error } = await supabase.auth.resend({ type: "signup", email });
+    if (error) {
+      setError(error.message);
+    } else {
+      setInfo("New code sent — check your inbox.");
+    }
+  };
+
+  const handleSignIn = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
@@ -78,10 +109,89 @@ function AuthForm() {
     );
   }
 
+  // OTP verification step
+  if (step === "otp") {
+    return (
+      <div className="min-h-screen bg-[var(--bg-base)] flex flex-col items-center justify-center px-4 relative overflow-hidden">
+        <div className="relative z-10 w-full max-w-md">
+          <Link
+            href="/"
+            className="block text-center mb-8 text-3xl font-bold text-[var(--text-primary)]"
+            style={{ fontFamily: "var(--font-instrument-serif)" }}
+          >
+            Habit<span className="text-[var(--text-secondary)]">Forge</span>
+          </Link>
+
+          <div className="bg-[var(--bg-surface)] border border-[var(--border)] rounded-2xl p-8">
+            {/* Email icon */}
+            <div className="flex justify-center mb-6">
+              <div className="w-14 h-14 rounded-full bg-[var(--accent-ember)]/10 flex items-center justify-center">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-[var(--accent-ember)]">
+                  <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+            </div>
+
+            <h2 className="text-xl font-bold text-[var(--text-primary)] text-center mb-2">
+              Verify your email
+            </h2>
+            {info && (
+              <p className="text-sm text-[var(--text-secondary)] text-center mb-6">{info}</p>
+            )}
+
+            <form onSubmit={handleVerifyOtp} className="space-y-4">
+              <div>
+                <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-1.5">
+                  Verification Code
+                </label>
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  maxLength={8}
+                  required
+                  value={otp}
+                  onChange={(e) => setOtp(e.target.value.replace(/\D/g, ""))}
+                  placeholder="8-digit code"
+                  className="w-full px-3 py-3 bg-[var(--bg-raised)] border border-[var(--border)] rounded-lg text-[var(--text-primary)] placeholder-[var(--text-secondary)] text-lg text-center tracking-[0.4em] font-mono focus:outline-none focus:border-[var(--accent-ember)] transition-colors"
+                />
+              </div>
+
+              {error && (
+                <p className="text-[var(--error)] text-sm">{error}</p>
+              )}
+
+              <button
+                type="submit"
+                disabled={loading || otp.length < 8}
+                className="w-full py-2.5 bg-[var(--accent-ember)] text-[var(--bg-base)] rounded-lg font-bold hover:bg-[var(--accent-fire)] transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
+              >
+                {loading && (
+                  <span className="w-4 h-4 border-2 border-[var(--bg-base)]/40 border-t-[var(--bg-base)] rounded-full animate-spin" />
+                )}
+                Verify Email
+              </button>
+            </form>
+
+            <div className="mt-4 text-center">
+              <span className="text-xs text-[var(--text-secondary)]">
+                Didn&apos;t receive it?{" "}
+              </span>
+              <button
+                onClick={handleResendOtp}
+                className="text-xs text-[var(--accent-ember)] hover:underline"
+              >
+                Resend code
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[var(--bg-base)] flex flex-col items-center justify-center px-4 relative overflow-hidden">
-
-
       <div className="relative z-10 w-full max-w-md">
         {/* Logo */}
         <Link
