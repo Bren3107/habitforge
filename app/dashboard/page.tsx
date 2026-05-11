@@ -208,7 +208,7 @@ export default function DashboardPage() {
             href={`/results?plan=${session?.planId}`}
             className="text-[var(--text-secondary)] text-sm hover:text-[var(--accent-ember)] transition-colors"
           >
-            View your full plan →
+            View your full plan
           </Link>
         </div>
       </div>

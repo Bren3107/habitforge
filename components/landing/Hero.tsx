@@ -78,35 +78,17 @@ export function Hero() {
           {isSignedIn ? (
             <Link
               href="/auth/complete"
-              className="group px-8 py-3.5 bg-[var(--text-primary)] text-white rounded-full font-medium text-base hover:scale-105 active:scale-[0.98] transition-transform duration-200 cursor-pointer inline-flex items-center gap-2"
+              className="px-8 py-3.5 bg-[var(--text-primary)] text-white rounded-full font-medium text-base hover:scale-105 active:scale-[0.98] transition-transform duration-200 cursor-pointer inline-flex items-center"
             >
               Go to Dashboard
-              <svg
-                className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
             </Link>
           ) : (
             <>
               <Link
                 href="/auth?tab=signup"
-                className="group px-8 py-3.5 bg-[var(--text-primary)] text-white rounded-full font-medium text-base hover:scale-105 active:scale-[0.98] transition-transform duration-200 cursor-pointer inline-flex items-center gap-2"
+                className="px-8 py-3.5 bg-[var(--text-primary)] text-white rounded-full font-medium text-base hover:scale-105 active:scale-[0.98] transition-transform duration-200 cursor-pointer inline-flex items-center"
               >
                 Get Started
-                <svg
-                  className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
               </Link>
               <Link
                 href="/auth?tab=login"

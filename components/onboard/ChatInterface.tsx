@@ -169,7 +169,7 @@ export function ChatInterface({
               disabled={state.status === "loading" || !userAnswer.trim() || !sessionId}
               className="px-6 py-2 bg-[var(--accent-ember)] text-[var(--bg-base)] rounded-lg font-semibold hover:bg-[var(--accent-fire)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
-              Send →
+              Send
             </button>
           </form>
 

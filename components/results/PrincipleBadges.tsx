@@ -11,7 +11,7 @@ export function PrincipleBadges({ principles }: Props) {
       {principles.map((name, i) => (
         <motion.span
           key={name}
-          className="px-3 py-1 text-sm rounded-full border"
+          className="px-3 py-1 text-sm rounded-full border cursor-default"
           style={{
             backgroundColor: "var(--bg-raised)",
             borderColor: "var(--accent-ember)",
@@ -19,6 +19,7 @@ export function PrincipleBadges({ principles }: Props) {
           }}
           initial={{ opacity: 0, scale: 0.7 }}
           animate={{ opacity: 1, scale: 1 }}
+          whileHover={{ backgroundColor: "#000000", color: "#ffffff", borderColor: "#000000" }}
           transition={{ delay: 0.1 * i, duration: 0.3, type: "spring", stiffness: 300 }}
         >
           {name}

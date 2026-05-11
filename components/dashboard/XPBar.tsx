@@ -16,7 +16,7 @@ export function XPBar({ totalXP, levelProgress }: XPBarProps) {
       <div className="flex justify-between items-baseline mb-2">
         <span className="text-[var(--text-primary)] font-bold capitalize">{levelProgress.level}</span>
         {levelProgress.level !== "legend" && (
-          <span className="text-[var(--text-secondary)] text-xs capitalize">{levelProgress.nextLevel} →</span>
+          <span className="text-[var(--text-secondary)] text-xs capitalize">{levelProgress.nextLevel}</span>
         )}
       </div>
       <div className="bg-[var(--bg-raised)] rounded-full h-3 mb-2">

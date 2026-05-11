@@ -8,6 +8,7 @@ import { planAPI } from "@/lib/api";
 import type { HabitPlan } from "@/lib/ai/llm";
 import { ConfidenceMeter } from "@/components/results/ConfidenceMeter";
 import { PrincipleBadges } from "@/components/results/PrincipleBadges";
+import { AiLoader } from "@/components/ui/ai-loader";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -40,8 +41,10 @@ export default function ResultsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [explanationExpanded, setExplanationExpanded] = useState(false);
-
   useEffect(() => {
+    // If we already have the plan loaded, skip — prevents re-fetch after router.replace changes the URL
+    if (plan !== null) return;
+
     async function loadPlan() {
       if (!sessionId && !planId) {
         try {
@@ -78,15 +81,12 @@ export default function ResultsPage() {
       }
     }
     loadPlan();
-  }, [sessionId, planId, router]);
+  }, [sessionId, planId, router, plan]);
 
   if (loading) {
     return (
       <div className="min-h-screen bg-[var(--bg-base)] flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-16 h-16 border-4 border-[var(--border)] border-t-[var(--accent-ember)] rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-[var(--text-secondary)] text-lg">Forging your personalized plan...</p>
-        </div>
+        <AiLoader />
       </div>
     );
   }

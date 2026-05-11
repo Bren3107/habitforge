@@ -96,8 +96,16 @@ export function OnboardWizard({
     setError(msg);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (currentStep === "chat") return;
+    if (e.key !== "Enter" || e.shiftKey) return;
+    const tag = (e.target as HTMLElement).tagName;
+    if (tag === "TEXTAREA") e.preventDefault();
+    if (canProceed && !isLoading) handleNext();
+  };
+
   return (
-    <div className="w-full max-w-2xl mx-auto">
+    <div className="w-full max-w-2xl mx-auto" onKeyDown={handleKeyDown}>
       {/* Progress Bar */}
       <div className="mb-8">
         <div className="flex items-center justify-between mb-4">
@@ -204,7 +212,7 @@ export function OnboardWizard({
             disabled={!canProceed || isLoading}
             className="px-6 py-2 bg-[var(--accent-ember)] text-[var(--bg-base)] rounded-lg font-semibold hover:bg-[var(--accent-fire)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            {isLoading ? "Starting..." : "Next →"}
+            {isLoading ? "Starting..." : "Next"}
           </button>
         </div>
       )}

@@ -53,13 +53,13 @@ export default function OnboardPage() {
                 href={`/results?plan=${existingPlanId}`}
                 className="text-sm text-[var(--accent-ember)] hover:underline"
               >
-                View it →
+                View it
               </Link>
               <Link
                 href="/dashboard"
                 className="text-sm text-[var(--accent-ember)] hover:underline"
               >
-                Dashboard →
+                Dashboard
               </Link>
             </div>
           </div>

@@ -36,18 +36,9 @@ export function FinalCTA() {
           >
             <Link
               href="/auth?tab=signup"
-              className="group inline-flex items-center gap-2 px-10 py-4 bg-[var(--text-primary)] text-white rounded-full font-medium text-lg hover:scale-105 active:scale-[0.98] transition-transform duration-200 cursor-pointer"
+              className="inline-flex items-center px-10 py-4 bg-[var(--text-primary)] text-white rounded-full font-medium text-lg hover:scale-105 active:scale-[0.98] transition-transform duration-200 cursor-pointer"
             >
               Start Building
-              <svg
-                className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
             </Link>
           </motion.div>
 

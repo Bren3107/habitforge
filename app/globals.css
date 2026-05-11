@@ -179,3 +179,84 @@ html {
   background-color: #0a0a0a;
   color: #ffffff;
 }
+
+/* ── AI Loader orb ── */
+@keyframes loader-rotate {
+  0% {
+    transform: rotate(90deg);
+    box-shadow:
+      0 10px 25px 0 #ffffff inset,
+      0 20px 45px 0 #d4d4d4 inset,
+      0 60px 80px 0 #6b6b6b inset;
+  }
+  50% {
+    transform: rotate(270deg);
+    box-shadow:
+      0 10px 25px 0 #ffffff inset,
+      0 20px 30px 0 #c0c0c0 inset,
+      0 55px 80px 0 #555555 inset;
+  }
+  100% {
+    transform: rotate(450deg);
+    box-shadow:
+      0 10px 25px 0 #ffffff inset,
+      0 20px 45px 0 #d4d4d4 inset,
+      0 60px 80px 0 #6b6b6b inset;
+  }
+}
+
+@keyframes letter-wave {
+  0%, 100% { opacity: 0.45; font-weight: 300; }
+  20%       { opacity: 1;   font-weight: 600; }
+  50%       { opacity: 0.65; font-weight: 300; }
+}
+
+.loader-orb {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.loader-sphere {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #a0a0a0;
+  animation: loader-rotate 4s ease-in-out infinite;
+}
+
+.loader-orb-text {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  padding: 0 44px;
+  line-height: 1.8;
+  gap: 0;
+  word-break: keep-all;
+}
+
+.loader-word {
+  display: inline-block;
+  white-space: nowrap;
+  margin-right: 0.3em;
+}
+
+.loader-word:last-child {
+  margin-right: 0;
+}
+
+.loader-letter {
+  display: inline-block;
+  font-size: 0.9375rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: 0.02em;
+  animation: letter-wave 2.8s ease-in-out infinite;
+}
