@@ -16,6 +16,9 @@
  */
 
 import { NextRequest, NextResponse } from "next/server";
+
+export const maxDuration = 60;
+
 import { generateQuestion } from "@/lib/ai/llm";
 import { getSession, updateSessionContext } from "../session";
 

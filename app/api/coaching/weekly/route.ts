@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
+
+export const maxDuration = 60;
 import { supabaseServer } from "@/lib/supabase/server";
 import { analyzePatterns } from "@/lib/ai/pattern-analysis";
 import { generateCoachingMessage } from "@/lib/ai/coaching";
