@@ -37,7 +37,7 @@ const transitionProps = { type: "tween" as const, ease: "easeOut", duration: 0.2
 
 interface LocalSession { planId: string; userId: string }
 
-export function AppSidebar() {
+export function AppSidebar({ muteToggle }: { muteToggle?: React.ReactNode }) {
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [authUser, setAuthUser] = useState<{ displayName: string; initials: string } | null>(null);
   const [planId, setPlanId] = useState<string | null>(null);
@@ -160,6 +160,13 @@ export function AppSidebar() {
               })}
             </div>
           </ScrollArea>
+
+          {/* Music toggle — visible when sidebar is expanded */}
+          {muteToggle && !isCollapsed && (
+            <div className="shrink-0 px-2 pb-1">
+              {muteToggle}
+            </div>
+          )}
 
           {/* User account at bottom */}
           <div className="shrink-0 border-t border-[var(--border)] p-2">
