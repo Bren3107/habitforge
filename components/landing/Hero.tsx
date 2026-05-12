@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { useTextSplitter, type SplitLine } from "@/hooks/useTextSplitter";
+import { HABIT_ICONS } from "./HabitIcons";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,6 +22,7 @@ export function Hero() {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [contentVisible, setContentVisible] = useState(false);
   const { charsByLine, charRefs } = useTextSplitter(HEADLINE_LINES);
+  const iconRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const supabase = createSupabaseBrowserClient();
@@ -31,6 +33,7 @@ export function Hero() {
 
   useEffect(() => {
     const els = charRefs.current.filter(Boolean) as HTMLSpanElement[];
+    const iconEls = iconRefs.current.filter(Boolean) as HTMLDivElement[];
     if (!els.length || !sectionRef.current) return;
 
     const mm = gsap.matchMedia();
@@ -41,16 +44,29 @@ export function Hero() {
     });
 
     mm.add("(prefers-reduced-motion: no-preference)", () => {
-      // Pre-generate each letter's pile position once so both timeline phases
-      // share the exact same scatter coordinates.
+      // Pre-generate letter scatter landing positions
       const scatter = els.map(() => ({
         x: (Math.random() - 0.5) * 500,
         y: Math.random() * 80 + 60,
         rotation: (Math.random() - 0.5) * 100,
       }));
 
-      // Letters start above the viewport — they become visible (opacity 1) but
-      // are off-screen until the user starts scrolling.
+      // Pre-generate icon explosion data so Phase 3a and 3b share the same
+      // target coordinates. Angles are evenly distributed around a full circle,
+      // offset by -90° so the burst starts from the top.
+      const iconData = iconEls.map((_, i) => {
+        const angle = ((i / iconEls.length) * Math.PI * 2) - Math.PI / 2;
+        const radius = 220 + Math.random() * 160;
+        return {
+          explodeX: Math.cos(angle) * radius,
+          explodeY: Math.sin(angle) * radius,
+          fallExtra: 220 + Math.random() * 180,
+          rotation: (Math.random() - 0.5) * 340,
+          scale: 0.7 + Math.random() * 0.55,
+        };
+      });
+
+      // Letters start off-screen above the viewport
       gsap.set(els, {
         x: (i) => scatter[i].x * 0.3,
         y: -window.innerHeight * 1.1,
@@ -58,9 +74,12 @@ export function Hero() {
         opacity: 1,
       });
 
+      // Icons start hidden at center (behind the headline)
+      gsap.set(iconEls, { opacity: 0, scale: 0, x: 0, y: 0 });
+
       const tl = gsap.timeline({ paused: true });
 
-      // ── Phase 1 (0 → ~45 % of scroll): fall from sky → pile ───────────
+      // ── Phase 1 (0 → ~38 %): letters fall from sky → scattered pile ───
       tl.to(els, {
         x: (i) => scatter[i].x,
         y: (i) => scatter[i].y,
@@ -70,7 +89,7 @@ export function Hero() {
         stagger: { each: 0.03, from: "random" },
       });
 
-      // ── Phase 2 (~45 → 100 % of scroll): pile → assembled heading ─────
+      // ── Phase 2 (~38 → ~72 %): pile → assembled heading ───────────────
       tl.to(els, {
         x: 0,
         y: 0,
@@ -80,22 +99,46 @@ export function Hero() {
         stagger: { each: 0.035, from: "random" },
       });
 
-      // ── ScrollTrigger: pin the section for 2 × viewport scroll distance ─
-      // "scrub: 1.5" makes the letters feel heavy — they lag slightly behind
-      // the scroll wheel, then coast into place.
+      // ── Phase 3a (~72 → ~90 %): habit icons explode radially ──────────
+      // Icons shoot out from behind the assembled text in all directions.
+      tl.to(
+        iconEls,
+        {
+          x: (i) => iconData[i].explodeX,
+          y: (i) => iconData[i].explodeY,
+          scale: (i) => iconData[i].scale,
+          rotation: (i) => iconData[i].rotation,
+          opacity: 1,
+          ease: "power3.out",
+          duration: 0.8,
+          stagger: { each: 0.025, from: "random" },
+        },
+        // Start right after Phase 2 finishes
+        ">"
+      );
+
+      // ── Phase 3b (~90 → 100 %): icons arc downward and fade out ───────
+      tl.to(iconEls, {
+        y: (i) => iconData[i].explodeY + iconData[i].fallExtra,
+        opacity: 0,
+        ease: "power1.in",
+        duration: 0.7,
+        stagger: { each: 0.015, from: "random" },
+      });
+
+      // ── ScrollTrigger: pin for 3 × viewport height ─────────────────────
+      // Phase 1 + 2 covers the first two viewport-heights of scroll;
+      // Phase 3 takes the third.
       ScrollTrigger.create({
         animation: tl,
         trigger: sectionRef.current,
         start: "top top",
-        end: () => "+=" + window.innerHeight * 2,
+        end: () => "+=" + window.innerHeight * 3,
         scrub: 1.5,
         pin: true,
         anticipatePin: 1,
         invalidateOnRefresh: true,
         onLeave: (self) => {
-          // User has scrolled all the way through. Snap to fully assembled,
-          // then permanently kill the trigger so scrolling back never
-          // re-scatters the letters for the rest of this session.
           tl.progress(1, true);
           gsap.set(els, { x: 0, y: 0, rotation: 0, clearProps: "willChange" });
           setContentVisible(true);
@@ -115,7 +158,33 @@ export function Hero() {
       ref={sectionRef}
       className="relative min-h-[100vh] flex flex-col items-center justify-center px-6 overflow-hidden"
     >
-      <div className="max-w-4xl mx-auto text-center">
+      {/* ── Habit icon confetti layer ─────────────────────────────────── */}
+      {/* Absolutely centred on the headline; icons burst outward from here */}
+      <div
+        className="absolute pointer-events-none"
+        style={{ left: "50%", top: "42%", transform: "translate(-50%, -50%)" }}
+        aria-hidden="true"
+      >
+        {HABIT_ICONS.map((icon, i) => (
+          <div
+            key={icon.name}
+            ref={(el) => {
+              iconRefs.current[i] = el;
+            }}
+            style={{
+              position: "absolute",
+              color: icon.color,
+              willChange: "transform",
+              transform: "translate(-50%, -50%) scale(2)",
+            }}
+          >
+            {icon.svg}
+          </div>
+        ))}
+      </div>
+
+      {/* ── Main content ─────────────────────────────────────────────── */}
+      <div className="max-w-4xl mx-auto text-center relative">
         {/* Overline */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -146,12 +215,11 @@ export function Hero() {
                   }}
                   style={{
                     display: "inline-block",
-                    // Hidden until GSAP repositions above viewport on mount.
                     opacity: 0,
                     willChange: "transform",
                   }}
                 >
-                  {c.isSpace ? " " : c.char}
+                  {c.isSpace ? " " : c.char}
                 </span>
               ))}
             </span>
@@ -217,35 +285,11 @@ export function Hero() {
           transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
           className="flex flex-col items-center -space-y-1.5"
         >
-          <svg
-            width="14"
-            height="10"
-            viewBox="0 0 14 10"
-            fill="none"
-            className="text-[var(--text-secondary)]/40"
-          >
-            <path
-              d="M1 1l6 6 6-6"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+          <svg width="14" height="10" viewBox="0 0 14 10" fill="none" className="text-[var(--text-secondary)]/40">
+            <path d="M1 1l6 6 6-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-          <svg
-            width="14"
-            height="10"
-            viewBox="0 0 14 10"
-            fill="none"
-            className="text-[var(--text-secondary)]/20"
-          >
-            <path
-              d="M1 1l6 6 6-6"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+          <svg width="14" height="10" viewBox="0 0 14 10" fill="none" className="text-[var(--text-secondary)]/20">
+            <path d="M1 1l6 6 6-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </motion.div>
       </motion.div>
