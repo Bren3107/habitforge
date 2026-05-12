@@ -1,7 +1,8 @@
 import type { PatternAnalysis } from "./pattern-analysis";
 import type { HabitPlan } from "./llm";
 
-let anthropicClient: ReturnType<typeof import("@anthropic-ai/sdk")["default"]["prototype"]["constructor"]> | null = null;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let anthropicClient: any = null;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function getAnthropicClient(): Promise<any> {
