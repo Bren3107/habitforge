@@ -37,10 +37,10 @@ export async function generateCoachingMessage(
 ): Promise<string> {
   const anthropic = await getAnthropicClient();
 
-  const systemPrompt = `You are a warm, encouraging habit coach. Write a brief weekly check-in message (2–3 sentences max) for a user working on their habit goal.
+  const systemPrompt = `You are a warm, encouraging habit coach. Write a brief weekly check-in message (2-3 sentences max) for a user working on their habit goal.
 
 Structure: one specific insight from their data, one word of genuine encouragement, one concrete suggestion.
-Tone: supportive, direct, never preachy. Use "you" not "one". No emojis.`;
+Tone: supportive, direct, never preachy. Use "you" not "one". No emojis. No em dashes (—). No plus signs. Write like a real person talking, not a formal report.`;
 
   const userPrompt = `Week ${weekNumber} coaching for: "${goal}"
 Plan title: ${plan.plan_title}

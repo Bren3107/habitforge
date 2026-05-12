@@ -37,7 +37,7 @@ export function PatternInsights({ history }: PatternInsightsProps) {
         </div>
         <div className="text-center">
           <div className="text-sm font-semibold text-[var(--text-primary)]">
-            {analysis.bestDayOfWeek ?? "—"}
+            {analysis.bestDayOfWeek ?? "n/a"}
           </div>
           <div className="text-xs text-[var(--text-secondary)] mt-1">Best day</div>
         </div>

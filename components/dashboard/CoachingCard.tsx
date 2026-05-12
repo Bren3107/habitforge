@@ -39,7 +39,7 @@ export function CoachingCard({ userId, planId, totalCheckins }: CoachingCardProp
         </span>
         {data && (
           <span className="text-xs text-[var(--text-secondary)]">
-            — Week {data.weekNumber}
+            Week {data.weekNumber}
           </span>
         )}
       </div>

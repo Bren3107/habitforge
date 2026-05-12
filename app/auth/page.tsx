@@ -148,11 +148,11 @@ function AuthForm() {
                   type="text"
                   inputMode="numeric"
                   pattern="[0-9]*"
-                  maxLength={8}
+                  maxLength={6}
                   required
                   value={otp}
                   onChange={(e) => setOtp(e.target.value.replace(/\D/g, ""))}
-                  placeholder="8-digit code"
+                  placeholder="6-digit code"
                   className="w-full px-3 py-3 bg-[var(--bg-raised)] border border-[var(--border)] rounded-lg text-[var(--text-primary)] placeholder-[var(--text-secondary)] text-lg text-center tracking-[0.4em] font-mono focus:outline-none focus:border-[var(--accent-ember)] transition-colors"
                 />
               </div>
@@ -163,7 +163,7 @@ function AuthForm() {
 
               <button
                 type="submit"
-                disabled={loading || otp.length < 8}
+                disabled={loading || otp.length < 6}
                 className="w-full py-2.5 bg-[var(--accent-ember)] text-[var(--bg-base)] rounded-lg font-bold hover:bg-[var(--accent-fire)] transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
               >
                 {loading && (

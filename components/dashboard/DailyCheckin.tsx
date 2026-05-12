@@ -3,6 +3,13 @@
 import { useState } from "react";
 import type { HabitPlan } from "@/lib/ai/llm";
 
+function clean(text: string): string {
+  return text
+    .replace(/ — /g, ", ")
+    .replace(/—/g, ", ")
+    .replace(/ \+ /g, ", then ");
+}
+
 interface DailyCheckinProps {
   plan: HabitPlan;
   planCreatedAt: string;
@@ -57,15 +64,15 @@ export function DailyCheckin({
       <div className="space-y-3 mb-5">
         <div className="flex gap-3 items-start">
           <span className="text-xs font-bold text-[var(--accent-ember)] uppercase min-w-[44px] pt-0.5">Cue</span>
-          <span className="text-sm text-[var(--text-primary)]">{todayAction.cue}</span>
+          <span className="text-sm text-[var(--text-primary)]">{clean(todayAction.cue)}</span>
         </div>
         <div className="flex gap-3 items-start">
           <span className="text-xs font-bold text-[var(--accent-ember)] uppercase min-w-[44px] pt-0.5">Do</span>
-          <span className="text-sm text-[var(--text-primary)]">{todayAction.actions.join(" + ")}</span>
+          <span className="text-sm text-[var(--text-primary)]">{todayAction.actions.map(clean).join(", then ")}</span>
         </div>
         <div className="flex gap-3 items-start">
           <span className="text-xs font-bold text-[var(--accent-ember)] uppercase min-w-[44px] pt-0.5">Reward</span>
-          <span className="text-sm text-[var(--text-primary)]">{todayAction.reward}</span>
+          <span className="text-sm text-[var(--text-primary)]">{clean(todayAction.reward)}</span>
         </div>
       </div>
 

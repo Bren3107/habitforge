@@ -313,6 +313,7 @@ Requirements:
 5. Ground recommendations in the success cases provided
 6. Make the plan achievable and personalized
 7. psychology_principles_used must contain ONLY short principle names (2-4 words max, e.g. "Habit Stacking", "Two-Minute Rule") — no descriptions, no colons, no explanations
+8. Write naturally — no em dashes (—), no plus signs to join items, no bullet symbols in strings, no overly formal phrasing. Sound like a person, not a report.
 
 Respond with ONLY valid JSON (no markdown, no extra text).`;
 

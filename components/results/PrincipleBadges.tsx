@@ -5,6 +5,12 @@ interface Props {
   principles: string[];
 }
 
+function shortName(p: string): string {
+  const colonIdx = p.indexOf(":");
+  const name = colonIdx !== -1 ? p.slice(0, colonIdx).trim() : p;
+  return name.length > 32 ? name.slice(0, 32).trimEnd() + "…" : name;
+}
+
 export function PrincipleBadges({ principles }: Props) {
   return (
     <div className="flex flex-wrap gap-2">
@@ -22,7 +28,7 @@ export function PrincipleBadges({ principles }: Props) {
           whileHover={{ backgroundColor: "#000000", color: "#ffffff", borderColor: "#000000" }}
           transition={{ delay: 0.1 * i, duration: 0.3, type: "spring", stiffness: 300 }}
         >
-          {name}
+          {shortName(name)}
         </motion.span>
       ))}
     </div>

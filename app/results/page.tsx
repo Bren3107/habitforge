@@ -20,6 +20,13 @@ const stagger = {
   show: { transition: { staggerChildren: 0.12 } },
 };
 
+function clean(text: string): string {
+  return text
+    .replace(/ — /g, ", ")
+    .replace(/—/g, ", ")
+    .replace(/ \+ /g, ", then ");
+}
+
 const DIFFICULTY_COLOR: Record<string, string> = {
   easy: "#22c55e",
   moderate: "var(--accent-ember)",
@@ -109,17 +116,18 @@ export default function ResultsPage() {
 
   const isNewUser = !!sessionId && !planId;
   const ctaText = isNewUser
-    ? "🔥 Light the Forge — Begin Day 1"
+    ? "🔥 Light the Forge. Begin Day 1"
     : "Continue Your Journey";
   const ctaSubtext = isNewUser
     ? "Your streak starts now. Don't break it."
     : "Pick up where you left off.";
 
   const dayOne = plan.daily_actions[0];
-  const isLongExplanation = plan.explanation.length > 130;
+  const cleanedExplanation = clean(plan.explanation);
+  const isLongExplanation = cleanedExplanation.length > 130;
   const shortExplanation = isLongExplanation
-    ? plan.explanation.slice(0, 130).trimEnd() + "…"
-    : plan.explanation;
+    ? cleanedExplanation.slice(0, 130).trimEnd() + "…"
+    : cleanedExplanation;
 
   return (
     <div className="min-h-screen bg-[var(--bg-base)] pb-24">
@@ -154,7 +162,7 @@ export default function ResultsPage() {
         </motion.h1>
 
         <motion.p variants={fadeUp} className="text-[var(--text-secondary)] text-base max-w-md mx-auto mb-6 leading-relaxed">
-          {explanationExpanded ? plan.explanation : shortExplanation}
+          {explanationExpanded ? cleanedExplanation : shortExplanation}
           {isLongExplanation && (
             <button
               onClick={() => setExplanationExpanded((v) => !v)}
@@ -217,7 +225,7 @@ export default function ResultsPage() {
                     {week.week}
                   </div>
                   <div className="flex-1 pt-1">
-                    <p className="font-semibold text-[var(--text-primary)] text-sm leading-snug">{week.focus}</p>
+                    <p className="font-semibold text-[var(--text-primary)] text-sm leading-snug">{clean(week.focus)}</p>
                     <span
                       className="text-xs mt-1 inline-block px-2 py-0.5 rounded-full"
                       style={{
@@ -225,7 +233,7 @@ export default function ResultsPage() {
                         backgroundColor: "var(--bg-raised)",
                       }}
                     >
-                      {week.expected_difficulty}
+                      {week.expected_difficulty.split("—")[0].split(":")[0].trim()}
                     </span>
                   </div>
                 </div>
@@ -250,7 +258,7 @@ export default function ResultsPage() {
               className="text-xs uppercase tracking-widest font-bold mb-5"
               style={{ color: "var(--accent-ember)" }}
             >
-              Day 1 — Your First Mission
+              Day 1: Your First Mission
             </p>
 
             <div className="relative">
@@ -270,7 +278,7 @@ export default function ResultsPage() {
                   </div>
                   <div>
                     <p className="text-xs font-bold uppercase tracking-wide mb-1" style={{ color: "var(--text-secondary)" }}>Cue</p>
-                    <p className="text-[var(--text-primary)] text-sm">{dayOne.cue}</p>
+                    <p className="text-[var(--text-primary)] text-sm">{clean(dayOne.cue)}</p>
                   </div>
                 </div>
 
@@ -284,7 +292,7 @@ export default function ResultsPage() {
                   </div>
                   <div>
                     <p className="text-xs font-bold uppercase tracking-wide mb-1" style={{ color: "var(--text-secondary)" }}>Do</p>
-                    <p className="text-[var(--text-primary)] text-sm">{dayOne.actions.join(" + ")}</p>
+                    <p className="text-[var(--text-primary)] text-sm">{dayOne.actions.map(clean).join(", then ")}</p>
                   </div>
                 </div>
 
@@ -302,7 +310,7 @@ export default function ResultsPage() {
                   </div>
                   <div>
                     <p className="text-xs font-bold uppercase tracking-wide mb-1" style={{ color: "var(--text-secondary)" }}>Reward</p>
-                    <p className="text-[var(--text-primary)] text-sm">{dayOne.reward}</p>
+                    <p className="text-[var(--text-primary)] text-sm">{clean(dayOne.reward)}</p>
                   </div>
                 </div>
               </div>
