@@ -17,7 +17,7 @@ export function applyTheme(theme: string) {
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    const stored = localStorage.getItem("habitforge_theme") ?? "system";
+    const stored = localStorage.getItem("habitforge_theme") ?? "light";
     applyTheme(stored);
 
     if (stored === "system") {
