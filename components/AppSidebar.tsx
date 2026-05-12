@@ -33,7 +33,7 @@ const labelVariants = {
   closed: { x: -10, opacity: 0, transition: { x: { stiffness: 100 } } },
 };
 
-const transitionProps = { type: "tween" as const, ease: "easeOut", duration: 0.2 };
+const transitionProps = { type: "tween" as const, ease: "easeOut" as const, duration: 0.2 };
 
 interface LocalSession { planId: string; userId: string }
 
